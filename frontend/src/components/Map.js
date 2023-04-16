@@ -2,7 +2,7 @@ import React from 'react';
 import { GoogleMap, LoadScriptNext, Marker, InfoWindow } from '@react-google-maps/api';
 
 const Map = () => {
-  const initialLocation = { lat: 40.7128, lng: -74.0060 };
+  const initialLocation = { lat: 53.5461, lng: -113.4937 };
   const mapContainerStyle = { width: '100%', height: '400px', marginBottom: '16px' };
 
   const onLoad = (map) => {
