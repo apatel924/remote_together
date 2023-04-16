@@ -1,0 +1,41 @@
+.navbar_container-ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.navbar_container-il {
+  padding: 1em;
+}
+
+.navbar{
+  width : 100%;
+}
+
+.navbar_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+}
+
+.div_main {
+  display: flex;
+  flex-direction: row;
+}
+
+.div_main_left {
+  width:50%
+}
+
+.div_main_right {
+  width:50%
+}
+
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
