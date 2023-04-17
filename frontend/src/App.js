@@ -12,10 +12,39 @@ import Axios from "axios";
 
 function App() {
 // SET STATES HERE
-  // const [state, useState] = useState('')
+  const [state, setState] = useState({message: 'Click the button to load data!'})
+  const [business, setBusiness] = useState({address: 'no address here click the button'})
 
 // FETCH DATA FROM DB HERE
+const fetchData = () => {
+  Axios.get('/api') // You can simply make your requests to "/api/whatever you want"
+  .then((response) => {
+    // handle success
+    console.log(response.data) // The entire response from the Rails API
 
+    console.log(response.data.message) // Just the message
+    setState({
+      message: response.data.message
+    });
+  }) 
+  .catch (err => {
+      console.log({ error: err.message });
+  });
+}
+
+// does not work
+const fetchDataBusiness = () => {
+    Axios.get('/api/business') // You can simply make your requests to "/api/whatever you want"
+    .then((response) => {
+      // handle success
+      console.log(response) // The entire response from the API
+
+      // console.log(response.data.message) // Just the message
+
+      //set state
+      setBusiness({address: response.data.businessList[0].address})
+    }) 
+  }
 
   return (
     <BrowserRouter>
@@ -62,6 +91,14 @@ function App() {
           {/* left side */}
           <div className="div_main_left">
             main area
+            <h1>{ state.message }</h1>
+              <button onClick={fetchData} >
+                Fetch Data
+              </button>     
+              <h1>{ business.address }</h1>
+              <button onClick={fetchDataBusiness} >
+                business address
+              </button>  
             <Routes>
               <Route path="/path" element={<PlaceList />} />
               <Route path="/path1" element={<Main />} />

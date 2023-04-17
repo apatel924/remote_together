@@ -21,13 +21,14 @@ const Map = () => {
       keyword: ['lounge', 'coffee shop'],
     };
 
-    service.nearbySearch(request, (results, status) => {
-      if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-        for (let i = 0; i < results.length; i++) {
-          createMarker(results[i], map);
-        }
-      }
-    });
+    // something wrong with this code. it's making the page crash
+    // service.nearbySearch(request, (results, status) => {
+    //   if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+    //     for (let i = 0; i < results.length; i++) {
+    //       createMarker(results[i], map);
+    //     }
+    //   }
+    // });
   };
 
   const createMarker = (place, map) => {

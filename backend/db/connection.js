@@ -1,21 +1,17 @@
 // PG database client/connection setup
 const { Pool } = require('pg');
-
+require('dotenv').config();
+console.log('process.env', process.env)
+// was trying to use env file but it doesn't read for some reason? how do i fix this
 const dbParams = {
-  host: 'localhost',
-  user: 'development',
-  database: 'remotetogether',
-  password: 'development',
-  port: 5432,
-  
+  host: process.env.PG_HOST,
+  port: process.env.PG_PORT,
+  user: process.env.PG_USER,
+  password: process.env.PG_PASSWORD,
+  database: process.env.PG_DATABASE,
 
-  // host: process.env.DB_HOST,
-  // port: process.env.DB_PORT,
-  // user: process.env.DB_USER,
-  // password: process.env.DB_PASS,
-  // database: process.env.DB_NAME
 };
-
+console.log('dbParams', dbParams)
 const db = new Pool(dbParams);
 
 db.connect();

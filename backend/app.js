@@ -31,6 +31,7 @@ App.get('/api/business', (req, res) => {
   db.query(query)
     .then(data => {
       const businessList = data.rows;
+      console.log('test', data.rows)
       res.json({ businessList });
     })
     .catch(err => {
