@@ -1,6 +1,7 @@
 import React from 'react';
 import { GoogleMap, LoadScriptNext, Marker, InfoWindow } from '@react-google-maps/api';
 
+
 const Map = () => {
   // geo encoding to bring to current location
   const initialLocation = { lat: 53.5461, lng: -113.4937 };
@@ -20,13 +21,14 @@ const Map = () => {
       keyword: ['lounge', 'coffee shop'],
     };
 
-    service.nearbySearch(request, (results, status) => {
-      if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-        for (let i = 0; i < results.length; i++) {
-          createMarker(results[i], map);
-        }
-      }
-    });
+    // something wrong with this code. it's making the page crash
+    // service.nearbySearch(request, (results, status) => {
+    //   if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+    //     for (let i = 0; i < results.length; i++) {
+    //       createMarker(results[i], map);
+    //     }
+    //   }
+    // });
   };
 
   const createMarker = (place, map) => {
@@ -42,6 +44,7 @@ const Map = () => {
     });
   };
 
+  
   return (
     <LoadScriptNext googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={['places']}>
       <GoogleMap
