@@ -37,7 +37,7 @@ const fetchDataBusiness = () => {
     Axios.get('/api/business') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
-      console.log(response) // The entire response from the API
+      // console.log(response) // The entire response from the API
 
       // console.log(response.data.message) // Just the message
 
