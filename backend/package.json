@@ -4,10 +4,16 @@
   "description": "Remote Together backend",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "local": "./node_modules/.bin/nodemon -L --ignore public/",
+    "reset": "psql -U development -d remotetogether < ./db/migrations/create.sql && psql -U development -d remotetogether < ./db/seeds/development.sql"
   },
   "dependencies": {
+    "chalk": "^5.2.0",
     "dotenv": "^16.0.3",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
+    "pg": "^8.10.0"
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Map from './components/Map';
 import PlaceList from './components/PlaceList';
 import { Link, Route, Routes, BrowserRouter } from "react-router-dom"
@@ -8,8 +8,15 @@ import { Page } from "./components/Page"
 import { Page2 } from "./components/Page2"
 import { Signup } from "./components/Signup"
 import './App.css';
+import Axios from "axios";
 
 function App() {
+// SET STATES HERE
+  // const [state, useState] = useState('')
+
+// FETCH DATA FROM DB HERE
+
+
   return (
     <BrowserRouter>
         <nav className="navbar" >

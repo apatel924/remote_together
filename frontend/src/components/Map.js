@@ -2,6 +2,7 @@ import React from 'react';
 import { GoogleMap, LoadScriptNext, Marker, InfoWindow } from '@react-google-maps/api';
 
 const Map = () => {
+  // geo encoding to bring to current location
   const initialLocation = { lat: 53.5461, lng: -113.4937 };
   const mapContainerStyle = { width: '100%', height: '400px', marginBottom: '16px' };
 
@@ -14,6 +15,7 @@ const Map = () => {
     const request = {
       location: map.getCenter(),
       radius: '5000',
+      // how to get this working?
       type: ['cafe', 'library'],
       keyword: ['lounge', 'coffee shop'],
     };
