@@ -25,8 +25,9 @@ CREATE TABLE review (
   user_id INTEGER REFERENCES users(id),
   business_id INTEGER REFERENCES business(id),
   review_comment VARCHAR(50) not null,
-  review_rating INT not null,
-  date DATE not null
+  review_rating INT not null
+  -- uncomment date when find out how to input into seeds
+  -- date DATE not null
   -- ask mentor how to save images
   -- image BYTEA not null,
 );
