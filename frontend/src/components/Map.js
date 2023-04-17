@@ -15,20 +15,21 @@ const Map = () => {
   const searchPlaces = (service, map) => {
     const request = {
       location: map.getCenter(),
-      radius: '5000',
+      radius: '1000',
       // how to get this working?
       type: ['cafe', 'library'],
       keyword: ['lounge', 'coffee shop'],
     };
 
     // something wrong with this code. it's making the page crash
-    // service.nearbySearch(request, (results, status) => {
-    //   if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-    //     for (let i = 0; i < results.length; i++) {
-    //       createMarker(results[i], map);
-    //     }
-    //   }
-    // });
+  //   service.nearbySearch(request, (results, status) => {
+  //     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+  //       for (let i = 0; i < results.length; i++) {
+  //         // createMarker(results[i], map);
+  //         console.log('createMarker', results[i])
+  //       }
+  //     }
+  //   });
   };
 
   const createMarker = (place, map) => {
@@ -52,9 +53,15 @@ const Map = () => {
         center={initialLocation}
         zoom={14}
         onLoad={onLoad}
-      ></GoogleMap>
+      >
+        {/* Map through the marker results */}
+        {/* returns the marker */}
+        {/* add onclick event on individual marker to pass on place_id to query further information */}
+        {/* <Marker position={initialLocation}/> */}
+      </GoogleMap>
     </LoadScriptNext>
   );
 };
 
 export default Map;
+// save results from result[i] from api and inside googlemap map the array. for each create a marker. 
