@@ -32,7 +32,7 @@ const fetchData = () => {
   });
 }
 
-// does not work
+
 const fetchDataBusiness = () => {
     Axios.get('/api/business') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
