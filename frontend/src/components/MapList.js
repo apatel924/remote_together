@@ -1,30 +1,53 @@
-import React, {useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import { mapContext } from "../providers/mapProvider";
 
 export function MapList() {
 
   const {markers, selectedMarker, selectedPlaceDetails, mapInstance, showthesewords} = useContext(mapContext)
 
-  // const locations = props.days.map((location) => {
-  //   return (
-  //     <MapListItem
-  //       key={location.id}
-  //       name={location.name}
-  //       address={location.address}
-  //       rating={location.rating}
-  //       // selected={location.name === props.value}
-  //       // setLocation={location.onChange}
-  //     />
-  //   )
-  // });
+  const [places, setPlaces] = useState([]);
+
+
+  useEffect(() => {
+    console.log('useEffect happening within Maplist here')
+    fetchPlaces();
+  }, []);
+
+  // const fetchPlaces = () => {
+  //   const examplePlaces = [
+  //     { name: 'Example Coffee Shop', address: '123 Example St' },
+  //     { name: 'Example Library', address: '456 Example St' },
+  //     { name: 'Example Coworking Space', address: '789 Example St' },
+  //   ];
+
+  //   setPlaces(examplePlaces);
+  // };
+
+  const fetchPlaces = () => {
+
+    setPlaces(markers);
+  };
 
   console.log('why wont you show',showthesewords)
+  console.log('markers',markers)
+  console.log('selectedPlaceDetails',selectedPlaceDetails)
+  console.log('selectedMarker', selectedMarker)
+  console.log('mapInstance', mapInstance)
+
   return (
-    <ul>
-      {showthesewords}
-      {/* {locations} */}
-      map List
-      {selectedMarker}
+    <ul>      
+      {places.map((place, index) => (
+          <li key={index}>
+            <h3>{place.name}</h3>
+            <p>{place.address}</p>
+          </li>
+        ))}
     </ul>
+
+    // <ul>
+    //        {showthesewords}
+    //   {/* {locations} */}
+    //   map List
+    // </ul>
   );
 }

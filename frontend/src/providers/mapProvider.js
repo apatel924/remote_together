@@ -63,6 +63,11 @@ export default function MapProvider(props) {
     fetchPlaceDetails(service, marker.placeId);
   };
 
+  console.log('FROM MAP PROVIDER markers',markers)
+  console.log('FROM MAP PROVIDER selectedPlaceDetails',selectedPlaceDetails)
+  console.log('FROM MAP PROVIDER selectedMarker', selectedMarker)
+  console.log('FROM MAP PROVIDER mapInstance', mapInstance)
+
   const showthesewords = 'hello? anybody home? HELLO OPEN THE DOOR'
   // This list can get long with a lot of functions.  Reducer may be a better choice
   const providerData = {markers, selectedMarker, selectedPlaceDetails, mapInstance, showthesewords};
@@ -70,8 +75,33 @@ export default function MapProvider(props) {
   // We can now use this as a component to wrap anything
   // that needs our state
   return (
+    <>
     <mapContext.Provider value={providerData}>
       {props.children}
     </mapContext.Provider>
+    <LoadScriptNext googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={['places']}>
+    <GoogleMap mapContainerStyle={mapContainerStyle} center={initialLocation} zoom={14} onLoad={onLoad}>
+      {markers.map((marker, index) => (
+        <Marker key={index} position={marker.position} onClick={() => onMarkerClick(marker)} />
+      ))}
+
+      {selectedMarker && selectedPlaceDetails && (
+        <InfoWindow
+          position={selectedMarker.position}
+          onCloseClick={() => {
+            setSelectedMarker(null);
+            setSelectedPlaceDetails(null);
+          }}
+        >
+          <div>
+            <h2>{selectedPlaceDetails.name}</h2>
+            <p>Address: {selectedPlaceDetails.formatted_address}</p>
+          </div>
+        </InfoWindow>
+      )}
+    </GoogleMap>
+
+  </LoadScriptNext>
+  </>
   );
 };
