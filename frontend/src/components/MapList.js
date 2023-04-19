@@ -1,9 +1,9 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { mapContext } from "../providers/mapProvider";
 
 export function MapList() {
 
-  const {markers, selectedMarker, selectedPlaceDetails, mapInstance, showthesewords} = useContext(mapContext)
+  const { markers, selectedMarker, selectedPlaceDetails, mapInstance} = useContext(mapContext)
 
   const [places, setPlaces] = useState([]);
 
@@ -28,26 +28,23 @@ export function MapList() {
     setPlaces(markers);
   };
 
-  console.log('why wont you show',showthesewords)
-  console.log('markers',markers)
-  console.log('selectedPlaceDetails',selectedPlaceDetails)
+  
+  console.log('markers', markers)
+  console.log('selectedPlaceDetails', selectedPlaceDetails)
   console.log('selectedMarker', selectedMarker)
   console.log('mapInstance', mapInstance)
 
+  const locations = places.map((place, index) => (
+    <li key={index}>
+      <h3>{place.name}</h3>
+      <p>{place.address}</p>
+    </li>
+  ))
+
   return (
-    <ul>      
-      {places.map((place, index) => (
-          <li key={index}>
-            <h3>{place.name}</h3>
-            <p>{place.address}</p>
-          </li>
-        ))}
+    <ul>
+      {locations}
     </ul>
 
-    // <ul>
-    //        {showthesewords}
-    //   {/* {locations} */}
-    //   map List
-    // </ul>
   );
 }

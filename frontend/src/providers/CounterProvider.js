@@ -1,4 +1,4 @@
-import {createContext, useState} from 'react';
+import { createContext, useState } from 'react';
 
 // Create a Context
 export const counterContext = createContext();
@@ -10,18 +10,18 @@ export default function CounterProvider(props) {
   const [counter, setCounter] = useState(0);
 
   // Functions to change  the counter state item
-  const increment = function() {
+  const increment = function () {
     setCounter(counter + 1);
   };
-  const decrement = function() {
+  const decrement = function () {
     setCounter(counter - 1);
   };
-  const clear = function() {
+  const clear = function () {
     setCounter(0);
   };
 
   // This list can get long with a lot of functions.  Reducer may be a better choice
-  const providerData = {counter, increment, decrement, clear};
+  const providerData = { counter, increment, decrement, clear };
 
   // We can now use this as a component to wrap anything
   // that needs our state
