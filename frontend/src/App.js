@@ -10,6 +10,8 @@ import { Signup } from "./components/Signup"
 import { MapList } from "./components/MapList"
 import MapProvider from './providers/mapProvider';
 import CounterProvider from './providers/CounterProvider';
+//import { Page } from "./components/Page"
+import Search from "./components/Search"
 import './App.css';
 import Axios from "axios";
 // import { LocationDetails } from "./components/LocationDetails"
@@ -112,7 +114,7 @@ function App() {
               </div>
               {/*  DYNAMIC CONTENT HERE.  */}
               <div>
-                main area 
+                main area
                 <h1>{state.message}</h1>
                 <button onClick={fetchData} >
                   Fetch Data
@@ -136,6 +138,29 @@ function App() {
                 <Route path="/path5" element={<Signup />} />
 
 
+              </Routes>
+            </div>
+          </div>
+          {/* main section under nav */}
+          <div className="div_main">
+            {/* left side */}
+            <div className="div_main_left">
+              main area
+              <h1>{state.message}</h1>
+              <button onClick={fetchData} >
+                Fetch Data
+              </button>
+              <h1>{business.address}</h1>
+              <button onClick={fetchDataBusiness} >
+                business address
+              </button>
+              <Routes>
+                <Route path="/path" element={<PlaceList />} />
+                <Route path="/path1" element={<Main />} />
+                <Route path="/path2" element={<Search />} />
+                <Route path="/path3" element={<Page2 />} />
+                <Route path="/path4" element={<Login />} />
+                <Route path="/path5" element={<Signup />} />
               </Routes>
             </div>
 

@@ -1,4 +1,4 @@
-.navbar_container-ul {
+/*.navbar_container-ul {
   list-style-type: none;
   display: flex;
 }
@@ -30,9 +30,8 @@
 }
 
 .div_main_right {
-  width:50%;
-  border: 1px solid red;
-}
+  width:50%
+} */
 
 /* @keyframes App-logo-spin {
   from {
@@ -42,3 +41,32 @@
     transform: rotate(360deg);
   }
 } */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-roboto: Roboto;
+  --font-inter: Inter;
+
+  /* font sizes */
+  --font-size-base: 16px;
+  --font-size-5xl: 24px;
+  --font-size-sm: 14px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dimgray: #70757a;
+  --color-gainsboro-100: #e1e4ea;
+
+  /* border radiuses */
+  --br-9xs: 4px;
+}
+

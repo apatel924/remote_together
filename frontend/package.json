@@ -4,6 +4,9 @@
   "description": "Remote Together frontend",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.12.1",
     "@react-google-maps/api": "^2.18.1",
     "axios": "^0.18.1",
     "react": "^17.0.2",

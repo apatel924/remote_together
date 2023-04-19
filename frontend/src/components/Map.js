@@ -2,7 +2,6 @@ import React, { useState,useContext } from 'react';
 import { mapContext } from "../providers/mapProvider";
 import { GoogleMap, LoadScriptNext, Marker, InfoWindow, MapContext } from '@react-google-maps/api';
 
-
 const Map = () => {
   
   // const initialLocation = { lat: 53.5461, lng: -113.4937 };
@@ -77,7 +76,25 @@ const Map = () => {
 //     fetchPlaceDetails(service, marker.placeId);
 //   };
 
-  
+  /*const fetchPlaceDetails = (service, placeId) => {
+    const request = {
+      placeId: placeId,
+      fields: ['name', 'formatted_address'],
+    };
+
+    service.getDetails(request, (place, status) => {
+      if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+        setSelectedPlaceDetails(place);
+      }
+    });
+  };
+
+  const onMarkerClick = (marker) => {
+    setSelectedMarker(marker);
+    const service = new window.google.maps.places.PlacesService(mapInstance);
+    fetchPlaceDetails(service, marker.placeId);
+  };
+*/
   return (
 
     <LoadScriptNext googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={['places']}>
@@ -107,4 +124,3 @@ const Map = () => {
 };
 
 export default Map;
-// save results from result[i] from api and inside googlemap map the array. for each create a marker. 
