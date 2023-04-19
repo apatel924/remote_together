@@ -1,9 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Link, Route, Routes } from "react-router-dom"
 import { mapContext } from "../providers/mapProvider";
+import { LocationDetails } from "./LocationDetails";
 
 export function MapList() {
 
-  const { markers, selectedMarker, selectedPlaceDetails, mapInstance} = useContext(mapContext)
+  const { markers, selectedMarker, selectedPlaceDetails, mapInstance } = useContext(mapContext)
 
   const [places, setPlaces] = useState([]);
 
@@ -13,38 +15,34 @@ export function MapList() {
     fetchPlaces();
   }, []);
 
-  // const fetchPlaces = () => {
-  //   const examplePlaces = [
-  //     { name: 'Example Coffee Shop', address: '123 Example St' },
-  //     { name: 'Example Library', address: '456 Example St' },
-  //     { name: 'Example Coworking Space', address: '789 Example St' },
-  //   ];
-
-  //   setPlaces(examplePlaces);
-  // };
-
   const fetchPlaces = () => {
 
     setPlaces(markers);
   };
 
-  
-  console.log('markers', markers)
-  console.log('selectedPlaceDetails', selectedPlaceDetails)
-  console.log('selectedMarker', selectedMarker)
-  console.log('mapInstance', mapInstance)
-
-  const locations = places.map((place, index) => (
-    <li key={index}>
-      <h3>{place.name}</h3>
-      <p>{place.address}</p>
-    </li>
-  ))
-
+  const locations = places.map((place, index) => {
+    return (
+      <div>
+        <li key={index}>
+          <Link to={place.name}>
+            <h3>{place.name}</h3>
+            <p>{place.address}</p>
+          </Link>
+        </li>
+      </div>
+    )
+  })
   return (
-    <ul>
-      {locations}
-    </ul>
+    <div>
+      <ul>
+        {locations}
+      </ul>
+
+      <Routes>
+        <Route path=":id" element={<LocationDetails />} />
+      </Routes>
+    </div>
+
 
   );
 }

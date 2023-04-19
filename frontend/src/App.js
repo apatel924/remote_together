@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import Map from './components/Map';
 import PlaceList from './components/PlaceList';
 import { Link, Route, Routes, BrowserRouter } from "react-router-dom"
@@ -12,52 +12,52 @@ import MapProvider from './providers/mapProvider';
 import CounterProvider from './providers/CounterProvider';
 import './App.css';
 import Axios from "axios";
+// import { LocationDetails } from "./components/LocationDetails"
 
 function App() {
 
 
-// SET STATES HERE
-  const [state, setState] = useState({message: 'Click the button to load data!'})
-  const [business, setBusiness] = useState({address: 'no address here click the button'})
+  // SET STATES HERE
+  const [state, setState] = useState({ message: 'Click the button to load data!' })
+  const [business, setBusiness] = useState({ address: 'no address here click the button' })
 
-// FETCH DATA FROM DB HERE
-const fetchData = () => {
-  Axios.get('/api') // You can simply make your requests to "/api/whatever you want"
-  .then((response) => {
-    // handle success
-    console.log(response.data) // The entire response from the Rails API
+  // FETCH DATA FROM DB HERE
+  const fetchData = () => {
+    Axios.get('/api') // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        console.log(response.data) // The entire response from the Rails API
 
-    console.log(response.data.message) // Just the message
-    setState({
-      message: response.data.message
-    });
-  }) 
-  .catch (err => {
-      console.log({ error: err.message });
-  });
-}
+        console.log(response.data.message) // Just the message
+        setState({
+          message: response.data.message
+        });
+      })
+      .catch(err => {
+        console.log({ error: err.message });
+      });
+  }
 
 
-const fetchDataBusiness = () => {
+  const fetchDataBusiness = () => {
     Axios.get('/api/business') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      // console.log(response) // The entire response from the API
+      .then((response) => {
+        // handle success
+        // console.log(response) // The entire response from the API
 
-      // console.log(response.data.message) // Just the message
+        // console.log(response.data.message) // Just the message
 
-      //set state
-      setBusiness({address: response.data.businessList[0].address})
-    }) 
+        //set state
+        setBusiness({ address: response.data.businessList[0].address })
+      })
   }
 
   return (
     <BrowserRouter>
       <MapProvider>
         <CounterProvider>
-
           <nav className="navbar" >
-              {/* links to inject other pages */}
+            {/* links to inject other pages */}
             <div className="navbar_container">
               <div>
                 <ul className="navbar_container-ul">
@@ -85,10 +85,10 @@ const fetchDataBusiness = () => {
               <div>
                 <ul className="navbar_container-ul">
                   <li className="navbar_container-il">
-                  <Link to="/path4">Login</Link>
+                    <Link to="/path4">Login</Link>
                   </li>
                   <li className="navbar_container-il" >
-                  <Link to="/path5">registration</Link>
+                    <Link to="/path5">registration</Link>
                   </li>
                 </ul>
               </div>
@@ -98,23 +98,41 @@ const fetchDataBusiness = () => {
           <div className="div_main">
             {/* left side */}
             <div className="div_main_left">
-              main area
-              <h1>{ state.message }</h1>
+              {/* STATIC FUNCTIONS HERE ABOVE THE RESULTS */}
+              <div>
+                <div>
+                  PUT A SEARCH BAR HERE
+                </div>
+                <div>
+                  PUT ANY OTHER FUNCTIONS HERE
+                </div>
+              </div>
+              {/*  DYNAMIC CONTENT HERE.  */}
+              <div>
+                main area 
+                <h1>{state.message}</h1>
                 <button onClick={fetchData} >
                   Fetch Data
-                </button>     
-                <h1>{ business.address }</h1>
+                </button>
+                <h1>{business.address}</h1>
                 <button onClick={fetchDataBusiness} >
                   business address
-                </button>  
+                </button>
+              </div>
+
+              {/* ROUTES */}
               <Routes>
                 <Route path="/path" element={<PlaceList />} />
                 <Route path="/path1" element={<Main />} />
                 <Route path="/path2" element={<Counter />} />
                 <Route path="/path3" element={<Page2 />} />
-                <Route path="/MapList" element={<MapList />} />
+                <Route path="/MapList/*" element={<MapList />}>
+                  {/* <Route path=":id" element={<LocationDetails />} />    */}
+                </Route>
                 <Route path="/path4" element={<Login />} />
                 <Route path="/path5" element={<Signup />} />
+
+
               </Routes>
             </div>
 
@@ -126,13 +144,8 @@ const fetchDataBusiness = () => {
 
           </div>
         </CounterProvider>
-
-        </MapProvider>
-      </BrowserRouter>
-    // <div className="App">
-    //   <h1>Remote Together</h1>
-    //   <PlaceList />
-    // </div>
-   );
+      </MapProvider>
+    </BrowserRouter>
+  );
 }
 export default App;
