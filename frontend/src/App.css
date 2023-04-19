@@ -16,6 +16,7 @@
   flex-direction: row;
   align-items: center;
   justify-content:space-between;
+  border: 1px solid indigo
 }
 
 .div_main {
@@ -24,11 +25,13 @@
 }
 
 .div_main_left {
-  width:50%
+  width:50%;
+  border: 1px solid blue;
 }
 
 .div_main_right {
-  width:50%
+  width:50%;
+  border: 1px solid red;
 }
 
 /* @keyframes App-logo-spin {

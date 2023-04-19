@@ -101,6 +101,9 @@ function App() {
               {/* STATIC FUNCTIONS HERE ABOVE THE RESULTS */}
               <div>
                 <div>
+                  ADD A BACK BUTTON HERE
+                </div>
+                <div>
                   PUT A SEARCH BAR HERE
                 </div>
                 <div>

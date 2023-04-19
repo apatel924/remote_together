@@ -90,6 +90,8 @@ export default function MapProvider(props) {
     initialLocation,
     mapContainerStyle
    };
+
+
   return (
     <>
       <mapContext.Provider value={providerData}>
