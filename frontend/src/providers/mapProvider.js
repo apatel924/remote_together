@@ -31,13 +31,16 @@ export default function MapProvider(props) {
       keyword: ['lounge', 'coffee shop'],
     };
 
+    
     service.nearbySearch(request, (results, status) => {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
         const newMarkers = results.map((result) => {
+          // console.log('results',results)
           return {
             position: result.geometry.location,
             name: result.name,
             placeId: result.place_id,
+            results,
           };
         });
         setMarkers(newMarkers);

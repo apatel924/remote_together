@@ -110,12 +110,12 @@ const Search = () => {
                     <Routes>
                       <Route path="/path" element={<PlaceList />} />
                       <Route path="/favourites" element={<Favourites />} />
-                      <Route path="/findalocation" element={<FindALocation />} />
+                      <Route path="/findalocation/*" element={<MapList />} />
                       <Route path="/path2" element={<Search />} />
                       <Route path="/addreview" element={<Review />} />
                       <Route path="/login" element={<Login />} />
                       <Route path="/path5" element={<Signup />} />
-                      <Route path="/MapList/*" element={<MapList />} />
+                      {/* <Route path="/MapList/*" element={<MapList />} /> */}
                     </Routes>
                   </div>
 

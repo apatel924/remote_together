@@ -1,6 +1,15 @@
 .MapList_div-styling {
   list-style-type: none;
+  margin: 1rem
+}
+
+.div_mapList-locations{
+  display:flex;
+  flex-direction: row;
   border: 1px solid black;
   margin: 1rem
 }
 
+.div_mapList-location-image {
+  margin: 1rem
+}
