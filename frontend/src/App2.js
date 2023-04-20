@@ -23,28 +23,28 @@ const Search = () => {
   const location = useLocation();
 
   return (
-      <MapProvider>
-        <CounterProvider>
-          <div className="desktop-2">
-            <img className="desktop-2-child" alt="" src="/line-1.svg" />
-            <h1 className="remotetogether" id="logo">
-              RemoteTogether
-            </h1>
-            <nav className="divinner" id="nav-bar">
-              <div className="ulmenu">
-                <h3 className="find-a-location"><Link to="/findalocation">Find a Location</Link></h3>
-                <h3 className="add-review"><Link to="/addreview">Add Review</Link></h3>
-                <h3 className="favourites"><Link to="/favourites">Favourites</Link></h3>
-                <h3 className="placeholderlink">PlaceholderLink</h3>
-              </div>
-              <div className="divmenu-wrapper-secondary" id="chat-login">
-                <Button className="contact-us" variant="outlined" color="primary">
-                  Start Chat
-                </Button>
-                <h3 className="member-log-in"><Link to="/login">Member Log In</Link></h3>
-              </div>
-            </nav>
-            <div>
+    <MapProvider>
+      <CounterProvider>
+        <div className="desktop-2">
+          <img className="desktop-2-child" alt="" src="/line-1.svg" />
+          <h1 className="remotetogether" id="logo">
+            RemoteTogether
+          </h1>
+          <nav className="divinner" id="nav-bar">
+            <div className="ulmenu">
+              <h3 className="find-a-location"><Link to="/findalocation">Find a Location</Link></h3>
+              <h3 className="add-review"><Link to="/addreview">Add Review</Link></h3>
+              <h3 className="favourites"><Link to="/favourites">Favourites</Link></h3>
+              <h3 className="placeholderlink">PlaceholderLink</h3>
+            </div>
+            <div className="divmenu-wrapper-secondary" id="chat-login">
+              <Button className="contact-us" variant="outlined" color="primary">
+                Start Chat
+              </Button>
+              <h3 className="member-log-in"><Link to="/login">Member Log In</Link></h3>
+            </div>
+          </nav>
+          <div>
             {location.pathname === '/' ?
 
               <div className="sectionhome-hero-section">
@@ -102,23 +102,37 @@ const Search = () => {
 
                 </div>
               </div>
-              :          null
-                }
+              :
+              <div>
+
+                <div className="div_main">
+                  <div className="div_main_left">
+                    <Routes>
+                      <Route path="/path" element={<PlaceList />} />
+                      <Route path="/favourites" element={<Favourites />} />
+                      <Route path="/findalocation/*" element={<MapList />} />
+                      <Route path="/path2" element={<Search />} />
+                      <Route path="/addreview" element={<Review />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/path5" element={<Signup />} />
+                      {/* <Route path="/MapList/*" element={<MapList />} /> */}
+                    </Routes>
+                  </div>
+
+
+                  <div className="div_main_right">
+                    <Map />
+                  </div>
+
+
+                </div>
               </div>
-            <Routes>
-              <Route path="/path" element={<PlaceList />} />
-              <Route path="/favourites" element={<Favourites />} />
-              <Route path="/findalocation" element={<FindALocation />} />
-              <Route path="/path2" element={<Search />} />
-              <Route path="/addreview" element={<Review />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/path5" element={<Signup />} />
-              <Route path="/MapList/*" element={<MapList />} />
-            </Routes>
+            }
           </div>
-        </CounterProvider>
-      </MapProvider>
- 
+        </div>
+      </CounterProvider>
+    </MapProvider>
+
   );
 };
 

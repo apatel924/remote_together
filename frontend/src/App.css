@@ -1,4 +1,4 @@
-/*.navbar_container-ul {
+/* .navbar_container-ul {
   list-style-type: none;
   display: flex;
 }
@@ -17,21 +17,24 @@
   align-items: center;
   justify-content:space-between;
   border: 1px solid indigo
-}
+} */
 
-.div_main {
+/* .div_main {
   display: flex;
   flex-direction: row;
+  padding-top: 100px;
+  margin: 50px
 }
 
 .div_main_left {
   width:50%;
-  border: 1px solid blue;
+  border: 1px solid black;
 }
 
 .div_main_right {
   width:50%
-} */
+}  */
+
 
 /* @keyframes App-logo-spin {
   from {

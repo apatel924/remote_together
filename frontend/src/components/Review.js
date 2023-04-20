@@ -1,58 +1,29 @@
 import React from 'react';
 import { Button, Icon } from "@mui/material";
 import "../styles/Review.css";
+import Map from './Map';
 
 const Review = () => {
   return (
-    
-    <div className="reviews">
-      <nav className="divinner" id="nav-bar">
-        <div className="ulmenu">
-          <h3 className="find-a-location">Find a Location</h3>
-          <h3 className="add-review">Add Review</h3>
-          <h3 className="favourites">Favourites</h3>
-          <h3 className="placeholderlink">PlaceholderLink</h3>
-        </div>
-        <div className="divmenu-wrapper-secondary" id="chat-login">
-          <Button className="contact-us" variant="outlined" color="primary">
-            Start Chat
-          </Button>
-          <h3 className="member-log-in">Member Log In</h3>
-        </div>
-      </nav>
-      <div className="divside-panel-container">
-        <div className="navside-panel-navigation">
-          <div className="aside-panel-navigation-item">
-            <img className="svgicon" alt="" src="/svgicon.svg" />
-            <Button
-              className="back-to-search"
-              variant="outlined"
-              color="primary"
-            >
-              Back to Search Results
-            </Button>
-          </div>
-          <img className="pseudo-icon" alt="" src="/pseudo.svg" />
-        </div>
-      </div>
+
+    <div >
+      <Button
+        className="back-to-search"
+        variant="outlined"
+        color="primary"
+      >
+        Back to Search Results
+      </Button>
+
+      <Button className="view-all" variant="outlined" color="primary">
+        View all
+      </Button>
       <div className="divside-panel-building-view-">
         <div className="divbuilding-info">
           <b className="nemesis-coffee">Nemesis Coffee</b>
           <div className="vancouver">Vancouver</div>
         </div>
-        <div className="divbuilding-info-amenities-w">
-          <Button className="view-all" variant="outlined" color="primary">
-            View all
-          </Button>
-          <div className="divw4efsd">
-            <div className="div">4.4</div>
-            <img className="divqbul8c-icon" alt="" src="/divqbul8c@2x.png" />
-            <img className="divqbul8c-icon1" alt="" src="/divqbul8c@2x.png" />
-            <img className="divqbul8c-icon2" alt="" src="/divqbul8c@2x.png" />
-            <img className="divqbul8c-icon3" alt="" src="/divqbul8c@2x.png" />
-            <img className="divqbul8c-icon4" alt="" src="/divqbul8c1@2x.png" />
-          </div>
-        </div>
+
         <b className="user-reviews">User REviews</b>
         <img
           className="sectionbuilding-carousel-con-icon"
@@ -93,6 +64,14 @@ const Review = () => {
       </div>
       <div className="divside-panel-building-view-">
         <div className="divbuilding-info">
+
+          <Button
+            className="back-to-search"
+            variant="outlined"
+            color="primary"
+          >
+            Back to Search Results
+          </Button>
           <h1 className="nemesis-coffee1">Nemesis Coffee</h1>
           <h2 className="vancouver1">Vancouver</h2>
         </div>
@@ -148,6 +127,7 @@ const Review = () => {
         </p>
       </div>
     </div>
+
   );
 };
 
