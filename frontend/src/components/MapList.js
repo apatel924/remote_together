@@ -3,7 +3,6 @@ import { Link, Route, Routes, useLocation } from "react-router-dom"
 import { mapContext } from "../providers/mapProvider";
 import { LocationDetails } from "./LocationDetails";
 import './MapList.css'
-// import { LocationDetails_Reviews } from "./LocationDetails_Reviews";
 
 export function MapList() {
 
@@ -13,16 +12,17 @@ export function MapList() {
   const location = useLocation();
 
   // does not load if you click directly on find a location after root
-  useEffect(() => {
-    console.log('useEffect happening within Maplist here')
-    fetchPlaces();
-  }, []);
+  // useEffect(() => {
+  //   console.log('useEffect happening within Maplist here')
+  //   console.log(markers)
+  //   fetchPlaces();
+  // }, []);
 
-  const fetchPlaces = () => {
-    setPlaces(markers);
-  };
+  // const fetchPlaces = () => {
+  //   setPlaces(markers);
+  // };
 
-  const locations = places.map((place, index) => {
+  const locations = markers.map((place, index) => {
     // console.log('place',place)
     // console.log('places',places)
     // console.log('results', place.results)
