@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Icon } from "@mui/material";
 import "../styles/Review.css";
+import Map from './Map';
 
 const Review = () => {
   return (
@@ -147,7 +148,12 @@ const Review = () => {
           </span>
         </p>
       </div>
+      <div className="divside-panel-container" style={{float: 'right'}}> 
+        {/* Content of the right side div */}
+        <Map />
+      </div>
     </div>
+    
   );
 };
 

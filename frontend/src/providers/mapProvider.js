@@ -64,10 +64,10 @@ export default function MapProvider(props) {
     fetchPlaceDetails(service, marker.placeId);
   };
 
-  console.log('FROM MAP PROVIDER markers', markers)
-  console.log('FROM MAP PROVIDER selectedPlaceDetails', selectedPlaceDetails)
-  console.log('FROM MAP PROVIDER selectedMarker', selectedMarker)
-  console.log('FROM MAP PROVIDER mapInstance', mapInstance)
+  // console.log('FROM MAP PROVIDER markers', markers)
+  // console.log('FROM MAP PROVIDER selectedPlaceDetails', selectedPlaceDetails)
+  // console.log('FROM MAP PROVIDER selectedMarker', selectedMarker)
+  // console.log('FROM MAP PROVIDER mapInstance', mapInstance)
 
 
   // This list can get long with a lot of functions.  Reducer may be a better choice

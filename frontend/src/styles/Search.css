@@ -219,3 +219,19 @@
   color: var(--color-black);
   font-family: var(--font-inter);
 }
+
+.div_main {
+  display: flex;
+  flex-direction: row;
+  padding-top: 100px;
+  margin: 50px
+}
+
+.div_main_left {
+  width:50%;
+  border: 1px solid black;
+}
+
+.div_main_right {
+  width:50%
+} 
