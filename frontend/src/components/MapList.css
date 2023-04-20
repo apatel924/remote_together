@@ -1,6 +1,6 @@
 .MapList_div-styling {
   list-style-type: none;
-  margin: 1rem
+  /* margin: 1rem */
 }
 
 .div_mapList-locations{
@@ -25,4 +25,16 @@
   padding: 0px;
   border: 0px;
   
+}
+
+.div_mapList-location-description-splitdiv{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem;
+  /* width: 100% */
+}
+
+.div_mapList-location-description {
+  width: 90%
 }

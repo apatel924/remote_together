@@ -240,3 +240,8 @@
   border: 1px solid black;
   height: 100vh
 } 
+
+/* do we want rounded corners */
+div {
+  border-radius: 15px;
+}

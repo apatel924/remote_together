@@ -4,11 +4,44 @@ import { useParams } from "react-router-dom"
 import './LocationDetails.css'
 import { mapContext } from "../providers/mapProvider";
 
+
 export function LocationDetails() {
   const params = useParams()
 
+
+  const fromDB = [
+    {
+      user_id: "Bob",
+      review_comment: 'this the best',
+      review_rating: 4
+    },
+    {
+      user_id: "Oliver",
+      review_comment: 'no sitting area',
+      review_rating: 2
+    },
+    {
+      user_id: "Monica",
+      review_comment: 'quiet area with many outlets',
+      review_rating: 5
+    }
+  ]
+
+  const newReviews = fromDB.map((review) => {
+    return (
+      <div>
+        <li>
+          <p>{review.user_id}</p>
+          <p>{review.review_comment}</p>
+          <p>{review.review_rating}</p>
+        </li>
+      </div>
+    )
+  })
+
   return (
     <div>
+
       <div>
         <Link to="/findalocation">go back</Link>
       </div>
@@ -25,6 +58,7 @@ export function LocationDetails() {
           <h3>{params.id}</h3>
           <p>address</p>
           <p>rating</p>
+          {/* need to import mapProvider for the below  */}
           {/* <h3>{place.name}</h3>
             <p>{place.results[index].vicinity}</p>
             <p>{place.results[index].rating} stars</p> */}
@@ -39,6 +73,7 @@ export function LocationDetails() {
           </span>
 
 
+            {newReviews}
         </div>
       </div>
 
