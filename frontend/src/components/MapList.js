@@ -22,13 +22,10 @@ export function MapList() {
     setPlaces(markers);
   };
 
-
-
-
   const locations = places.map((place, index) => {
     // console.log('place',place)
     // console.log('places',places)
-    console.log('results',place.results)
+    // console.log('results', place.results)
     return (
       <Link to={place.name}>
         <div className='div_mapList-locations' >
@@ -41,14 +38,14 @@ export function MapList() {
           </div>
           <div className='div_mapList-location-description'>
             <div className='div_mapList-location-description-splitdiv'>
-            <li key={index} className="MapList_div-styling">
-              <h3>{place.name}</h3>
-              <p>{place.results[index].vicinity}</p>
-              <p>{place.results[index].rating} stars</p>
-            </li>
-            <div>
-              distance 
-            </div>
+              <li key={index} className="MapList_div-styling">
+                <h3>{place.name}</h3>
+                <p>{place.results[index].vicinity}</p>
+                <p>{place.results[index].rating} stars</p>
+              </li>
+              <div>
+                distance
+              </div>
             </div>
           </div>
         </div>

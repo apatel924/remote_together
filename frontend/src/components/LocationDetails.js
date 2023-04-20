@@ -5,8 +5,8 @@ import './LocationDetails.css'
 import { mapContext } from "../providers/mapProvider";
 import { LocationDetails_Reviews } from "./LocationDetails_Reviews";
 import { LocationDetails_Overview } from "./LocationDetails_Overiew"
-import { ClickAwayListener } from "@mui/material";
-import { selectUnstyledClasses } from "@mui/base";
+import { LocationDetails_About } from "./LocationDetails_About";
+
 
 
 
@@ -44,12 +44,26 @@ export function LocationDetails() {
           {/* </li> */}
         </div>
         <div className="div_locationDetails-Nav">
-          <div className="div_locationDetails-Nav-item">Overview</div>
+          <div className="div_locationDetails-Nav-item">
+
+            <button type="button" onClick={() => { setSelect('Overview') }}>Overview</button>
+          </div>
+          <div className="div_locationDetails-Nav-item">
+            <button type="button" onClick={() => { setSelect('Reviews') }}>Review</button>
+
+          </div>
+          <div className="div_locationDetails-Nav-item">
+            <button type="button" onClick={() => { setSelect('About') }}>About</button>
+
+          </div>
+
+
+          {/* <div className="div_locationDetails-Nav-item">Overview</div>
           <div className="div_locationDetails-Nav-item">
             <Link to="reviews">Reviews</Link>
           </div>
 
-          <div className="div_locationDetails-Nav-item">About</div>
+          <div className="div_locationDetails-Nav-item">About</div> */}
         </div>
         <div className='div_locationDetails-reviews'>
 
@@ -60,10 +74,10 @@ export function LocationDetails() {
             They had lots of comfortable seating and the wifi was fast!
           </span>
 
-            {/* using setState to conditionally render */}
+          {/* using setState to conditionally render */}
           {select === 'Overview' && <LocationDetails_Overview />}
-          {select === 'Overview' && <LocationDetails_Reviews />}
-          {select === 'Overview' && <LocationDetails_About />}
+          {select === 'Reviews' && <LocationDetails_Reviews />}
+          {select === 'About' && <LocationDetails_About />}
 
           {/* {newReviews} */}
           {/* {location.pathname === `/findalocation/${params.id}/reviews` ?

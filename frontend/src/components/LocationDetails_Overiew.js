@@ -1,5 +1,10 @@
 import React from 'react';
+import overview from "../docs/overview.png";
 
 export function LocationDetails_Overview() {
-  return <h1>rlocation kasljdfklasd</h1>
+  return (
+    <div>
+      <img src={overview}></img>
+    </div>
+  )
 }

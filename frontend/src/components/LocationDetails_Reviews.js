@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+
 export function LocationDetails_Reviews() {
   const fromDB = [
     {
@@ -19,23 +20,22 @@ export function LocationDetails_Reviews() {
       review_rating: 5
     }
   ]
-  
+
   const newReviews = fromDB.map((review) => {
     return (
-      <div>
-        <li>
+      <div className="div_mapList-locations">
+        <li className="MapList_div-styling">
           <p>{review.user_id}</p>
           <p>{review.review_comment}</p>
-          <p>{review.review_rating}</p>
+          <p>{review.review_rating} stars</p>
+          <p>posted 1 week ago</p>
         </li>
       </div>
     )
   })
   return (
-  <div>
-    {newReviews}
-    'asdfjkhasdkfjs'
-    WHERE ARE YOU??? 
-  </div>
+    <div>
+      {newReviews}
+    </div>
   )
 }
