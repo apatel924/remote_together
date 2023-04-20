@@ -21,10 +21,10 @@ export function LocationDetails_Reviews() {
     }
   ]
 
-  const newReviews = fromDB.map((review) => {
+  const newReviews = fromDB.map((review,index) => {
     return (
       <div className="div_mapList-locations">
-        <li className="MapList_div-styling">
+        <li className="MapList_div-styling" key={index}>
           <p>{review.user_id}</p>
           <p>{review.review_comment}</p>
           <p>{review.review_rating} stars</p>

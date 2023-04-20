@@ -6,6 +6,8 @@ import { mapContext } from "../providers/mapProvider";
 import { LocationDetails_Reviews } from "./LocationDetails_Reviews";
 import { LocationDetails_Overview } from "./LocationDetails_Overiew"
 import { LocationDetails_About } from "./LocationDetails_About";
+import office from "../docs/office.jpeg";
+import starbucks from "../docs/starbucks.png";
 
 
 
@@ -26,7 +28,7 @@ export function LocationDetails() {
       <div className='div_locationDetails-container' >
         <div className='locationDetails-image'>
           <img
-            src={'https://cdn.wework.com/locations/image/ac403e3a-1ab7-11ea-b9c4-0a5bc5747799/Web_72DPI-20191125_WeWork_Station_Square_Vancouver_010.jpg?auto=format+compress&fit=crop&q=50&w=3000&h=1250'}
+            src={starbucks}
             width='100%'
             height="200"
           />
@@ -67,7 +69,6 @@ export function LocationDetails() {
         </div>
         <div className='div_locationDetails-reviews'>
 
-          <i>1 week ago</i>
           <p>'{params.id}' is {params.id}</p>
 
           <span>
