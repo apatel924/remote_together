@@ -231,7 +231,8 @@
 .div_main_left {
   width:50%;
   border: 1px solid black;
-  height: 100vh
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .div_main_right {

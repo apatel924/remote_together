@@ -8,7 +8,7 @@ export const mapContext = createContext();
 export default function MapProvider(props) {
   
   const initialLocation = { lat: 53.5461, lng: -113.4937 };
-  const mapContainerStyle = { width: '100%', height: '400px', marginBottom: '16px' };
+  const mapContainerStyle = { width: '100%', height: '100%', marginBottom: '16px' };
   
   const [markers, setMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
