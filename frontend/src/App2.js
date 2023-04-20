@@ -17,6 +17,7 @@ import CounterProvider from './providers/CounterProvider';
 import './App.css';
 import Axios from "axios";
 import { Favourites } from "./components/Favourites";
+import LHL from "./docs/LHL.jpeg"
 
 
 const Search = () => {
@@ -26,9 +27,9 @@ const Search = () => {
     <MapProvider>
       <CounterProvider>
         <div className="desktop-2">
-          <img className="desktop-2-child" alt="" src="/line-1.svg" />
+          <img className="desktop-2-child" alt="" src="{/line-1.svg}" />
           <h1 className="remotetogether" id="logo">
-            RemoteTogether
+            <Link to="/home">RemoteTogether</Link>
           </h1>
           <nav className="divinner" id="nav-bar">
             <div className="ulmenu">
@@ -51,7 +52,7 @@ const Search = () => {
                 <img
                   className="divglide-container-icon"
                   alt=""
-                  src="/divglidecontainer.svg"
+                  src={LHL}
                 />
                 <div className="divhome-hero-left-container" id="searchandtext">
                   <div className="divray-show-tablet">
@@ -108,17 +109,17 @@ const Search = () => {
                 <div className="div_main">
                   <div className="div_main_left">
                     <Routes>
+                      <Route path="/" />
                       <Route path="/path" element={<PlaceList />} />
                       <Route path="/favourites" element={<Favourites />} />
                       <Route path="/findalocation/*" element={<MapList />} />
+                      <Route path="/findalocation" element={<MapList />} />
                       <Route path="/path2" element={<Search />} />
                       <Route path="/addreview" element={<Review />} />
                       <Route path="/login" element={<Login />} />
                       <Route path="/path5" element={<Signup />} />
-                      {/* <Route path="/MapList/*" element={<MapList />} /> */}
                     </Routes>
                   </div>
-
 
                   <div className="div_main_right">
                     <Map />

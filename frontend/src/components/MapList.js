@@ -12,22 +12,20 @@ export function MapList() {
   const location = useLocation();
 
   // does not load if you click directly on find a location after root
-  useEffect(() => {
-    console.log('useEffect happening within Maplist here')
-    fetchPlaces();
-  }, []);
+  // useEffect(() => {
+  //   console.log('useEffect happening within Maplist here')
+  //   console.log(markers)
+  //   fetchPlaces();
+  // }, []);
 
-  const fetchPlaces = () => {
-    setPlaces(markers);
-  };
+  // const fetchPlaces = () => {
+  //   setPlaces(markers);
+  // };
 
-
-
-
-  const locations = places.map((place, index) => {
+  const locations = markers.map((place, index) => {
     // console.log('place',place)
     // console.log('places',places)
-    console.log('results',place.results)
+    // console.log('results', place.results)
     return (
       <Link to={place.name}>
         <div className='div_mapList-locations' >
@@ -40,14 +38,14 @@ export function MapList() {
           </div>
           <div className='div_mapList-location-description'>
             <div className='div_mapList-location-description-splitdiv'>
-            <li key={index} className="MapList_div-styling">
-              <h3>{place.name}</h3>
-              <p>{place.results[index].vicinity}</p>
-              <p>{place.results[index].rating} stars</p>
-            </li>
-            <div>
-              distance 
-            </div>
+              <li key={index} className="MapList_div-styling">
+                <h3>{place.name}</h3>
+                <p>{place.results[index].vicinity}</p>
+                <p>{place.results[index].rating} stars</p>
+              </li>
+              <div>
+                distance
+              </div>
             </div>
           </div>
         </div>
@@ -68,7 +66,8 @@ export function MapList() {
         }
 
         <Routes>
-          <Route path=":id" element={<LocationDetails />} />
+          <Route path=":id/*" element={<LocationDetails />} />
+          {/* <Route path=":id/review" element={<LocationDetails_Reviews />} /> */}
         </Routes>
       </div>
     </div>
