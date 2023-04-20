@@ -17,7 +17,7 @@ import CounterProvider from './providers/CounterProvider';
 import './App.css';
 import Axios from "axios";
 import { Favourites } from "./components/Favourites";
-
+import LHL from "./docs/LHL.jpeg"
 
 const Search = () => {
   const location = useLocation();
@@ -26,7 +26,7 @@ const Search = () => {
     <MapProvider>
       <CounterProvider>
         <div className="desktop-2">
-          <img className="desktop-2-child" alt="" src="/line-1.svg" />
+          <img className="desktop-2-child" alt="" src="{/line-1.svg}" />
           <h1 className="remotetogether" id="logo">
             RemoteTogether
           </h1>
@@ -51,7 +51,7 @@ const Search = () => {
                 <img
                   className="divglide-container-icon"
                   alt=""
-                  src="/divglidecontainer.svg"
+                  src={LHL}
                 />
                 <div className="divhome-hero-left-container" id="searchandtext">
                   <div className="divray-show-tablet">
