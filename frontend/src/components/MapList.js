@@ -3,6 +3,7 @@ import { Link, Route, Routes, useLocation } from "react-router-dom"
 import { mapContext } from "../providers/mapProvider";
 import { LocationDetails } from "./LocationDetails";
 import './MapList.css'
+// import { LocationDetails_Reviews } from "./LocationDetails_Reviews";
 
 export function MapList() {
 
@@ -68,7 +69,8 @@ export function MapList() {
         }
 
         <Routes>
-          <Route path=":id" element={<LocationDetails />} />
+          <Route path=":id/*" element={<LocationDetails />} />
+          {/* <Route path=":id/review" element={<LocationDetails_Reviews />} /> */}
         </Routes>
       </div>
     </div>

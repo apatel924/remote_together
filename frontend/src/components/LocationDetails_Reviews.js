@@ -5,7 +5,7 @@ export function LocationDetails_Reviews() {
   const fromDB = [
     {
       user_id: "Bob",
-      review_comment: 'this the best',
+      review_comment: 'They had lots of comfortable seating and the wifi was fast!',
       review_rating: 4
     },
     {
@@ -35,7 +35,7 @@ export function LocationDetails_Reviews() {
   <div>
     {newReviews}
     'asdfjkhasdkfjs'
-
+    WHERE ARE YOU??? 
   </div>
   )
 }

@@ -1,15 +1,21 @@
-import { Link, Route, Routes } from "react-router-dom"
-import React from 'react';
-import { useParams } from "react-router-dom"
+import { Link, Route, Routes, useLocation } from "react-router-dom"
+import React, { useState } from 'react';
+import { useParams, } from "react-router-dom"
 import './LocationDetails.css'
 import { mapContext } from "../providers/mapProvider";
 import { LocationDetails_Reviews } from "./LocationDetails_Reviews";
+import { LocationDetails_Overview } from "./LocationDetails_Overiew"
+import { ClickAwayListener } from "@mui/material";
+import { selectUnstyledClasses } from "@mui/base";
 
 
 
 export function LocationDetails() {
   const params = useParams()
+  const location = useLocation();
+  console.log(location)
 
+  const [select, setSelect] = useState('Overview');
 
   return (
     <div>
@@ -30,7 +36,7 @@ export function LocationDetails() {
           <h3>{params.id}</h3>
           <p>address</p>
           <p>rating</p>
-    
+
           {/* need to import mapProvider for the below  */}
           {/* <h3>{place.name}</h3>
             <p>{place.results[index].vicinity}</p>
@@ -40,32 +46,40 @@ export function LocationDetails() {
         <div className="div_locationDetails-Nav">
           <div className="div_locationDetails-Nav-item">Overview</div>
           <div className="div_locationDetails-Nav-item">
-            <Link to="LocationDetails_Reviews">Reviews</Link>
+            <Link to="reviews">Reviews</Link>
           </div>
-          
+
           <div className="div_locationDetails-Nav-item">About</div>
         </div>
         <div className='div_locationDetails-reviews'>
 
           <i>1 week ago</i>
+          <p>'{params.id}' is {params.id}</p>
 
           <span>
             They had lots of comfortable seating and the wifi was fast!
           </span>
 
+            {/* using setState to conditionally render */}
+          {select === 'Overview' && <LocationDetails_Overview />}
+          {select === 'Overview' && <LocationDetails_Reviews />}
+          {select === 'Overview' && <LocationDetails_About />}
+
+          {/* {newReviews} */}
+          {/* {location.pathname === `/findalocation/${params.id}/reviews` ?
+            <Routes>
+              <Route path="/reviews" element={<LocationDetails_Reviews />} />
+            </Routes>
+            : null} */}
 
 
-            {/* {newReviews} */}
-        <Routes>
-          <Route path="/" element={<LocationDetails_Reviews />}></Route>
-
-        </Routes>
-            
         </div>
       </div>
 
 
       <Routes>
+        {/* <Route path="/reviews" element={<LocationDetails_Reviews />} /> */}
+
         <Route path="/findalocation" element={<LocationDetails />} />
       </Routes>
 
