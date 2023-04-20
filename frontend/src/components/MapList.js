@@ -27,15 +27,15 @@ export function MapList() {
   const locations = places.map((place, index) => {
     // console.log('place',place)
     // console.log('places',places)
-    // console.log('results',place.results[index].photos.geturl)
+    console.log('results',place.results[index].icon)
     return (
       <Link to={place.name}>
         <div className='div_mapList-locations' >
           <div className='div_mapList-location-image'>
             <img
-              // src={place.results[index]}
-              width="100"
-              height="100"
+              src={place.results[index].icon}
+              width="150px"
+              height="100%"
             />
           </div>
           <div className='div_mapList-location-description'>
@@ -51,16 +51,21 @@ export function MapList() {
   })
   return (
     <div>
-      {location.pathname === "/findalocation" ?
-        <ul>
-          {locations}
-        </ul>
-        : null
-      }
+      <div className='div_MapList-search'>
+        need a search function here
+      </div>
+      <div>
+        {location.pathname === "/findalocation" ?
+          <ul className="div_MapList-ul-itemList">
+            {locations}
+          </ul>
+          : null
+        }
 
-      <Routes>
-        <Route path=":id" element={<LocationDetails />} />
-      </Routes>
+        <Routes>
+          <Route path=":id" element={<LocationDetails />} />
+        </Routes>
+      </div>
     </div>
 
 

@@ -15,7 +15,7 @@ export function LocationDetails() {
       <div className='div_locationDetails-container' >
         <div className='locationDetails-image'>
           <img
-            // src={place.results[index]}
+            src={'https://cdn.wework.com/locations/image/ac403e3a-1ab7-11ea-b9c4-0a5bc5747799/Web_72DPI-20191125_WeWork_Station_Square_Vancouver_010.jpg?auto=format+compress&fit=crop&q=50&w=3000&h=1250'}
             width='100%'
             height="200"
           />
