@@ -1,0 +1,248 @@
+.svgicon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.back-to-search,
+.svgicon {
+  position: relative;
+}
+.aside-panel-navigation-item {
+  border-bottom: 1px solid var(--color-gainsboro-100);
+  box-sizing: border-box;
+  width: 799px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-base) var(--padding-621xl) var(--padding-mid)
+    var(--padding-17xl);
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-5xs);
+  z-index: 0;
+}
+.pseudo-icon {
+  position: absolute;
+  margin: 0 !important;
+  top: 61px;
+  left: 1.5px;
+  width: 806px;
+  height: 14px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.navside-panel-navigation {
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-gainsboro-100);
+  box-sizing: border-box;
+  width: 864px;
+  height: 45px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-12xs) var(--padding-0) var(--padding-0);
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 0;
+}
+.divside-panel-container {
+  position: absolute;
+  width: calc(100% - 743px);
+  top: 150px;
+  right: 661px;
+  left: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.nemesis-coffee,
+.vancouver {
+  position: relative;
+  line-height: 42.56px;
+}
+.vancouver {
+  font-size: var(--font-size-xl);
+  line-height: 32px;
+}
+.divbuilding-info {
+  position: absolute;
+  top: 360px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-12xl) var(--padding-552xl) 0.01000213623046875px
+    var(--padding-0);
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16.54px;
+  font-size: var(--font-size-13xl);
+}
+.div,
+.view-all {
+  position: absolute;
+  top: 227px;
+  left: 5px;
+}
+.div {
+  top: 0;
+  left: 0;
+  line-height: 20px;
+}
+.divqbul8c-icon {
+  position: absolute;
+  top: 3px;
+  left: 23.42px;
+  width: 14px;
+  height: 14px;
+  object-fit: cover;
+}
+.divqbul8c-icon1,
+.divqbul8c-icon2,
+.divqbul8c-icon3,
+.divqbul8c-icon4 {
+  position: absolute;
+  top: 3px;
+  left: 37.42px;
+  width: 14px;
+  height: 14px;
+  object-fit: cover;
+}
+.divqbul8c-icon2,
+.divqbul8c-icon3,
+.divqbul8c-icon4 {
+  left: 51.42px;
+}
+.divqbul8c-icon3,
+.divqbul8c-icon4 {
+  left: 65.42px;
+}
+.divqbul8c-icon4 {
+  left: 79.42px;
+}
+.divw4efsd {
+  position: absolute;
+  top: 148px;
+  left: 4px;
+  width: 254px;
+  height: 20px;
+  overflow: hidden;
+}
+.divbuilding-info-amenities-w,
+.user-reviews {
+  position: absolute;
+  top: 515px;
+  left: 0;
+  width: 709px;
+  height: 244px;
+  color: var(--color-dimgray);
+}
+.user-reviews {
+  top: 485px;
+  left: 1px;
+  font-size: var(--font-size-mini);
+  line-height: 16px;
+  text-transform: uppercase;
+  display: flex;
+  font-family: var(--font-inter);
+  color: var(--color-gray);
+  align-items: center;
+  width: 231px;
+  height: 40px;
+}
+.sectionbuilding-carousel-con-icon {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  max-height: 100%;
+  width: 749px;
+  object-fit: cover;
+}
+.divw4efsd1 {
+  position: absolute;
+  top: 559px;
+  left: 4px;
+  width: 254px;
+  height: 20px;
+  overflow: hidden;
+  color: var(--color-dimgray);
+}
+.luna-remotee {
+  font-weight: 600;
+}
+.luna-remotee-1-week-ago {
+  display: block;
+}
+.luna-remotee-1-week-container {
+  margin: 0;
+  position: absolute;
+  top: 528px;
+  left: 0;
+  font-size: var(--font-size-base);
+  line-height: 28px;
+}
+.j-travels {
+  font-weight: 600;
+  font-family: var(--font-roboto);
+}
+.j-travels-3-weeks-container {
+  margin: 0;
+  position: absolute;
+  top: 631px;
+  left: 0;
+  font-size: var(--font-size-base);
+  line-height: 28px;
+}
+.divside-panel-building-view- {
+  position: absolute;
+  top: 225px;
+  left: 52px;
+  width: 731px;
+  height: 770px;
+}
+.nemesis-coffee1,
+.vancouver1 {
+  margin: 0;
+  position: relative;
+  font-family: inherit;
+}
+.nemesis-coffee1 {
+  font-size: inherit;
+  line-height: 42.56px;
+  font-weight: 700;
+}
+.vancouver1 {
+  font-size: var(--font-size-xl);
+  line-height: 32px;
+  font-weight: 400;
+}
+.user-reviews1 {
+  margin: 0;
+  position: absolute;
+  top: 485px;
+  left: 1px;
+  font-size: var(--font-size-mini);
+  line-height: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: var(--font-inter);
+  color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  width: 231px;
+  height: 40px;
+}
+.reviews {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+  font-family: var(--font-roboto);
+}

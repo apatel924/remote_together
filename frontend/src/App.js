@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+/*import React, { useState, useContext } from 'react';
 import Map from './components/Map';
 import PlaceList from './components/PlaceList';
 import { Link, Route, Routes, BrowserRouter } from "react-router-dom"
-import { Main } from "./components/main"
+import { Main } from "./components/FindALocation"
 import { Login } from "./components/login"
 import { Counter } from "./components/Counter"
 import { Page2 } from "./components/Page2"
@@ -59,8 +59,8 @@ function App() {
       <MapProvider>
         <CounterProvider>
           <nav className="navbar" >
-            {/* links to inject other pages */}
-            <div className="navbar_container">
+            {/* links to inject other pages */
+           /* <div className="navbar_container">
               <div>
                 <ul className="navbar_container-ul">
                   <li className="navbar_container-il">
@@ -83,8 +83,8 @@ function App() {
                   </li>
                 </ul>
               </div>
-              {/* links to login registration */}
-              <div>
+              {/* links to login registration */
+             /* <div>
                 <ul className="navbar_container-ul">
                   <li className="navbar_container-il">
                     <Link to="/path4">Login</Link>
@@ -96,12 +96,12 @@ function App() {
               </div>
             </div>
           </nav>
-          {/* main section under nav */}
-          <div className="div_main">
-            {/* left side */}
-            <div className="div_main_left">
-              {/* STATIC FUNCTIONS HERE ABOVE THE RESULTS */}
-              <div>
+          {/* main section under nav */
+        /*  <div className="div_main">
+            {/* left side */
+          /*  <div className="div_main_left">
+              {/* STATIC FUNCTIONS HERE ABOVE THE RESULTS */
+          /*    <div>
                 <div>
                   ADD A BACK BUTTON HERE
                 </div>
@@ -112,8 +112,8 @@ function App() {
                   PUT ANY OTHER FUNCTIONS HERE
                 </div>
               </div>
-              {/*  DYNAMIC CONTENT HERE.  */}
-              <div>
+              {/*  DYNAMIC CONTENT HERE.  */
+          /*    <div>
                 main area
                 <h1>{state.message}</h1>
                 <button onClick={fetchData} >
@@ -125,15 +125,15 @@ function App() {
                 </button>
               </div>
 
-              {/* ROUTES */}
-              <Routes>
+              {/* ROUTES */
+            /*  <Routes>
                 <Route path="/path" element={<PlaceList />} />
                 <Route path="/path1" element={<Main />} />
                 <Route path="/path2" element={<Counter />} />
                 <Route path="/path3" element={<Page2 />} />
                 <Route path="/MapList/*" element={<MapList />}>
-                  {/* <Route path=":id" element={<LocationDetails />} />    */}
-                </Route>
+                  {/* <Route path=":id" element={<LocationDetails />} />    */
+              /*  </Route>
                 <Route path="/path4" element={<Login />} />
                 <Route path="/path5" element={<Signup />} />
 
@@ -141,10 +141,10 @@ function App() {
               </Routes>
             </div>
           </div>
-          {/* main section under nav */}
-          <div className="div_main">
-            {/* left side */}
-            <div className="div_main_left">
+          {/* main section under nav */
+       /*   <div className="div_main">
+            {/* left side */
+        /*    <div className="div_main_left">
               main area
               <h1>{state.message}</h1>
               <button onClick={fetchData} >
@@ -164,8 +164,8 @@ function App() {
               </Routes>
             </div>
 
-            {/* right side where map is */}
-            <div className="div_main_right">
+            {/* right side where map is */
+          /*  <div className="div_main_right">
               map should be here
               <Map />
             </div>
@@ -176,4 +176,4 @@ function App() {
     </BrowserRouter>
   );
 }
-export default App;
+export default App; */
