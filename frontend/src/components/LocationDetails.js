@@ -3,41 +3,13 @@ import React from 'react';
 import { useParams } from "react-router-dom"
 import './LocationDetails.css'
 import { mapContext } from "../providers/mapProvider";
+import { LocationDetails_Reviews } from "./LocationDetails_Reviews";
+
 
 
 export function LocationDetails() {
   const params = useParams()
 
-
-  const fromDB = [
-    {
-      user_id: "Bob",
-      review_comment: 'this the best',
-      review_rating: 4
-    },
-    {
-      user_id: "Oliver",
-      review_comment: 'no sitting area',
-      review_rating: 2
-    },
-    {
-      user_id: "Monica",
-      review_comment: 'quiet area with many outlets',
-      review_rating: 5
-    }
-  ]
-
-  const newReviews = fromDB.map((review) => {
-    return (
-      <div>
-        <li>
-          <p>{review.user_id}</p>
-          <p>{review.review_comment}</p>
-          <p>{review.review_rating}</p>
-        </li>
-      </div>
-    )
-  })
 
   return (
     <div>
@@ -58,11 +30,20 @@ export function LocationDetails() {
           <h3>{params.id}</h3>
           <p>address</p>
           <p>rating</p>
+    
           {/* need to import mapProvider for the below  */}
           {/* <h3>{place.name}</h3>
             <p>{place.results[index].vicinity}</p>
             <p>{place.results[index].rating} stars</p> */}
           {/* </li> */}
+        </div>
+        <div className="div_locationDetails-Nav">
+          <div className="div_locationDetails-Nav-item">Overview</div>
+          <div className="div_locationDetails-Nav-item">
+            <Link to="LocationDetails_Reviews">Reviews</Link>
+          </div>
+          
+          <div className="div_locationDetails-Nav-item">About</div>
         </div>
         <div className='div_locationDetails-reviews'>
 
@@ -73,7 +54,13 @@ export function LocationDetails() {
           </span>
 
 
-            {newReviews}
+
+            {/* {newReviews} */}
+        <Routes>
+          <Route path="/" element={<LocationDetails_Reviews />}></Route>
+
+        </Routes>
+            
         </div>
       </div>
 

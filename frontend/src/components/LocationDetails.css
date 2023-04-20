@@ -11,3 +11,16 @@
 .div_locationDetails-reviews {
   margin: 1rem;
 }
+
+.div_locationDetails-Nav {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: solid 1px black
+}
+
+.div_locationDetails-Nav-item {
+  padding-left:5rem;
+  padding-right:5rem;
+
+}
