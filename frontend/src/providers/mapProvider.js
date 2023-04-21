@@ -1,6 +1,7 @@
 import react, { createContext, useState, useEffect } from 'react';
 import { GoogleMap, LoadScriptNext, Marker, InfoWindow, MarkerClusterer, MapContext } from '@react-google-maps/api';
 import { debounce } from 'lodash';
+import Axios from 'axios';
 
 // Create a Context
 export const mapContext = createContext();
@@ -11,15 +12,41 @@ export default function MapProvider(props) {
   const googleMapsLibraries = ['places']
   const mapContainerStyle = { width: '100%', height: '100%', marginBottom: '16px' }
   const initialLocation = { lat: 53.5461, lng: -113.4937 }
-
+  
   const [markers, setMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [selectedPlaceDetails, setSelectedPlaceDetails] = useState(null);
   const [placesService, setPlacesService] = useState(null);
   const [center, setCenter] = useState(initialLocation);
+  
+  //state for search bar
+  const [searchInput, setSearchInput] = useState(undefined);
 
+  
+  
+  console.log(searchInput)
 
-
+  //handleSearch for search bar
+  const handleSearch = () => {
+    // Call the Google Maps API with the search input value
+    // and handle the search results
+    Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${searchInput}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`)
+      .then((response) => {
+        // Handle the response data
+        console.log(response.data.results[0].geometry.location);
+        console.log(response.data.results[0].geometry.location.lng)
+        console.log(response.data.results[0].geometry.location.lat)
+        // Update the UI with the search results
+        // Can set the response data to another state variable
+        // and use it in UI components
+        setSearchInput(response.data.results[0].geometry.location)
+        console.log('state after axios', searchInput)
+      })
+      .catch((error) => {
+        // Handle the error
+        console.error(error);
+      });
+    }
 
   // Use the browser's geolocation API to get the user's current location, or use the default location if geolocation is not available
   useEffect(() => {
@@ -29,6 +56,8 @@ export default function MapProvider(props) {
           setCenter({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
+            // lat: searchInput.lat,
+            // lng: searchInput.lng
           });
         },
         () => {
@@ -38,6 +67,7 @@ export default function MapProvider(props) {
       );
     }
   }, []);
+
   // When the map loads, initialize the PlacesService and call searchPlaces function to search for places
   const onLoad = (map) => {
     const service = new window.google.maps.places.PlacesService(map);
@@ -110,6 +140,8 @@ export default function MapProvider(props) {
     });
   };
 
+  // const initialLocation = searchInput
+
   const providerData = {
     markers,
     setMarkers,
@@ -127,7 +159,10 @@ export default function MapProvider(props) {
     initialLocation,
     mapContainerStyle,
     getPlaceDetails,
-    googleMapsLibraries
+    googleMapsLibraries,
+    handleSearch,
+    searchInput,
+    setSearchInput
   };
 
 

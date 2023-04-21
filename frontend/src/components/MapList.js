@@ -21,7 +21,7 @@ export function MapList() {
   // const fetchPlaces = () => {
   //   setPlaces(markers);
   // };
-   console.log( markers)
+  //  console.log( markers)
   const locations = markers.map((result, index) => {
 
     return (

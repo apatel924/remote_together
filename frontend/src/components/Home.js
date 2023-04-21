@@ -1,31 +1,19 @@
-import React, {useState} from 'react';
+import React, { useState,useContext } from 'react';
 import { Button, TextField } from "@mui/material";
 import Axios from 'axios';
-
-
-
+import { mapContext } from "../providers/mapProvider";
 
 import LHL from "../docs/LHL.jpeg"
 
 export default function Home() {
-  const [searchInput, setSearchInput] = useState("");
+  // const [searchInput, setSearchInput] = useState("");
+  
+  const {   
+    handleSearch,
+    searchInput,
+    setSearchInput
+  } = useContext(mapContext)
 
-const handleSearch = () => {
-  // Call the Google Maps API with the search input value
-  // and handle the search results
-  Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${searchInput}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`)
-    .then((response) => {
-      // Handle the response data
-      console.log(response.data.results[0].geometry.location);
-      // Update the UI with the search results
-      // Can set the response data to another state variable
-      // and use it in UI components
-    })
-    .catch((error) => {
-      // Handle the error
-      console.error(error);
-    });
-};
   return (
     <div className="sectionhome-hero-section">
       <img

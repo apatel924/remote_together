@@ -31,7 +31,7 @@ const Search = () => {
     <MapProvider>
       <CounterProvider>
         <div className="desktop-2">
-          <img className="desktop-2-child" alt="" src="{/line-1.svg}" />
+          <img className="desktop-2-child" alt="" src="{}" />
           <h1 className="remotetogether" id="logo">
             <Link to="/">RemoteTogether</Link>
           </h1>
