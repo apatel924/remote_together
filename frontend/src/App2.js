@@ -7,7 +7,7 @@ import { Link, Route, Routes, BrowserRouter, useLocation } from "react-router-do
 import { FindALocation } from "./components/FindALocation"
 import { Login } from "./components/login"
 import { Counter } from "./components/Counter"
-import Review from "./components/Review"
+
 import { Signup } from "./components/Signup"
 import { MapList } from "./components/MapList"
 import MapProvider from './providers/mapProvider';
@@ -115,7 +115,7 @@ const Search = () => {
                       <Route path="/findalocation/*" element={<MapList />} />
                       <Route path="/findalocation" element={<MapList />} />
                       <Route path="/path2" element={<Search />} />
-                      <Route path="/addreview" element={<Review />} />
+
                       <Route path="/login" element={<Login />} />
                       <Route path="/path5" element={<Signup />} />
                     </Routes>
