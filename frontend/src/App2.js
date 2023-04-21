@@ -115,7 +115,7 @@ const Search = () => {
                       <Route path="/findalocation/*" element={<MapList />} />
                       <Route path="/findalocation" element={<MapList />} />
                       <Route path="/path2" element={<Search />} />
-
+                      <Route path="/Signup" element={<Signup />} />
                       <Route path="/login" element={<Login />} />
                       <Route path="/path5" element={<Signup />} />
                     </Routes>
