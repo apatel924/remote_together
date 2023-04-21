@@ -24,6 +24,7 @@ const Search = () => {
   const location = useLocation();
 
   return (
+    
     <MapProvider>
       <CounterProvider>
         <div className="desktop-2">
