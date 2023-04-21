@@ -67,6 +67,7 @@ export default function MapProvider(props) {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
         // Update the markers state variable with the new results
         setMarkers((prevMarkers) => {
+          
           const existingPlaceIds = new Set(prevMarkers.map((marker) => marker.place_id));
           const currentBounds = map.getBounds();
           const uniqueResults = results.filter((result) => !existingPlaceIds.has(result.place_id));
@@ -78,10 +79,11 @@ export default function MapProvider(props) {
           return [...filteredMarkers, ...newMarkers];
         });
         // If there are more pages of results, wait 2 seconds and then call searchPlaces function again with the nextPageToken
+        
         if (pagination.hasNextPage) {
           setTimeout(() => {
             searchPlaces(service, map, pagination.nextPageToken);
-          }, 1000000);
+          }, 10000000);
         }
       }
     });

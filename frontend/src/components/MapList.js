@@ -23,10 +23,7 @@ export function MapList() {
   // };
    console.log( markers)
   const locations = markers.map((result, index) => {
-    // console.log('place',place)
-    // console.log('places',places)
-    // console.log('results', place.results)
-    console.log('result', result)
+
     return (
       <Link to={result.name}>
         <div className='div_mapList-locations' >
