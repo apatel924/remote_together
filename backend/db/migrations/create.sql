@@ -16,14 +16,15 @@ CREATE TABLE business (
   address VARCHAR(255) NOT NULL,
   longitude DECIMAL(9,6) NOT NULL,
   latitude DECIMAL(9,6) NOT NULL
-  -- ask mentor how to save images / should business have images too?
-  -- image BYTEA not null,
 );
 
+  -- ask mentor how to save images / should business have images too?
+  -- image BYTEA not null,
 CREATE TABLE review (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
   business_id INTEGER REFERENCES business(id),
+  username varchar(50) not null,
   review_comment VARCHAR(50) not null,
   review_rating INT not null
   -- uncomment date when find out how to input into seeds
