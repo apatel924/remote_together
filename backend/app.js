@@ -15,6 +15,7 @@ const db = require('./db/connection');
 App.use(Morgan('dev'));
 App.use(Express.urlencoded({ extended: true }));
 App.use(Express.static('public'));
+App.use(Express.json());
 
 
 // Mount all resource routes does not work need help with this
@@ -58,32 +59,50 @@ App.get('/api/review', (req, res) => {
 });
 
 
+//queryparams is hardcoded right now, will eventually add req.body to get real data
+//in addreview func we will need a parameter could be called req
+//the next lines will be req.body.something
+const addReview = function (data) {
+  const queryParams = [
+    data.username,
+    data.review_comment,
+    data.review_rating
+  ];
+  
 
-const addReview = function () {
-  const queryParams = [];
-
+  //returning * just returns everything
   const queryString = `
-  I NSERT INTO review (username, review_comment, review_rating)
+  INSERT INTO review (username, review_comment, review_rating)
   VALUES ($1, $2, $3)
   RETURNING *;
   `;
 
-  return Pool
+//queryparams is an array that gets maps to $1, etc
+console.log('starting post in database');
+  return db
     .query(queryString, queryParams)
-    .then(result => result.rows)
+    //if successful
+    .then(result => {
+      console.log('result', result)
+      return result.rows
+    })
+    //if not successful
     .catch(err => {
       console.log(err.meessage)
     })
 }
 
+App.post('/api/review', (req, res) => {
+  console.log('server function hits');
+  console.log('req', req.body);
+//let body = JSON.parse(req.body);
+//console.log(body);
+  addReview(req.body)
+    .then((result) => {
 
-app.post('/api/review', (req, res) => {
-  const reviewId = req.params.id;
-  const { review } = req.body;
-
-  db.query(query, [review, reviewId])
-    .then(() => {
-      res.status(204).json({});
+      console.log('result 92', result)
+      //eventually will return this line
+      res.status(200).json(result[0]);
     })
     .catch(err => {
       res.status(500).json({ error: err.message });

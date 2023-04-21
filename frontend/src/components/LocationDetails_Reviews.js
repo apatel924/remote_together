@@ -48,15 +48,24 @@ export function LocationDetails_Reviews() {
   const addReviewHandler = async (e) => {
 
     e.preventDefault()
-
+    console.log('this function hits');
     let review = {
-      // place_id: id,
       review_rating: rating,
       review_comment: description,
       username: 'username'
     }
-
-    await axios.post(`/api/review`, review)
+   // let reviewJSON = JSON.stringify(review);
+    console.log('review', review);
+    axios.post(`/api/review`, review)
+      .then((result) => {
+        //const reversed = result.reverse();
+//console.log('reversed:', reversed);
+        console.log('response', result);
+        const lastReview = result.data;
+        setReviews(prev => [
+          lastReview, ...prev 
+        ])
+      });
 
     //  history.push('/')
   }
@@ -96,12 +105,12 @@ export function LocationDetails_Reviews() {
     <div>
       <h2 className='text-center'>Add Review</h2>
       <hr />
-
       <form onSubmit={addReviewHandler}>
         <div >
           <label>Rating</label>
           <textarea
             value={rating}
+            id={'rating'}
             onChange={(e) => setRating(e.target.value)}
             type="number"
           >
@@ -109,43 +118,35 @@ export function LocationDetails_Reviews() {
 
         </div>
 
-
-
         <div >
           <label>Description</label>
           <textarea
             value={description}
+            id={'description'}
             onChange={(e) => setDescription(e.target.value)}
           >
           </textarea>
-
         </div>
-
-
         <button variant="primary" type="submit">
           Add Review
         </button>
       </form>
 
       <br />
-
       <h5>Location Reviews</h5>
       <hr />
 
       {reviews.length > 0 ? (
         reviews.map((review, index) => {
-          console.log('review', review)
-          console.log('review.rating', review.review_rating)
           return (
-
             <div className="div_mapList-locations">
-            <li className="MapList_div-styling" key={index}>
-              <p>Username:{review.username}</p>
-              <p>Rating: {review.review_rating}</p>
-              <p>Comment: {review.review_comment}</p>
-            </li>
-            
-          </div> 
+              <li className="MapList_div-styling" key={index}>
+                <p>Username:{review.username}</p>
+                <p>Rating: {review.review_rating}</p>
+                <p>Comment: {review.review_comment}</p>
+              </li>
+
+            </div>
             // <p key={review.id}>Username:{review.username} <br /> Rating: {review.review_rating} <br /> {review.review_comment} <br /> </p>
           )
         })
