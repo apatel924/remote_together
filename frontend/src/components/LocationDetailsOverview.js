@@ -16,11 +16,13 @@ import { useParams } from "react-router-dom";
 export function LocationDetailsOverview() {
   const params = useParams()
 
-  const { markers, selectedMarker, getPlaceDetails } = useContext(mapContext)
+  const { markers, selectedMarker, getPlaceDetails, placesService } = useContext(mapContext)
   console.log('markers', markers);
   console.log('useParams', params.id);
   console.log('just Params', params);
- 
+ console.log('placesService', placesService);
+ console.log('selectedMarker', selectedMarker);
+ console.log('getPlaceDetails', getPlaceDetails);
   const [currentIndex, setCurrentIndex] = useState('')
   
   //do find or filter instead of map
@@ -52,7 +54,7 @@ export function LocationDetailsOverview() {
       
       <h2>{params.id}</h2>
       <p>{currentMarker.vicinity}</p>
-
+{console.log('currentMarker', currentMarker)}
       {currentMarker.photos &&
         <img
           src={currentMarker.photos[0].getUrl()}

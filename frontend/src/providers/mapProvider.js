@@ -66,7 +66,9 @@ export default function MapProvider(props) {
         // lat: searchInput.lat,
         // lng: searchInput.lng
       );
+      
     }
+    
   }, [searchInput]);
 
   // When the map loads, initialize the PlacesService and call searchPlaces function to search for places
