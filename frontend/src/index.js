@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Search from './App2';
 import { BrowserRouter } from "react-router-dom"
+import { LoadScriptNext} from '@react-google-maps/api';
 
 
-{/* <script async defer src="https://maps.googleapis.com/maps/api/js?key=REACT_APP_GOOGLE_MAPS_API_KEY&callback=initMap&libraries=places"></script> */ }
-
+const googleMapsLibraries = ['places']
 
 ReactDOM.render(
   <BrowserRouter>
-    <Search />
+    <LoadScriptNext googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={['places']}>
+      <Search />
+    </LoadScriptNext>
   </BrowserRouter>,
   document.getElementById('root'));

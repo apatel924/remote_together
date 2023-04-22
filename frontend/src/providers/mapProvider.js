@@ -2,6 +2,8 @@ import react, { createContext, useState, useEffect } from 'react';
 import { GoogleMap, LoadScriptNext, Marker, InfoWindow, MarkerClusterer, MapContext } from '@react-google-maps/api';
 import { debounce } from 'lodash';
 import Axios from 'axios';
+import { useNavigate } from 'react-router-dom' 
+
 
 // Create a Context
 export const mapContext = createContext();
@@ -12,18 +14,17 @@ export default function MapProvider(props) {
   const googleMapsLibraries = ['places']
   const mapContainerStyle = { width: '100%', height: '100%', marginBottom: '16px' }
   const initialLocation = { lat: 53.5461, lng: -113.4937 }
-  
+
   const [markers, setMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [selectedPlaceDetails, setSelectedPlaceDetails] = useState(null);
   const [placesService, setPlacesService] = useState(null);
   const [center, setCenter] = useState(initialLocation);
-  
+
   //state for search bar
   const [searchInput, setSearchInput] = useState(undefined);
+  const Navigate = useNavigate();
 
-  
-  
   console.log(searchInput)
 
   //handleSearch for search bar
@@ -33,40 +34,40 @@ export default function MapProvider(props) {
     Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${searchInput}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`)
       .then((response) => {
         // Handle the response data
-        console.log(response.data.results[0].geometry.location);
-        console.log(response.data.results[0].geometry.location.lng)
-        console.log(response.data.results[0].geometry.location.lat)
+        // console.log(response.data.results[0].geometry.location);
+        console.log(response.data)
+        // console.log(response.data.results[0].geometry.location.lng)
+        // console.log(response.data.results[0].geometry.location.lat)
         // Update the UI with the search results
         // Can set the response data to another state variable
         // and use it in UI components
-        setSearchInput(response.data.results[0].geometry.location)
-        console.log('state after axios', searchInput)
+        if (response.data.results.length > 0) {
+          setSearchInput(response.data.results[0].geometry.location)
+          console.log('state after axios', searchInput)
+          Navigate('/findalocation')
+        }
       })
       .catch((error) => {
         // Handle the error
         console.error(error);
       });
-    }
+  }
 
   // Use the browser's geolocation API to get the user's current location, or use the default location if geolocation is not available
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setCenter({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-            // lat: searchInput.lat,
-            // lng: searchInput.lng
-          });
-        },
-        () => {
-          console.warn('Geolocation not available, using default location');
-        },
-        { timeout: 10000 }
+    if (searchInput) {
+      // navigator.geolocation.getCurrentPosition(
+      // (position) => {
+      setCenter(
+        searchInput
+        // searchInput ? searchInput : center
+        // lat: position.coords.latitude,
+        // lng: position.coords.longitude,
+        // lat: searchInput.lat,
+        // lng: searchInput.lng
       );
     }
-  }, []);
+  }, [searchInput]);
 
   // When the map loads, initialize the PlacesService and call searchPlaces function to search for places
   const onLoad = (map) => {
@@ -97,7 +98,7 @@ export default function MapProvider(props) {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
         // Update the markers state variable with the new results
         setMarkers((prevMarkers) => {
-          
+
           const existingPlaceIds = new Set(prevMarkers.map((marker) => marker.place_id));
           const currentBounds = map.getBounds();
           const uniqueResults = results.filter((result) => !existingPlaceIds.has(result.place_id));
@@ -109,7 +110,7 @@ export default function MapProvider(props) {
           return [...filteredMarkers, ...newMarkers];
         });
         // If there are more pages of results, wait 2 seconds and then call searchPlaces function again with the nextPageToken
-        
+
         if (pagination.hasNextPage) {
           setTimeout(() => {
             searchPlaces(service, map, pagination.nextPageToken);

@@ -53,7 +53,7 @@ export default function Home() {
             label="Find Workspace In"
             size="medium"
             margin="none"
-            value={searchInput}
+            // value=''
             onChange={(e) => setSearchInput(e.target.value)}
 
           />

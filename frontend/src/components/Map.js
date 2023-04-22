@@ -30,12 +30,14 @@ const Map = () => {
     initialLocation,
     mapContainerStyle,
     getPlaceDetails,
-    googleMapsLibraries
+    googleMapsLibraries,
+    searchInput
   } = useContext(mapContext)
 
+    console.log('from Mapjs page',searchInput)
  // Render the Google Map component with markers and an InfoWindow for the selected marker
  return (
-   <LoadScriptNext googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={googleMapsLibraries}>
+  //  <LoadScriptNext googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={googleMapsLibraries}>
      <GoogleMap
        mapContainerStyle={mapContainerStyle}
        center={center}
@@ -72,7 +74,7 @@ const Map = () => {
          </InfoWindow>
        )}
      </GoogleMap>
-   </LoadScriptNext>
+  //  </LoadScriptNext>
  );
 };
 
