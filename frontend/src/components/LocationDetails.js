@@ -1,15 +1,13 @@
 import { Link, Route, Routes, useLocation } from "react-router-dom"
 import React, { useState } from 'react';
-import { useParams, } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import './LocationDetails.css'
 import { mapContext } from "../providers/mapProvider";
-import { LocationDetails_Reviews } from "./LocationDetails_Reviews";
-import { LocationDetails_Overview } from "./LocationDetails_Overiew"
-import { LocationDetails_About } from "./LocationDetails_About";
+import { LocationDetailsReviews } from "./LocationDetailsReviews";
+import { LocationDetailsOverview } from "./LocationDetailsOverview"
+import { LocationDetailsAbout } from "./LocationDetailsAbout";
 import office from "../docs/office.jpeg";
 import starbucks from "../docs/starbucks.png";
-
-
 
 
 export function LocationDetails() {
@@ -18,6 +16,7 @@ export function LocationDetails() {
   console.log(location)
 
   const [select, setSelect] = useState('Reviews');
+  const [selectedPlaceDetails, setSelectedPlaceDetails] = useState(null);
 
   return (
     <div>
@@ -59,9 +58,9 @@ export function LocationDetails() {
         <div className='div_locationDetails-reviews'>
    
           {/* using setState to conditionally render */}
-          {select === 'Overview' && <LocationDetails_Overview />}
-          {select === 'Reviews' && <LocationDetails_Reviews />}
-          {select === 'About' && <LocationDetails_About />}
+          {select === 'Overview' && <LocationDetailsOverview placeDetails={selectedPlaceDetails} />}
+          {select === 'Reviews' && <LocationDetailsReviews />}
+          {select === 'About' && <LocationDetailsAbout />}
 
 
 
@@ -71,7 +70,7 @@ export function LocationDetails() {
 
 
       <Routes>
-        {/* <Route path="/reviews" element={<LocationDetails_Reviews />} /> */}
+        {/* <Route path="/reviews" element={<LocationDetailsReviews />} /> */}
 
         <Route path="/findalocation" element={<LocationDetails />} />
       </Routes>

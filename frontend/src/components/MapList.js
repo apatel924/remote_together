@@ -6,6 +6,7 @@ import './MapList.css'
 
 export function MapList() {
 
+
   const { markers, selectedMarker, selectedPlaceDetails, mapInstance } = useContext(mapContext)
   const [places, setPlaces] = useState([]);
 
@@ -28,8 +29,9 @@ export function MapList() {
       <Link to={result.name}>
         <div className='div_mapList-locations' >
           <div className='div_mapList-location-image'>
+            {console.log('result', result.photos)}
             <img
-              src={result.icon}
+              src={result.photos}
               width="150px"
               height="100%"
             />
@@ -65,7 +67,7 @@ export function MapList() {
 
         <Routes>
           <Route path=":id/*" element={<LocationDetails />} />
-          {/* <Route path=":id/review" element={<LocationDetails_Reviews />} /> */}
+          {/* <Route path=":id/review" element={<LocationDetailsReviews />} /> */}
         </Routes>
       </div>
     </div>

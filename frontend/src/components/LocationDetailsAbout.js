@@ -1,5 +1,5 @@
 import React from 'react';
 
-export function LocationDetails_About() {
+export function LocationDetailsAbout() {
   return <h1>About</h1>
 }
