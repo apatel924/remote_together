@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Route, Routes } from "react-router-dom"
-import { Login } from './login';
+import { Login } from './Login';
 import axios from 'axios';
 
 
@@ -12,21 +12,20 @@ export function Signup() {
 
 
   // eventhandler for login
-  const addRegisterHandler = async (e) => {
+  const addRegisterHandler = (e) => {
     e.preventDefault()
-    console.log('register function hits');
+    console.log('register function hits from front end');
     const regsiter = {
       username: user,
       password: password,
       email: email,
     }
-    console.log('regsiter', regsiter)
+    console.log('regsiter from front end', regsiter)
     axios.post(`/api/register`, regsiter)
       .then((data) => {
-
+        console.log('data from addregisterhandle', data)
+        console.log('success for creating user?')
       });
-
-    console.log(user)
   }
 
   return (

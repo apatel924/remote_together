@@ -4,37 +4,44 @@ import axios from 'axios';
 import { Signup } from './Signup';
 
 export function Login() {
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState(null)
   const [password, setPassword] = useState('')
 
-
+  //use effect here whenever user changes add it to the top. maybe even add usecontext if we need for chat box
 
   // eventhandler for login
   const addLoginHandler = async (e) => {
     e.preventDefault()
-    console.log('login function hits');
+    console.log('login function hits from front end');
     const loginDetails = {
       username: user,
       password: password,
 
     }
-    console.log('regsiter', loginDetails)
-    axios.post(`/api/register`, loginDetails)
-      // need add some logic for login check
+    console.log('login from front end', loginDetails)
+    axios.get(`/api/login`, loginDetails)
+      // need add some logic for login check or just leave it hardcoded?
+      // can just add a session cookie with the below but need to add a GET request with :id
+      // res.cookie('user_id', req.params.id)
+      // but will this work for single page app? would it better to just set state with usecontext?
       .then((data) => {
-
+        console.log('successfully logged in')
+        console.log('data', data)
+        setUser(user)
+        console.log('user from the front end after login',user)
       });
 
-    console.log(user)
+    console.log('user', user)
   }
 
   return (
     <div>
-      <form action="/api/login" method="POST" onSubmit={addLoginHandler} >
+      <form action="/api/login" method="GET" onSubmit={addLoginHandler} >
         <div>
-
+          {(user) ? <h1>Welcome! {user}</h1> : null }
+          
           <h1>Login</h1>
-
+          
           <div class="form-input-material">
             <input type="text" placeholder="Username" onChange={(e) => setUser(e.target.value)} />
           </div>

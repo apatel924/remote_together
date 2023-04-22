@@ -5,7 +5,7 @@ import Map from './components/Map';
 import PlaceList from './components/PlaceList';
 import { Link, Route, Routes, BrowserRouter, useLocation } from "react-router-dom"
 import { FindALocation } from "./components/FindALocation"
-import { Login } from "./components/login"
+import { Login } from "./components/Login"
 import { Counter } from "./components/Counter"
 
 import { Signup } from "./components/Signup"
