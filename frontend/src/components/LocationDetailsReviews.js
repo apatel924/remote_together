@@ -5,7 +5,7 @@ import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { FormControl, Button } from '@mui/material';
 
-export function LocationDetails_Reviews() {
+export function LocationDetailsReviews() {
 
   const { id } = useParams()
   // const history = useHistory()
