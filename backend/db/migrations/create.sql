@@ -20,8 +20,6 @@ CREATE TABLE business (
   latitude DECIMAL(9,6) NOT NULL
 );
 
-  -- ask mentor how to save images / should business have images too?
-  -- image BYTEA not null,
 CREATE TABLE review (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
@@ -29,18 +27,15 @@ CREATE TABLE review (
   username varchar(50) not null,
   review_comment VARCHAR(50) not null,
   review_rating INT not null
-  -- uncomment date when find out how to input into seeds
-  -- date DATE not null
-  -- ask mentor how to save images
-  -- image BYTEA not null,
 );
 
 CREATE TABLE favorite_list (
     id SERIAL PRIMARY KEY,
-    favorite_business VARCHAR(255) NOT NULL,
+    favorite_business VARCHAR(255) ,
     business_id INTEGER REFERENCES business(id),
     user_id INTEGER REFERENCES users(id),
-    title VARCHAR(255) NOT NULL
+    title VARCHAR(255) 
+    -- place_id VARCHAR(255)
 );
 
 CREATE TABLE chats (
