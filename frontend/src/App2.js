@@ -18,71 +18,98 @@ import './App.css';
 import Axios from "axios";
 import { Favourites } from "./components/Favourites";
 
-import  Home  from "./components/Home"
-
+import Home from "./components/Home"
+import { mapContext } from "./providers/mapProvider";
 
 
 const Search = () => {
-
+  const {
+    handleSearch,
+    searchInput,
+    setSearchInput
+  } = useContext(mapContext)
 
   const location = useLocation();
 
   return (
-    <MapProvider>
-      <CounterProvider>
-        <div className="desktop-2">
-          <img className="desktop-2-child" alt="" src="{}" />
-          <h1 className="remotetogether" id="logo">
-            <Link to="/">RemoteTogether</Link>
-          </h1>
-          <nav className="divinner" id="nav-bar">
-            <div className="ulmenu">
-              <h3 className="find-a-location"><Link to="/findalocation">Find a Location</Link></h3>
-              <h3 className="add-review"><Link to="/addreview">Add Review</Link></h3>
-              <h3 className="favourites"><Link to="/favourites">Favourites</Link></h3>
-              <h3 className="placeholderlink">PlaceholderLink</h3>
-            </div>
-            <div className="divmenu-wrapper-secondary" id="chat-login">
-              <Button className="contact-us" variant="outlined" color="primary">
-                Start Chat
-              </Button>
-              <h3 className="member-log-in"><Link to="/login">Member Log In</Link></h3>
-            </div>
-          </nav>
-          <div>
+
+    <CounterProvider>
+      <div className="desktop-2">
+        <img className="desktop-2-child"/>
+        <h1 className="remotetogether" id="logo">
+          <Link to="/">RemoteTogether</Link>
+        </h1>
+        <nav className="divinner" id="nav-bar">
+          <div className="ulmenu">
+            <h3 className="find-a-location"><Link to="/findalocation">Find a Location</Link></h3>
+            <h3 className="add-review"><Link to="/addreview">Add Review</Link></h3>
+            <h3 className="favourites"><Link to="/favourites">Favourites</Link></h3>
             {location.pathname === '/' ?
-                <Home />
-              
+              null
               :
-              <div>
-
-                <div className="div_main">
-                  <div className="div_main_left">
-                    <Routes>
-                      <Route path="/" element={ <Home />} />
-                      <Route path="/path" element={<PlaceList />} />
-                      <Route path="/favourites" element={<Favourites />} />
-                      <Route path="/findalocation/*" element={<MapList />} />
-                      <Route path="/findalocation" element={<MapList />} />
-                      <Route path="/path2" element={<Search />} />
-
-                      <Route path="/login" element={<Login />} />
-                      <Route path="/path5" element={<Signup />} />
-                    </Routes>
-                  </div>
-
-                  <div className="div_main_right">
-                    <Map />
-                  </div>
-
-
-                </div>
-              </div>
+              <h3 className="placeholderlink">
+                
+                <TextField
+                  color="primary"
+                  variant="outlined"
+                  type="search"
+                  label="Find Workspace In"
+                  size="medium"
+                  onChange={(e) => setSearchInput(e.target.value)}
+                />
+                <Button
+                  variant="contained"
+                  name="SearchButton"
+                  color="primary"
+                  size="large"
+                  onClick={handleSearch}
+                >
+                  Search
+                </Button>
+              </h3>
             }
           </div>
+          <div className="divmenu-wrapper-secondary" id="chat-login">
+            <Button className="contact-us" variant="outlined" color="primary">
+              Start Chat
+            </Button>
+            <h3 className="member-log-in"><Link to="/login">Member Log In</Link></h3>
+          </div>
+        </nav>
+        <div>
+          {location.pathname === '/' ?
+            <Home />
+
+            :
+            <div>
+
+              <div className="div_main">
+                <div className="div_main_left">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/path" element={<PlaceList />} />
+                    <Route path="/favourites" element={<Favourites />} />
+                    <Route path="/findalocation/*" element={<MapList />} />
+                    <Route path="/findalocation" element={<MapList />} />
+                    <Route path="/path2" element={<Search />} />
+
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/path5" element={<Signup />} />
+                  </Routes>
+                </div>
+
+                <div className="div_main_right">
+                  <Map />
+                </div>
+
+
+              </div>
+            </div>
+          }
         </div>
-      </CounterProvider>
-    </MapProvider>
+      </div>
+    </CounterProvider>
+
 
   );
 };
