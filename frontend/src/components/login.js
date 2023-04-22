@@ -46,7 +46,7 @@ export function Login() {
           
           <h1>Login</h1>
           
-          <div class="form-input-material">
+          <div>
             <input value={user} type="text" placeholder="Username" onChange={(e) => setUser(e.target.value)} />
           </div>
 

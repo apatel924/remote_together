@@ -104,9 +104,9 @@ const Search = () => {
                 </div>
 
                 <div className="div_main_right">
-                  <Map />
-                      {/* {!auth && <Login/>} */}
-                      {/* {auth && <TestingPage />} */}
+                  {/* <Map /> */}
+                      {!auth && <Login/>}
+                      {auth && <TestingPage />}
                 </div>
 
 
