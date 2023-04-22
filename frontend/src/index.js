@@ -4,16 +4,21 @@ import App from './App';
 import Search from './App2';
 import { BrowserRouter } from "react-router-dom"
 import AuthProvider, { AuthContext } from "./providers/authProvider";
+import { LoadScriptNext } from '@react-google-maps/api';
+import MapProvider from './providers/mapProvider';
 
 
-{/* <script async defer src="https://maps.googleapis.com/maps/api/js?key=REACT_APP_GOOGLE_MAPS_API_KEY&callback=initMap&libraries=places"></script> */ }
 
+const googleMapsLibraries = ['places']
 
 ReactDOM.render(
   <BrowserRouter>
-  <AuthProvider>
-
-    <Search />
-  </AuthProvider>
+    <AuthProvider>
+      <MapProvider>
+        <LoadScriptNext googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={['places']}>
+          <Search />
+        </LoadScriptNext>
+      </MapProvider>
+    </AuthProvider>
   </BrowserRouter>,
   document.getElementById('root'));

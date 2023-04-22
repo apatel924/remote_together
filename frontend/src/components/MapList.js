@@ -21,17 +21,15 @@ export function MapList() {
   // const fetchPlaces = () => {
   //   setPlaces(markers);
   // };
+  //  console.log( markers)
+  const locations = markers.map((result, index) => {
 
-  const locations = markers.map((place, index) => {
-    // console.log('place',place)
-    // console.log('places',places)
-    // console.log('results', place.results)
     return (
-      <Link to={place.name}>
+      <Link to={result.name}>
         <div className='div_mapList-locations' >
           <div className='div_mapList-location-image'>
             <img
-              src={place.results[index].icon}
+              src={result.icon}
               width="150px"
               height="100%"
             />
@@ -39,9 +37,9 @@ export function MapList() {
           <div className='div_mapList-location-description'>
             <div className='div_mapList-location-description-splitdiv'>
               <li key={index} className="MapList_div-styling">
-                <h3>{place.name}</h3>
-                <p>{place.results[index].vicinity}</p>
-                <p>{place.results[index].rating} stars</p>
+                <h3>{result.name}</h3>
+                <p>{result.vicinity}</p>
+                <p>{result.rating} stars</p>
               </li>
               <div>
                 distance
