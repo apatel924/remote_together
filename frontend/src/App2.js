@@ -5,7 +5,7 @@ import Map from './components/Map';
 import PlaceList from './components/PlaceList';
 import { Link, Route, Routes, BrowserRouter, useLocation } from "react-router-dom"
 import { FindALocation } from "./components/FindALocation"
-import { Login } from "./components/login"
+import { Login } from "./components/Login"
 import { Counter } from "./components/Counter"
 
 import { Signup } from "./components/Signup"
@@ -17,6 +17,10 @@ import CounterProvider from './providers/CounterProvider';
 import './App.css';
 import Axios from "axios";
 import { Favourites } from "./components/Favourites";
+import LHL from "./docs/LHL.jpeg"
+import AuthProvider, { authContext } from "./providers/authProvider";
+import TestingPage from "./components/testingPage"
+import { AuthContext } from "./providers/authProvider";
 
 import Home from "./components/Home"
 import { mapContext } from "./providers/mapProvider";
@@ -30,6 +34,7 @@ const Search = () => {
   } = useContext(mapContext)
 
   const location = useLocation();
+  const {auth} = useContext(AuthContext)
 
   return (
 
@@ -100,6 +105,8 @@ const Search = () => {
 
                 <div className="div_main_right">
                   <Map />
+                      {/* {!auth && <Login/>}
+                      {auth && <TestingPage />} */}
                 </div>
 
 
