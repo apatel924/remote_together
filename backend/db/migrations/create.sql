@@ -2,6 +2,8 @@ DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS business CASCADE;
 DROP TABLE IF EXISTS review CASCADE;
 DROP TABLE IF EXISTS favorite_list CASCADE;
+DROP TABLE IF EXISTS chats CASCADE;
+DROP TABLE IF EXISTS chat_messages CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -39,4 +41,18 @@ CREATE TABLE favorite_list (
     business_id INTEGER REFERENCES business(id),
     user_id INTEGER REFERENCES users(id),
     title VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE chats (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE chat_messages (
+  id SERIAL PRIMARY KEY,
+  chat_id INTEGER NOT NULL REFERENCES chats(id),
+  username VARCHAR(50) NOT NULL,
+  message TEXT NOT NULL,
+  timestamp TIMESTAMP NOT NULL
 );

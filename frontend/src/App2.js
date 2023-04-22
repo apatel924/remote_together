@@ -18,6 +18,7 @@ import './App.css';
 import Axios from "axios";
 import { Favourites } from "./components/Favourites";
 import LHL from "./docs/LHL.jpeg"
+import Chat from "./components/Chat";
 
 
 const Search = () => {
@@ -39,9 +40,9 @@ const Search = () => {
               <h3 className="placeholderlink">PlaceholderLink</h3>
             </div>
             <div className="divmenu-wrapper-secondary" id="chat-login">
-              <Button className="contact-us" variant="outlined" color="primary">
-                Start Chat
-              </Button>
+            <Button className="contact-us" variant="outlined" color="primary">
+              <Link to="/chat">Start Chat</Link>
+            </Button>
               <h3 className="member-log-in"><Link to="/login">Member Log In</Link></h3>
             </div>
           </nav>
@@ -72,8 +73,8 @@ const Search = () => {
                         move-in ready offices for individuals or companies
                       </div>
                       <p className="of-all-sizes" id="search-p">
-                        of all sizes.
-                      </p>
+                        of all sizes
+                        </p>
                     </div>
                   </div>
                   <div className="formhero-form">
@@ -105,8 +106,8 @@ const Search = () => {
               </div>
               :
               <div>
-
-                <div className="div_main">
+              <div className="div_main">
+                {location.pathname !== "/chat" && (
                   <div className="div_main_left">
                     <Routes>
                       <Route path="/" />
@@ -115,18 +116,23 @@ const Search = () => {
                       <Route path="/findalocation/*" element={<MapList />} />
                       <Route path="/findalocation" element={<MapList />} />
                       <Route path="/path2" element={<Search />} />
-
                       <Route path="/login" element={<Login />} />
                       <Route path="/path5" element={<Signup />} />
+                      <Route path="/chat" element={<Chat />} />
                     </Routes>
                   </div>
-
+                )}
+                {location.pathname === "/chat" && (
+                  <div className="div_main_fullwidth">
+                    <Chat />
+                  </div>
+                )}
+                {location.pathname !== "/chat" && (
                   <div className="div_main_right">
                     <Map />
                   </div>
-
-
-                </div>
+                )}
+              </div>
               </div>
             }
           </div>
