@@ -27,7 +27,7 @@ export function MapList() {
 
     return (
       <Link to={result.name}>
-        <div className='div_mapList-locations' >
+        <div className='div_mapList-locations' key={index}>
           <div className='div_mapList-location-image'>
             {console.log('result', result.photos)}
             <img
