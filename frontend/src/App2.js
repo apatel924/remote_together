@@ -26,6 +26,8 @@ import Home from "./components/Home"
 import { mapContext } from "./providers/mapProvider";
 import { Logout } from './components/Logout'
 
+import Chat from "./components/Chat";
+
 
 
 const Search = () => {
@@ -36,13 +38,13 @@ const Search = () => {
   } = useContext(mapContext)
 
   const location = useLocation();
-  const {auth, user} = useContext(AuthContext)
+  const { auth, user } = useContext(AuthContext)
 
   return (
 
     <CounterProvider>
       <div className="desktop-2">
-        <img className="desktop-2-child"/>
+        <img className="desktop-2-child" />
         <h1 className="remotetogether" id="logo">
           <Link to="/">RemoteTogether</Link>
         </h1>
@@ -55,7 +57,7 @@ const Search = () => {
               null
               :
               <h3 className="placeholderlink">
-                
+
                 <TextField
                   color="primary"
                   variant="outlined"
@@ -78,7 +80,7 @@ const Search = () => {
           </div>
           <div className="divmenu-wrapper-secondary" id="chat-login">
             <Button className="contact-us" variant="outlined" color="primary">
-              Start Chat
+              <Link to="/chat">Start Chat</Link>
             </Button>
             {!auth && <h3 className="member-log-in"><Link to="/Login">Member Log In</Link></h3>}
             {auth && <Logout />}
@@ -87,40 +89,41 @@ const Search = () => {
         <div>
           {location.pathname === '/' ?
             <Home />
-
             :
             <div>
-
               <div className="div_main">
-                <div className="div_main_left">
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/path" element={<PlaceList />} />
-                    <Route path="/Favorites" element={<Favorites />} />
-                    <Route path="/findalocation/*" element={<MapList />} />
-                    <Route path="/findalocation" element={<MapList />} />
-                    <Route path="/path2" element={<Search />} />
+                {location.pathname !== "/chat" && (
+                  <div className="div_main_left">
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/path" element={<PlaceList />} />
+                      <Route path="/Favorites" element={<Favorites />} />
+                      <Route path="/findalocation/*" element={<MapList />} />
+                      <Route path="/findalocation" element={<MapList />} />
+                      <Route path="/path2" element={<Search />} />
 
-                    <Route path="/Login" element={<Login />} />
-                    <Route path="/Signup" element={<Signup />} />
-                  </Routes>
-                </div>
-
+                      <Route path="/Login" element={<Login />} />
+                      <Route path="/Signup" element={<Signup />} />
+                      <Route path="/chat" element={<Chat />} />
+                    </Routes>
+                  </div>
+                )}
+                {location.pathname === "/chat" && (
+                  <div className="div_main_fullwidth">
+                    <Chat />
+                  </div>
+                )}
+                {location.pathname !== "/chat" && (
                 <div className="div_main_right">
                   <Map />
-                      {/* {!auth && <Login/>}
-                      {auth && <TestingPage />} */}
                 </div>
-
-
+                )}
               </div>
             </div>
           }
         </div>
       </div>
     </CounterProvider>
-
-
   );
 };
 

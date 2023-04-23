@@ -7,8 +7,6 @@ import AuthProvider, { AuthContext } from "./providers/authProvider";
 import { LoadScriptNext } from '@react-google-maps/api';
 import MapProvider from './providers/mapProvider';
 
-
-
 const googleMapsLibraries = ['places']
 
 ReactDOM.render(
