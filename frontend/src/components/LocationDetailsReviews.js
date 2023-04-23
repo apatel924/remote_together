@@ -144,8 +144,8 @@ export function LocationDetailsReviews() {
       {reviews.length > 0 ? (
         reviews.map((review, index) => {
           return (
-            <div className="div_mapList-locations">
-              <li className="MapList_div-styling" key={index}>
+            <div className="div_mapList-locations" key={index}>
+              <li className="MapList_div-styling">
                 <p>Username:{review.username}</p>
                 <p>Rating: {review.review_rating}</p>
                 <p>Comment: {review.review_comment}</p>
