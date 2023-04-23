@@ -3,25 +3,39 @@ import { Link, Route, Routes, useLocation } from "react-router-dom"
 import { mapContext } from "../providers/mapProvider";
 import { LocationDetails } from "./LocationDetails";
 import './MapList.css'
-import starbucks from "../docs/starbucks.png";
+import Axios from "axios";
 
-export function MapList() {
+export function Favorites() {
+  // get request to DB for favorites list
 
+  const [favoriteList,setFavoriteList] = useState();
 
-  const { markers} = useContext(mapContext)
+  // Axios.get('/api/favorites')
+  //   .then((response) => {
+  //     console.log(response.data.review)
+  //     setFavoriteList(response.data.review)
+  //   }
+    // .catch((err) => {
+    //   console.log(err.message);
+    // })
+    // )
+
+  const { markers } = useContext(mapContext)
   const [places, setPlaces] = useState([]);
 
   const location = useLocation();
-  const locations = markers.map((result, index) => {
 
+  // populate locations saved in DB
+
+  const locations = markers.map((result, index) => {
     return (
-      <Link to={result.name} key={index}>
+      <Link to={`../findalocation/${result.name}`} key={index}>
         <div className='div_mapList-locations'>
           <div className='div_mapList-location-image'>
             {console.log('result', result.photos)}
             <img
               src={result.photos && result.photos[0].getUrl()}
-              alt="No Picture"
+              alt="Picture of the location"
               width="150px"
               height="100%"
             />
@@ -44,24 +58,19 @@ export function MapList() {
   })
   return (
     <div>
-      {/* <div className='div_MapList-search'>
-        need a search function here
-      </div> */}
+
       <div>
-        {location.pathname === "/findalocation" ?
-          <ul className="div_MapList-ul-itemList">
-            {locations}
-          </ul>
-          : null
-        }
+        {/* {location.pathname === "/findalocation" ? */}
+        <ul className="div_MapList-ul-itemList">
+          {locations}
+        </ul>
+        {/* : null
+      } */}
 
-        <Routes>
-          <Route path=":id/*" element={<LocationDetails />} />
-          {/* <Route path=":id/review" element={<LocationDetailsReviews />} /> */}
-        </Routes>
+        {/* <Routes> */}
+        {/* probably have the update this route */}
+        {/* <Route path="findalocation/:id/*" element={<LocationDetails />} /> */}
+        {/* </Routes> */}
       </div>
-    </div>
-
-
-  );
+    </div>)
 }

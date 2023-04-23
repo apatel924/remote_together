@@ -1,23 +1,28 @@
 import { Link, Route, Routes, useLocation } from "react-router-dom"
-import React, { useState } from 'react';
-import { useParams, } from "react-router-dom"
+import React, { useState, useContext } from 'react';
+import { useParams } from "react-router-dom"
 import './LocationDetails.css'
 import { mapContext } from "../providers/mapProvider";
-import { LocationDetails_Reviews } from "./LocationDetails_Reviews";
-import { LocationDetails_Overview } from "./LocationDetails_Overiew"
-import { LocationDetails_About } from "./LocationDetails_About";
+import { LocationDetailsReviews } from "./LocationDetailsReviews";
+import { LocationDetailsOverview } from "./LocationDetailsOverview"
+
 import office from "../docs/office.jpeg";
 import starbucks from "../docs/starbucks.png";
 
 
-
-
 export function LocationDetails() {
+
+  const { markers, selectedMarker, getPlaceDetails, placesService } = useContext(mapContext)
+
   const params = useParams()
   const location = useLocation();
   console.log(location)
 
-  const [select, setSelect] = useState('Reviews');
+  const [select, setSelect] = useState('Overview');
+  const [selectedPlaceDetails, setSelectedPlaceDetails] = useState(null);
+
+  const currentMarker = markers.find(marker =>
+    (marker.name === params.id))
 
   return (
     <div>
@@ -27,17 +32,42 @@ export function LocationDetails() {
       </div>
       <div className='div_locationDetails-container' >
         <div className='locationDetails-image'>
-          <img
+          {/* <img
             src={starbucks}
             width='100%'
             height="200"
-          />
+          /> */}
+          {currentMarker.photos &&
+            <img
+              src={currentMarker.photos[0].getUrl()}
+              alt={currentMarker.name}
+              width='100%'
+              height='150px'
+            />
+          }
         </div>
         <div className='div_locationDetails-description'>
+          <h2>{params.id}</h2>
+          <p>{currentMarker.vicinity}</p>
+          {console.log('currentMarker', currentMarker)}
+          
+          {currentMarker.opening_hours.isOpen() &&
+            <div>
+              <h3>Opening Hours:</h3>
+              <ul>
 
-          <h3>{params.id}</h3>
+                {/* {markers.opening_hours.weekday_text.map((day, i) => (
+              <li key={i}>{day}</li>
+            ))}  */}
+
+              </ul>
+
+
+            </div>
+          }
+          {/* <h3>{params.id}</h3>
           <p>address</p>
-          <p>rating</p>
+          <p>rating</p> */}
 
 
         </div>
@@ -50,18 +80,15 @@ export function LocationDetails() {
             <button type="button" onClick={() => { setSelect('Reviews') }}>Review</button>
 
           </div>
-          <div className="div_locationDetails-Nav-item">
-            <button type="button" onClick={() => { setSelect('About') }}>About</button>
 
-          </div>
         </div>
 
         <div className='div_locationDetails-reviews'>
-   
+
           {/* using setState to conditionally render */}
-          {select === 'Overview' && <LocationDetails_Overview />}
-          {select === 'Reviews' && <LocationDetails_Reviews />}
-          {select === 'About' && <LocationDetails_About />}
+          {select === 'Overview' && <LocationDetailsOverview placeDetails={selectedPlaceDetails} />}
+          {select === 'Reviews' && <LocationDetailsReviews />}
+
 
 
 
@@ -71,7 +98,7 @@ export function LocationDetails() {
 
 
       <Routes>
-        {/* <Route path="/reviews" element={<LocationDetails_Reviews />} /> */}
+        {/* <Route path="/reviews" element={<LocationDetailsReviews />} /> */}
 
         <Route path="/findalocation" element={<LocationDetails />} />
       </Routes>

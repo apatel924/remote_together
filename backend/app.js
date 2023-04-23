@@ -70,6 +70,22 @@ App.get('/api/business', (req, res) => {
    });
 });
 
+// GET REQUEST FOR FAVOURITES
+App.get('/api/favorites', (req, res) => {
+  const query = `SELECT * FROM favorite`;
+  console.log(query);
+  db.query(query)
+    .then(data => {
+      const favorites = data.rows;
+      res.json({ favorites });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+// GET REQUEST FOR REVIEWS
 App.get('/api/review', (req, res) => {
  const query = `SELECT * FROM review`;
  console.log(query);
@@ -150,12 +166,83 @@ io.on('connection', (socket) => {
     .catch(err => console.error(err.message));
 });
 
+<<<<<<< HEAD
  // Handle user joining a chat room
  socket.on('join_chat', (chatId) => {
    console.log('User joined chat:', chatId);
    socket.join(chatId);
  });
 
+=======
+// GET request for login
+App.get('/api/login', (req, res) => {
+  const query = `SELECT * FROM users`;
+  console.log('api/login hit')
+  console.log('query', query);
+    //need query for user but should we just leave this out?
+  db.query(query)
+    .then(data => {
+      console.log('data from backend', data.rows)
+      // const review = data.rows;
+      // console.log('review', review)
+      // res.json({ review });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+
+// POST request for register page
+const addUser = function (data) {
+  const queryParams = [
+    data.username,
+    data.email,
+    data.password
+  ];
+  
+  //returning * just returns everything
+  const queryString = `
+  INSERT INTO users (username, email, password)
+  VALUES ($1, $2, $3)
+  RETURNING *;
+  `;
+
+//queryparams is an array that gets maps to $1, etc
+// console.log('addUser post in database');
+  return db
+    .query(queryString, queryParams)
+    //if successful
+    .then(result => {
+      // console.log('result', result)
+      // return result.rows
+    })
+    //if not successful
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+      console.log(err.meessage)
+    })
+}
+
+App.post('/api/register', (req, res) => {
+  // console.log('server addUser function hits');
+  // console.log('req', req.body);
+//let body = JSON.parse(req.body);
+//console.log(body);
+  addUser(req.body)
+    .then((result) => {
+
+      // console.log('result addUser', result)
+      //eventually will return this line
+      res.status(200).json({});
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
+>>>>>>> 2afb31db8809a6819d45e596a7e5f2fdafde7e42
 
  // Handle user leaving a chat room
  socket.on('leave_chat', (chatId) => {
@@ -163,6 +250,7 @@ io.on('connection', (socket) => {
    socket.leave(chatId);
  });
 
+<<<<<<< HEAD
  socket.on('disconnect', () => {
    console.log('user disconnected');
  });
@@ -205,6 +293,9 @@ App.post('/api/chat/:id/message', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+=======
+App.post
+>>>>>>> 2afb31db8809a6819d45e596a7e5f2fdafde7e42
 
 server.listen(PORT, () => {
  console.log(`App listening at http://localhost:${PORT}`);

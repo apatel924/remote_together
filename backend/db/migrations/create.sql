@@ -10,7 +10,7 @@ CREATE TABLE users (
   username VARCHAR(50) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  user_type VARCHAR(255) NOT NULL
+  user_type VARCHAR(255) DEFAULT 'student'
 );
 
 CREATE TABLE business (
