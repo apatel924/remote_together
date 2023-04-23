@@ -7,7 +7,7 @@ import './MapList.css'
 export function MapList() {
 
 
-  const { markers, selectedMarker, selectedPlaceDetails, mapInstance } = useContext(mapContext)
+  const { markers} = useContext(mapContext)
   const [places, setPlaces] = useState([]);
 
   const location = useLocation();

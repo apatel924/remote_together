@@ -12,7 +12,7 @@ export function Favourites() {
   const locations = markers.map((result, index) => {
 
     return (
-      <Link to={result.name} key={index}>
+      <Link to={`../findalocation/${result.name}`} key={index}>
         <div className='div_mapList-locations'>
           <div className='div_mapList-location-image'>
             {console.log('result', result.photos)}
@@ -50,10 +50,10 @@ export function Favourites() {
         {/* : null
       } */}
 
-      <Routes>
+      {/* <Routes> */}
         {/* probably have the update this route */}
-        <Route path=":id/*" element={<LocationDetails />} />
-      </Routes>
+        {/* <Route path="findalocation/:id/*" element={<LocationDetails />} /> */}
+      {/* </Routes> */}
     </div>
   </div>)
 }
