@@ -92,6 +92,7 @@ export default function MapProvider(props) {
       type: ['cafe', 'library'],
       keyword: ['library', 'coffee']
     };
+    //need to add more keywords like 'bakery', 'cafe', 'internet' or types
 
     // Call the nearbySearch method of the PlacesService and update the markers state variable with the results
     service.nearbySearch(request, (results, status, pagination) => {
