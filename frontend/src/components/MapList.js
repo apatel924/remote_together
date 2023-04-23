@@ -11,23 +11,11 @@ export function MapList() {
   const [places, setPlaces] = useState([]);
 
   const location = useLocation();
-
-  // does not load if you click directly on find a location after root
-  // useEffect(() => {
-  //   console.log('useEffect happening within Maplist here')
-  //   console.log(markers)
-  //   fetchPlaces();
-  // }, []);
-
-  // const fetchPlaces = () => {
-  //   setPlaces(markers);
-  // };
-  //  console.log( markers)
   const locations = markers.map((result, index) => {
 
     return (
-      <Link to={result.name}>
-        <div className='div_mapList-locations' key={index}>
+      <Link to={result.name} key={index}>
+        <div className='div_mapList-locations'>
           <div className='div_mapList-location-image'>
             {console.log('result', result.photos)}
             <img
@@ -40,7 +28,7 @@ export function MapList() {
           <div className='div_mapList-location-description'>
             <div className='div_mapList-location-description-splitdiv'>
               <li key={index} className="MapList_div-styling">
-                <h3>{result.name}</h3>
+                <p>{result.name}</p>
                 <p>{result.vicinity}</p>
                 <p>{result.rating} stars</p>
               </li>
@@ -55,9 +43,9 @@ export function MapList() {
   })
   return (
     <div>
-      <div className='div_MapList-search'>
+      {/* <div className='div_MapList-search'>
         need a search function here
-      </div>
+      </div> */}
       <div>
         {location.pathname === "/findalocation" ?
           <ul className="div_MapList-ul-itemList">
