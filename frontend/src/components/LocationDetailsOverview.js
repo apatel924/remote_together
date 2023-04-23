@@ -51,8 +51,8 @@ export function LocationDetailsOverview() {
 
   return (
     <div>
-
-      <h2>{params.id}</h2>
+      empty location details page
+      {/* <h2>{params.id}</h2>
       <p>{currentMarker.vicinity}</p>
       {console.log('currentMarker', currentMarker)}
       {currentMarker.photos &&
@@ -67,17 +67,17 @@ export function LocationDetailsOverview() {
       {currentMarker.opening_hours.isOpen() &&
         <div>
           <h3>Opening Hours:</h3>
-          <ul>
+          <ul> */}
 
             {/* {markers.opening_hours.weekday_text.map((day, i) => (
               <li key={i}>{day}</li>
             ))}  */}
 
-          </ul>
+          {/* </ul> */}
 
 
-        </div>
-      }
+        {/* </div> */}
+      {/* } */}
     </div>
   )
 }

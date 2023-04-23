@@ -90,7 +90,7 @@ export default function MapProvider(props) {
       location: map.getCenter(),
       radius: '5000',
       type: ['cafe', 'library'],
-      keyword: 'coffee'
+      keyword: ['library', 'coffee']
     };
 
     // Call the nearbySearch method of the PlacesService and update the markers state variable with the results

@@ -3,6 +3,7 @@ import { Link, Route, Routes, useLocation } from "react-router-dom"
 import { mapContext } from "../providers/mapProvider";
 import { LocationDetails } from "./LocationDetails";
 import './MapList.css'
+import starbucks from "../docs/starbucks.png";
 
 export function MapList() {
 
@@ -20,7 +21,7 @@ export function MapList() {
             {console.log('result', result.photos)}
             <img
               src={result.photos && result.photos[0].getUrl()}
-              alt="Picture of the location"
+              alt="No Picture"
               width="150px"
               height="100%"
             />

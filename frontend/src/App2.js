@@ -16,7 +16,7 @@ import CounterProvider from './providers/CounterProvider';
 //import Search from "./components/Search"
 import './App.css';
 import Axios from "axios";
-import { Favourites } from "./components/Favourites";
+import { Favorites } from "./components/Favorites";
 import LHL from "./docs/LHL.jpeg"
 import AuthProvider, { authContext } from "./providers/authProvider";
 import TestingPage from "./components/Logout"
@@ -25,6 +25,7 @@ import { AuthContext } from "./providers/authProvider";
 import Home from "./components/Home"
 import { mapContext } from "./providers/mapProvider";
 import { Logout } from './components/Logout'
+
 
 
 const Search = () => {
@@ -49,7 +50,7 @@ const Search = () => {
           <div className="ulmenu">
             <h3 className="find-a-location"><Link to="/findalocation">Find a Location</Link></h3>
             <h3 className="add-review"><Link to="/addreview">Add Review</Link></h3>
-            <h3 className="favourites"><Link to="/favourites">Favourites</Link></h3>
+            <h3 className="favourites"><Link to="/Favorites">Favorites</Link></h3>
             {location.pathname === '/' ?
               null
               :
@@ -95,7 +96,7 @@ const Search = () => {
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/path" element={<PlaceList />} />
-                    <Route path="/favourites" element={<Favourites />} />
+                    <Route path="/Favorites" element={<Favorites />} />
                     <Route path="/findalocation/*" element={<MapList />} />
                     <Route path="/findalocation" element={<MapList />} />
                     <Route path="/path2" element={<Search />} />
