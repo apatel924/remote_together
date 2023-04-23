@@ -43,6 +43,22 @@ App.get('/api/business', (req, res) => {
     });
 });
 
+// GET REQUEST FOR FAVOURITES
+App.get('/api/favorites', (req, res) => {
+  const query = `SELECT * FROM favorite`;
+  console.log(query);
+  db.query(query)
+    .then(data => {
+      const favorites = data.rows;
+      res.json({ favorites });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+// GET REQUEST FOR REVIEWS
 App.get('/api/review', (req, res) => {
   const query = `SELECT * FROM review`;
   console.log(query);

@@ -42,8 +42,7 @@ export function Login() {
     <div>
       <form action="/api/login" method="GET" onSubmit={addLoginHandler} >
         <div>
-          {(user) ? <h1>Welcome! {user}</h1> : null }
-          
+         
           <h1>Login</h1>
           
           <div>

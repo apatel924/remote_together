@@ -20,41 +20,41 @@ export function LocationDetailsOverview() {
   console.log('markers', markers);
   console.log('useParams', params.id);
   console.log('just Params', params);
- console.log('placesService', placesService);
- console.log('selectedMarker', selectedMarker);
- console.log('getPlaceDetails', getPlaceDetails);
+  console.log('placesService', placesService);
+  console.log('selectedMarker', selectedMarker);
+  console.log('getPlaceDetails', getPlaceDetails);
   const [currentIndex, setCurrentIndex] = useState('')
-  
+
   //do find or filter instead of map
   //marker.name
   //run use effect when overview first loads
   //state.
   //component thats just rendering info it should have it avail with its props
 
-  const currentMarker = markers.find(marker => 
-     (marker.name === params.id))
+  const currentMarker = markers.find(marker =>
+    (marker.name === params.id))
 
-      // console.log(index)
-      // console.log("we got a match" + `${result.name} = ${params.id}`)
-      // setCurrentIndex(index)
-      // return index;
- 
-    // console.log('result', result)
-    // console.log('params.id', params.id)
-    // console.log('result.name', result.name)
-    // console.log('index after index', index)
-    // return index;
-      
-// findIndex();
-// console.log(findIndex);
+  // console.log(index)
+  // console.log("we got a match" + `${result.name} = ${params.id}`)
+  // setCurrentIndex(index)
+  // return index;
+
+  // console.log('result', result)
+  // console.log('params.id', params.id)
+  // console.log('result.name', result.name)
+  // console.log('index after index', index)
+  // return index;
+
+  // findIndex();
+  // console.log(findIndex);
 
 
   return (
     <div>
-      
-      <h2>{params.id}</h2>
+      empty location details page
+      {/* <h2>{params.id}</h2>
       <p>{currentMarker.vicinity}</p>
-{console.log('currentMarker', currentMarker)}
+      {console.log('currentMarker', currentMarker)}
       {currentMarker.photos &&
         <img
           src={currentMarker.photos[0].getUrl()}
@@ -63,21 +63,21 @@ export function LocationDetailsOverview() {
           height='200'
         />
       }
-{console.log('current Marker', currentMarker)}
+      {console.log('current Marker', currentMarker)}
       {currentMarker.opening_hours.isOpen() &&
         <div>
           <h3>Opening Hours:</h3>
-          <ul>
+          <ul> */}
 
             {/* {markers.opening_hours.weekday_text.map((day, i) => (
               <li key={i}>{day}</li>
             ))}  */}
 
-          </ul>
+          {/* </ul> */}
 
 
-        </div>
-      }
+        {/* </div> */}
+      {/* } */}
     </div>
   )
 }
