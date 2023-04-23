@@ -31,7 +31,8 @@ export function MapList() {
           <div className='div_mapList-location-image'>
             {console.log('result', result.photos)}
             <img
-              src={result.photos}
+              src={result.photos && result.photos[0].getUrl()}
+              alt="Picture of the location"
               width="150px"
               height="100%"
             />

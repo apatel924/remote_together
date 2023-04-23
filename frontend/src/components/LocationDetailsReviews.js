@@ -1,20 +1,25 @@
 
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
 import axios from 'axios'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { FormControl, Button } from '@mui/material';
+import { AuthContext } from '../providers/authProvider'
+
+ 
 
 export function LocationDetailsReviews() {
-
+  
+  const { auth, user } = useContext(AuthContext)
   const { id } = useParams()
   // const history = useHistory()
-
+  
   // review rating  description
   const [reviews, setReviews] = useState([])
   const [rating, setRating] = useState(0)
   const [description, setDescription] = useState('')
-
+  
+  console.log('user from locations', user)
   // useEffect(() => {
 
   //   const getSingleLocationData = async () => {
@@ -44,7 +49,7 @@ export function LocationDetailsReviews() {
 
 
   // to add review
-
+// there is a bug when adding a non number into the review_rating will send back a unresolved promise crashing the site
   const addReviewHandler = async (e) => {
 
     e.preventDefault()
@@ -52,18 +57,18 @@ export function LocationDetailsReviews() {
     let review = {
       review_rating: rating,
       review_comment: description,
-      username: 'username'
+      username: user,
     }
-   // let reviewJSON = JSON.stringify(review);
+    // let reviewJSON = JSON.stringify(review);
     console.log('review', review);
     axios.post(`/api/review`, review)
       .then((result) => {
         //const reversed = result.reverse();
-//console.log('reversed:', reversed);
+        //console.log('reversed:', reversed);
         console.log('response', result);
         const lastReview = result.data;
         setReviews(prev => [
-          lastReview, ...prev 
+          lastReview, ...prev
         ])
       });
 

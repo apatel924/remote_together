@@ -2,7 +2,7 @@ import react, { createContext, useState, useEffect } from 'react';
 import { GoogleMap, LoadScriptNext, Marker, InfoWindow, MarkerClusterer, MapContext } from '@react-google-maps/api';
 import { debounce } from 'lodash';
 import Axios from 'axios';
-import { useNavigate } from 'react-router-dom' 
+import { useNavigate } from 'react-router-dom'
 
 
 // Create a Context
@@ -66,9 +66,8 @@ export default function MapProvider(props) {
         // lat: searchInput.lat,
         // lng: searchInput.lng
       );
-      
+
     }
-    
   }, [searchInput]);
 
   // When the map loads, initialize the PlacesService and call searchPlaces function to search for places
