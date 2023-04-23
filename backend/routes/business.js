@@ -40,4 +40,14 @@ router.get('/api/review', (req, res) => {
     
 });
 
-module.exports = router;
+
+// router.post('/api/:id/delete', (req, res) => {
+//   if (urlDatabase[req.params.id].userID === req.session.user_id) {
+//     delete urlDatabase[req.params.id];
+//     res.redirect("/urls");
+//   } else {
+//     res.status(403).send("Not allowed.");
+//   }
+// });
+
+// module.exports = router;

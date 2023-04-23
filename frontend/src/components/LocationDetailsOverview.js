@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { mapContext } from "../providers/mapProvider";
 import { useParams } from "react-router-dom";
 
+
 //import overview from "../docs/overview.png";
 
 // export function LocationDetailsOverview() {

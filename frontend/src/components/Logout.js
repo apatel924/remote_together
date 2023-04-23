@@ -8,7 +8,7 @@ export function Logout() {
 
   return (
     <div>
-      <div>Welcome! {user}</div>
+      <div>Welcome, {user}!</div>
       <button type="button" onClick={logout}>Logout</button>
     </div>
   )
