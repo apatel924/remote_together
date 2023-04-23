@@ -327,8 +327,8 @@ if (user === reviews[0].username) {
                   </button>
                   </>
                 )}
-                <button onClick={likes(review)}> Like{review.like}</button>
-                <button onClick={dislikes(review)}> Dislike{review.dislike}</button> 
+                  <button onClick={() => likes(review)}> Like{review.like}</button>
+                  <button onClick={() => dislikes(review)}> Dislike{review.dislike}</button>
               </li>
             {/* {console.log('likes', like)}
             {console.log('review json', review)} */}

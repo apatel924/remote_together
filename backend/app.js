@@ -68,20 +68,60 @@ App.get('/api', (req, res) => {
 // });
 
 // GET REQUEST FOR FAVOURITES
+// POST REQUEST FOR FAVORITES
+// GET REQUEST FOR FAVORITES
 App.get('/api/favorites', (req, res) => {
-  const query = `SELECT * FROM favorite`;
-  console.log(query);
+  const query = `
+    SELECT place_id FROM favorite_list;
+  `;
+
   db.query(query)
-    .then(data => {
-      const favorites = data.rows;
-      res.json({ favorites });
+    .then(result => {
+      res.status(200).json({ favorites: result.rows });
     })
     .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
+      res.status(500).json({ error: err.message });
     });
 });
+
+App.post('/api/favorites', async (req, res) => {
+  const { user_id, place_id, is_favorite } = req.body;
+
+  if (is_favorite) {
+    const query = `
+      INSERT INTO favorite_list (user_id, place_id)
+      VALUES ($1, $2);
+    `;
+
+    const queryParams = [user_id, place_id];
+
+    db.query(query, queryParams)
+      .then(() => {
+        res.status(200).json({ message: 'Favorite updated' });
+      })
+      .catch(err => {
+        console.log('Error:', err); // Log the error
+        res.status(500).json({ error: err.message });
+      });
+  } else {
+    const query = `
+      DELETE FROM favorite_list
+      WHERE place_id = $1 AND user_id = $2;
+    `;
+
+    const queryParams = [place_id, user_id];
+
+    db.query(query, queryParams)
+      .then(() => {
+        res.status(200).json({ message: 'Favorite updated' });
+      })
+      .catch(err => {
+        console.log('Error:', err); // Log the error
+        res.status(500).json({ error: err.message });
+      });
+  }
+});
+
 // GET REQUEST FOR REVIEWS
 App.get('/api/review', (req, res) => {
   const query = `SELECT * FROM review`;
