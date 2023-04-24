@@ -60,7 +60,7 @@ export function LocationDetailsReviews() {
 
   useEffect(() => {
     const getSingleLocationData = () => {
-      axios.get('api/review')
+      axios.get('../api/review')
         .then((response) => {
           console.log('response', response);
           const reviewsWithLikes = response.data.review.map(review => ({
@@ -70,7 +70,7 @@ export function LocationDetailsReviews() {
             likeActive: false,
             dislikeActive: false,
           }));
-
+          console.log('reviewsWithLikes', reviewsWithLikes)
           setReviews(reviewsWithLikes);
         })
         .catch((error) => {
