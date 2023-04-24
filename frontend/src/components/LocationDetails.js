@@ -27,15 +27,15 @@ export function LocationDetails() {
 
   return (
     <div>
-
       <div>
         <Link to="/findalocation">Back to Find A Location</Link>
       </div>
+
       <div className='div_locationDetails-container' >
         <div className='locationDetails-image'>
           {/* there a bug here if you refresh and it's undefined page will crash */}
           <img
-            src={currentMarker.photos ? currentMarker.photos[0].getUrl() : no_image}
+            src={currentMarker && currentMarker.photos ? currentMarker.photos[0].getUrl() : no_image}
             alt='no picture'
             // width='100%'
             height='100%'
@@ -43,31 +43,12 @@ export function LocationDetails() {
         </div>
         <div className='div_locationDetails-description'>
           <h2>{params.id}</h2>
-          <p>{currentMarker.vicinity}</p>
-          <p>{currentMarker.rating} stars ({currentMarker.user_ratings_total})</p>
-        
+          <p>{currentMarker && currentMarker.vicinity}</p>
+          <p>{currentMarker && currentMarker.rating} stars ({currentMarker && currentMarker.user_ratings_total})</p>
           {console.log('currentMarker', currentMarker)}
 
-          {currentMarker.opening_hours.isOpen() &&
-            <div>
-              <h3>Opening Hours:</h3>
-              <ul>
-
-                {/* {markers.opening_hours.weekday_text.map((day, i) => (
-              <li key={i}>{day}</li>
-            ))}  */}
-
-              </ul>
-
-
-            </div>
-          }
-          {/* <h3>{params.id}</h3>
-          <p>address</p>
-          <p>rating</p> */}
-
-
         </div>
+
         <div className="div_locationDetails-Nav">
           <div className="div_locationDetails-Nav-item">
 
