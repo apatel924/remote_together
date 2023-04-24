@@ -18,7 +18,6 @@ export function MapList() {
       <Link to={result.name} key={index}>
         <div className='div_mapList-locations'>
           <div className='div_mapList-location-image'>
-            {console.log('result', result.photos)}
             <img
               src={result.photos && result.photos[0].getUrl()}
               alt="No Picture"

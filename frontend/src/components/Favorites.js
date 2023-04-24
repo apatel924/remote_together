@@ -8,17 +8,17 @@ import Axios from "axios";
 export function Favorites() {
   // get request to DB for favorites list
 
-  const [favoriteList,setFavoriteList] = useState();
+  const [favoriteList, setFavoriteList] = useState();
 
   // Axios.get('/api/favorites')
   //   .then((response) => {
   //     console.log(response.data.review)
   //     setFavoriteList(response.data.review)
   //   }
-    // .catch((err) => {
-    //   console.log(err.message);
-    // })
-    // )
+  // .catch((err) => {
+  //   console.log(err.message);
+  // })
+  // )
 
   const { markers } = useContext(mapContext)
   const [places, setPlaces] = useState([]);
@@ -26,6 +26,21 @@ export function Favorites() {
   const location = useLocation();
 
   // populate locations saved in DB
+  // AXIOS calls
+  // useEffect(() => {
+  //   Axios.get('/api/favorites')
+  //     .then((response) => {
+  //       console.log('response.data from axios', response.data)
+  //       setTestDB(response.data)
+
+  //       console.log("testDB", testDB)
+  //       console.log("testDB", testDB.favList)
+  //       return response.data
+  //     }).catch((error) => {
+  //       console.error(error);
+  //     })
+  // });
+
 
   const locations = markers.map((result, index) => {
     return (
