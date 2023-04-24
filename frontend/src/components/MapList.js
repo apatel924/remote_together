@@ -4,6 +4,7 @@ import { mapContext } from "../providers/mapProvider";
 import { LocationDetails } from "./LocationDetails";
 import './MapList.css'
 import starbucks from "../docs/starbucks.png";
+import no_image from "../docs/no_image.png"
 
 export function MapList() {
 
@@ -18,9 +19,8 @@ export function MapList() {
       <Link to={result.name} key={index}>
         <div className='div_mapList-locations'>
           <div className='div_mapList-location-image'>
-            {console.log('result', result.photos)}
             <img
-              src={result.photos && result.photos[0].getUrl()}
+              src={result.photos ? result.photos[0].getUrl() : no_image}
               alt="No Picture"
               width="150px"
               height="100%"
@@ -31,7 +31,7 @@ export function MapList() {
               <li key={index} className="MapList_div-styling">
                 <p>{result.name}</p>
                 <p>{result.vicinity}</p>
-                <p>{result.rating} stars</p>
+                <p>{result.rating} stars ({result.user_ratings_total})</p>
               </li>
               <div>
                 distance

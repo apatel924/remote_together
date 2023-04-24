@@ -25,7 +25,7 @@ export default function MapProvider(props) {
   const [searchInput, setSearchInput] = useState(undefined);
   const Navigate = useNavigate();
 
-  console.log(searchInput)
+  // console.log(searchInput)
 
   //handleSearch for search bar
   const handleSearch = () => {
@@ -35,7 +35,7 @@ export default function MapProvider(props) {
       .then((response) => {
         // Handle the response data
         // console.log(response.data.results[0].geometry.location);
-        console.log(response.data)
+        // console.log(response.data)
         // console.log(response.data.results[0].geometry.location.lng)
         // console.log(response.data.results[0].geometry.location.lat)
         // Update the UI with the search results
@@ -43,7 +43,7 @@ export default function MapProvider(props) {
         // and use it in UI components
         if (response.data.results.length > 0) {
           setSearchInput(response.data.results[0].geometry.location)
-          console.log('state after axios', searchInput)
+          // console.log('state after axios', searchInput)
           Navigate('/findalocation')
         }
       })
