@@ -68,13 +68,15 @@ App.get('/api', (req, res) => {
 // });
 
 // GET REQUEST FOR FAVOURITES
-App.get('/api/favorites', (req, res) => {
-  const query = `SELECT * FROM favorite`;
+App.get('/api/fav123', (req, res) => {
+  const query = `SELECT * FROM favorite_list`;
   console.log(query);
   db.query(query)
     .then(data => {
+      // console.log('data', data)
+      // res.send('hello')
       const favorites = data.rows;
-      res.json({ favorites });
+      res.send(favorites);
     })
     .catch(err => {
       res
