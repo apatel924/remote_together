@@ -42,6 +42,7 @@ CREATE TABLE chats (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
+  
 );
 
 CREATE TABLE chat_messages (
@@ -49,5 +50,6 @@ CREATE TABLE chat_messages (
   chat_id INTEGER NOT NULL REFERENCES chats(id),
   username VARCHAR(50) NOT NULL,
   message TEXT NOT NULL,
-  timestamp TIMESTAMP NOT NULL
+  timestamp TIMESTAMP DEFAULT NOW(),
+  created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW()
 );

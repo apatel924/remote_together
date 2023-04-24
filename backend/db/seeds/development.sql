@@ -11,3 +11,4 @@ INSERT INTO review (username, review_comment, review_rating) VALUES ('greg', 'do
 
 -- FAVORITE SEEDS
 INSERT INTO favorite_list(favorite_business, title) VALUES ('abc coffee shop', 'title?')
+
