@@ -28,7 +28,7 @@ import { Logout } from './components/Logout'
 
 import Chat from "./components/Chat";
 import './index.css';
-
+import Navbar from "./components/Navbar";
 
 
 const Search = () => {
@@ -44,51 +44,14 @@ const Search = () => {
   return (
 
     <CounterProvider>
-      <div>
+      <div className="bg-gradient-to-r from-cyan-500 to-blue-500">
         <img />
-        <h1 className="font-bold italic p-8 flex justify-start">
+        <h1 className="font-bold italic p-8 flex justify-start ">
           <Link to="/">RemoteTogether</Link>
         </h1>
-        <nav className="divinner" id="nav-bar">
-          <div className="text-gray-400 flex flex-row gap-10 justify-center">
-         <h2 className="font-bold flex justify-start"> <Link to="/">RemoteTogether</Link> </h2>
-            <h3  ><Link to="/findalocation">Find a Location</Link></h3>
-            <h3  ><Link to="/addreview">Add Review</Link></h3>
-            <h3 ><Link to="/Favorites">Favorites</Link></h3>
-            {location.pathname === '/' ?
-              null
-              :
-              <h3 className="placeholderlink">
-
-                <TextField
-                  color="primary"
-                  variant="outlined"
-                  type="search"
-                  label="Find Workspace In"
-                  size="medium"
-                  onChange={(e) => setSearchInput(e.target.value)}
-                />
-                <Button
-                  variant="contained"
-                  name="SearchButton"
-                  color="primary"
-                  size="large"
-                  onClick={handleSearch}
-                >
-                  Search
-                </Button>
-              </h3>
-            }
-          </div>
-          <div className="divmenu-wrapper-secondary" id="chat-login">
-            <Button className="contact-us" variant="outlined" color="primary">
-              <Link to="/chat">Start Chat</Link>
-            </Button>
-            {!auth && <h3 className="member-log-in"><Link to="/Login">Member Log In</Link></h3>}
-            {auth && <Logout />}
-          </div>
-        </nav>
+        <Navbar />
         <div>
+          
           {location.pathname === '/' ?
             <Home />
             :
@@ -120,11 +83,13 @@ const Search = () => {
                   <Map />
                 </div>
                 )}
+                
               </div>
             </div>
           }
         </div>
       </div>
+     
     </CounterProvider>
   );
 };

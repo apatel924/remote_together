@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .test {
-  background-color: blue;
-} */
+body {
+  background-image: linear-gradient(to right, rgba(0, 119, 255, 0.729) , rgba(0, 128, 0, 0.637));
+}

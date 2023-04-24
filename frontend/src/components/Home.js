@@ -4,6 +4,7 @@ import Axios from 'axios';
 import { mapContext } from "../providers/mapProvider";
 
 import LHL from "../docs/LHL.jpeg"
+import { Container } from 'postcss';
 
 export default function Home() {
   // const [searchInput, setSearchInput] = useState("");
@@ -15,37 +16,26 @@ export default function Home() {
   } = useContext(mapContext)
 
   return (
-    <div className="sectionhome-hero-section">
-      <img
+    <container className="container mx-auto md:w-full h-screen flex justify-center bg-gradient-to-r ">
+      {/* <img
         className="divglide-container-icon"
         alt=""
         src={LHL}
-      />
-      <div className="divhome-hero-left-container" id="searchandtext">
-        <div className="divray-show-tablet">
-          <div className="h1ray-text-h1">
-            <h2 className="for-all-the-container" id="search-heading">
-              <span className="for-all-the-container1">
-                <p className="for-all-the">For all the ways you</p>
-                <p className="for-all-the">work, we’re here</p>
-              </span>
-            </h2>
-          </div>
-          <div className="pray-text-body">
-            <p className="find-a-location1" id="search-p">
-              Find a location near you. Explore memberships and
+      /> */}
+      <div>
+        <div>
+          
+          <div className="p-40 flex justify-center">
+            <p className="find-a-location1">
+              Find a location near you. 
             </p>
-            <div className="move-in-ready-offices">
-              move-in ready offices for individuals or companies
+            
             </div>
-            <p className="of-all-sizes" id="search-p">
-              of all sizes.
-            </p>
-          </div>
+            
         </div>
         <div className="formhero-form">
           <TextField
-            className="divlocations-dropdown-select-"
+            className="divlocations-dropdown-select- flex justify-center"
             sx={{ width: 387.9800109863281 }}
             color="primary"
             variant="outlined"
@@ -72,7 +62,7 @@ export default function Home() {
         </div>
 
       </div>
-    </div>
+    </container>
 
   )
 }
