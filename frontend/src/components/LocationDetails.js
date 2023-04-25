@@ -5,6 +5,9 @@ import './LocationDetails.css'
 import { mapContext } from "../providers/mapProvider";
 import { LocationDetailsReviews } from "./LocationDetailsReviews";
 import { LocationDetailsOverview } from "./LocationDetailsOverview"
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import axios from 'axios';
+
 
 import office from "../docs/office.jpeg";
 import starbucks from "../docs/starbucks.png";
@@ -14,13 +17,28 @@ import no_image from "../docs/no_image.png"
 export function LocationDetails() {
 
   const { markers, selectedMarker, getPlaceDetails, placesService } = useContext(mapContext)
-
+  const [isFavorite, setIsFavorite] = useState(false);
   const params = useParams()
   const location = useLocation();
   console.log(location)
 
   const [select, setSelect] = useState('Overview');
   const [selectedPlaceDetails, setSelectedPlaceDetails] = useState(null);
+  
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
+
+    axios.post('/api/favorites', {
+      place_id: currentMarker.place_id,
+      is_favorite: !isFavorite,
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });    
+  };
 
   const currentMarker = markers.find(marker =>
     (marker.name === params.id))
@@ -50,6 +68,13 @@ export function LocationDetails() {
         </div>
 
         <div className="div_locationDetails-Nav">
+          <div>
+          {isFavorite ? (
+              <AiFillHeart size={24} onClick={handleFavoriteClick} />
+            ) : (
+              <AiOutlineHeart size={24} onClick={handleFavoriteClick} />
+          )}
+          </div>
           <div className="div_locationDetails-Nav-item">
 
             <button type="button" onClick={() => { setSelect('Overview') }}>Overview</button>
@@ -66,11 +91,6 @@ export function LocationDetails() {
           {/* using setState to conditionally render */}
           {select === 'Overview' && <LocationDetailsOverview placeDetails={selectedPlaceDetails} />}
           {select === 'Reviews' && <LocationDetailsReviews />}
-
-
-
-
-
         </div>
       </div>
 

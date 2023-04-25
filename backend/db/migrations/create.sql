@@ -31,13 +31,13 @@ CREATE TABLE review (
 
 CREATE TABLE favorite_list (
     id SERIAL PRIMARY KEY,
-    business_name VARCHAR(255) ,
-    business_id INTEGER REFERENCES business(id),
+    business_name VARCHAR(255),
+    place_id VARCHAR(255),
     user_id INTEGER REFERENCES users(id),
     title VARCHAR(255),
-    place_id VARCHAR(255),
     vicinity VARCHAR(255),
-    rating INT
+    rating INT,
+    UNIQUE (place_id, user_id)
 );
 
 CREATE TABLE chats (
