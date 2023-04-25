@@ -8,3 +8,15 @@
 body {
   background-image: linear-gradient(to right, rgba(0, 119, 255, 0.729) , rgba(0, 128, 0, 0.637));
 }
+
+@layer components {
+  .middleBar-icon {
+    @apply relative flex items-center justify-center 
+    h-12 w-12 mt-2 mb-2 mx-auto  
+    bg-white hover:bg-blue-600 
+    text-black hover:text-white
+    hover:rounded-xl rounded-3xl
+    transition-all duration-300 ease-linear
+    cursor-pointer shadow-lg ;
+  }
+}
