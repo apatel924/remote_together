@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { mapContext } from "../providers/mapProvider";
 import './MapList.css';
 import Axios from "axios";
+import no_image from "../docs/no_image.png"
 
 export function Favorites() {
   // get request to DB for favorites list

@@ -1,0 +1,35 @@
+.locationDetails_main-container-wrapper {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.locationDetails_main-container-upper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 3rem
+  /* border: 1px solid black; */
+}
+
+.locationDetails_main-container-upper-item{
+  padding-left:2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.locationDetails_main-container-lower {
+  display: flex;
+  flex-direction: column;
+  padding-left:2rem;
+  /* justify-content: center; */
+  /* border: 1px solid black; */
+}
+
+.locationDetails_main-container-lower-item{
+  padding-left:2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

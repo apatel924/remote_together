@@ -11,6 +11,7 @@ import axios from 'axios';
 
 import office from "../docs/office.jpeg";
 import starbucks from "../docs/starbucks.png";
+import no_image from "../docs/no_image.png"
 
 
 export function LocationDetails() {
@@ -44,51 +45,28 @@ export function LocationDetails() {
 
   return (
     <div>
-
       <div>
-        <Link to="/findalocation">go back</Link>
+        <Link to="/findalocation">Back to Find A Location</Link>
       </div>
+
       <div className='div_locationDetails-container' >
         <div className='locationDetails-image'>
-          {/* <img
-            src={starbucks}
-            width='100%'
-            height="200"
-          /> */}
-          {currentMarker.photos &&
-            <img
-              src={currentMarker.photos[0].getUrl()}
-              alt={currentMarker.name}
-              width='100%'
-              height='150px'
-            />
-          }
+          {/* there a bug here if you refresh and it's undefined page will crash */}
+          <img
+            src={currentMarker && currentMarker.photos ? currentMarker.photos[0].getUrl() : no_image}
+            alt='no picture'
+            // width='100%'
+            height='100%'
+          />
         </div>
         <div className='div_locationDetails-description'>
           <h2>{params.id}</h2>
-          <p>{currentMarker.vicinity}</p>
+          <p>{currentMarker && currentMarker.vicinity}</p>
+          <p>{currentMarker && currentMarker.rating} stars ({currentMarker && currentMarker.user_ratings_total})</p>
           {console.log('currentMarker', currentMarker)}
-          
-          {currentMarker.opening_hours.isOpen() &&
-            <div>
-              <h3>Opening Hours:</h3>
-              <ul>
-
-                {/* {markers.opening_hours.weekday_text.map((day, i) => (
-              <li key={i}>{day}</li>
-            ))}  */}
-
-              </ul>
-
-
-            </div>
-          }
-          {/* <h3>{params.id}</h3>
-          <p>address</p>
-          <p>rating</p> */}
-
 
         </div>
+
         <div className="div_locationDetails-Nav">
           <div>
           {isFavorite ? (
