@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Chat.css";
 import Axios from 'axios';
 import socketIOClient from "socket.io-client";
+import { AuthContext } from "../providers/authProvider";
+import { useContext } from "react";
 
 const ENDPOINT = "http://localhost:3001";
 
@@ -12,13 +14,15 @@ const Chat = () => {
   const [chatHistories, setChatHistories] = useState({});
   const [chats, setChats] = useState([]);
   const [selectedChat, setSelectedChat] = useState(null);
-  
+  const { auth, user } = useContext(AuthContext)
+  // const [chatTitle, setChatTitle] = useState('')
+
   useEffect(() => {
     if (socket) return;
-  
+
     const newSocket = socketIOClient(ENDPOINT);
     setSocket(newSocket);
-  
+
     const fetchChats = async () => {
       try {
         const response = await Axios.get("/api/chats");
@@ -27,9 +31,9 @@ const Chat = () => {
         console.error(err.message);
       }
     };
-  
+
     fetchChats();
-  
+
     return () => {
       newSocket.disconnect();
     };
@@ -37,7 +41,7 @@ const Chat = () => {
 
   useEffect(() => {
     if (!socket) return;
-  
+
     socket.on("chat message", (msg) => {
       if (msg.chatId === selectedChat) {
         setChatHistories((prevHistories) => ({
@@ -46,7 +50,7 @@ const Chat = () => {
         }));
       }
     });
-  
+
     return () => {
       socket.off("chat message");
     };
@@ -82,12 +86,14 @@ const Chat = () => {
   };
 
   const handleSelectChat = (chatId) => {
+    // add here
+    // setChatTitle(chatId)
     setSelectedChat(chatId);
   };
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await Axios.post(`/api/chat/${selectedChat}/message`, { username: 'YourUsername', message });
       const chatMessage = response.data.chatMessage;
@@ -101,11 +107,12 @@ const Chat = () => {
       console.error(err.message);
     }
   };
-  
-  
+
+
   return (
     <div className="chat-container">
       <div className="chat-left-sidebar">
+        <div className="chat-left-header"> Chats</div>
         <form onSubmit={handleCreateChat}>
           <input
             type="text"
@@ -126,12 +133,13 @@ const Chat = () => {
         ))}
       </div>
       <div className="chat-main">
+        {/* <div className="chat-left-header"> {chatTitle} </div> */}
         {selectedChat && (
           <>
             <div className="chat-history">
               {(chatHistories[selectedChat] || []).map((msg, index) => (
                 <div key={index} className="message">
-                  {msg.message}
+                  <img className='div_chat-image' src={msg.image} ></img>{msg.message}
                 </div>
               ))}
             </div>
