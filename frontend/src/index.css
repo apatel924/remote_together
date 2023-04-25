@@ -1,3 +1,6 @@
+@import './styles/Search.css';
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
