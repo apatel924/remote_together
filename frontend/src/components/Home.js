@@ -25,7 +25,7 @@ export default function Home() {
       <div>
         <div>
           
-          <div className="p-40 flex justify-center">
+          <div className="p-40 flex justify-center font-bold">
             <p className="find-a-location1">
               Find a location near you. 
             </p>
