@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom"
 import AuthProvider, { AuthContext } from "./providers/authProvider";
 import { LoadScriptNext } from '@react-google-maps/api';
 import MapProvider from './providers/mapProvider';
+import './index.css';
 
 const googleMapsLibraries = ['places']
 
