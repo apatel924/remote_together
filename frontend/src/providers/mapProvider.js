@@ -106,7 +106,7 @@ export default function MapProvider(props) {
           const uniqueResults = results.filter((result) => !existingPlaceIds.has(result.place_id));
 
           // Filter the markers to only show the ones within the current map bounds
-          const filteredMarkers = prevMarkers.filter((marker) => currentBounds.contains(marker.geometry.location));
+          const filteredMarkers = prevMarkers.filter((marker) => currentBounds && currentBounds.contains(marker.geometry.location));
           // Add the new markers to the filteredMarkers array
           const newMarkers = uniqueResults.map((result) => ({ ...result, visible: false }));
           return [...filteredMarkers, ...newMarkers];

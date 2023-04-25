@@ -19,7 +19,7 @@ export function LocationDetailsReviews() {
 
   // review rating  description
   const [reviews, setReviews] = useState([])
-  const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState('')
   const [description, setDescription] = useState('')
   const [editId, setEditId] = useState(0);
   const [like, setLike] = useState(0)
