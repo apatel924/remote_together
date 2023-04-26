@@ -25,7 +25,7 @@ CREATE TABLE review (
   user_id INTEGER REFERENCES users(id),
   business_id INTEGER REFERENCES business(id),
   username varchar(50) not null,
-  review_comment VARCHAR(50) not null,
+  review_comment VARCHAR(255) not null,
   review_rating INT not null
 );
 

@@ -21,24 +21,20 @@ export function LocationDetailsOverview() {
       flex flex-row
       text-white 
       shadow-lg
-      py-6">
+      py-6
+      rounded-xl
+      ">
         <MiddleBarIcon icon={<FiMap size="24" />} text="Direction" />
         <MiddleBarIcon icon={<BsFillTelephoneForwardFill size="26"/>} text="Phone" />
         <MiddleBarIcon icon={<BsSave size="24" />} text="Save"/>
         <MiddleBarIcon icon={<FiShare2 size="24" />} text="Share" />
 
       </div>
-      {/* <div className="flex flex-row">
-        Direction
-        Save
-        Send to phone
-        Share
-      </div> */}
-      <div className='locationDetails_main-container-lower-item'>
-        ⌚︎ Open - Closes 8:30p.m.
+      <div className='locationDetails_main-container-lower-item pt-10'>
+        ⌚︎ Open 9:00a.m. - Closes 9:00p.m.
       </div>
-      <div className='locationDetails_main-container-lower-item'>
-        🌏 www.starbucks.ca
+      <div className='locationDetails_main-container-lower-item py-2'>
+        🌏 https://www.vpl.ca
       </div>
       <div className='locationDetails_main-container-lower-item'>
         ☎️ (780) 904-5793

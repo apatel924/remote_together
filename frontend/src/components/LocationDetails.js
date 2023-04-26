@@ -5,7 +5,7 @@ import "./LocationDetails.css";
 import { mapContext } from "../providers/mapProvider";
 import { LocationDetailsReviews } from "./LocationDetailsReviews";
 import { LocationDetailsOverview } from "./LocationDetailsOverview";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart, AiOutlineArrowLeft } from "react-icons/ai";
 import axios from "axios";
 
 import office from "../docs/office.jpeg";
@@ -42,9 +42,11 @@ export function LocationDetails() {
   const currentMarker = markers.find((marker) => marker.name === params.id);
 
   return (
-    <div>
-      <div>
-        <Link to="/findalocation">Back to Find A Location</Link>
+    <div className="pt-2">
+      <div className="relative flex flex-row items-center justify-center mx-10 w-20 h-10 bg-slate-100 hover:bg-slate-200 rounded-xl
+    transition-all duration-300 ease-linear">
+      <AiOutlineArrowLeft/>
+        <Link to="/findalocation"> Back</Link>
       </div>
 
       <div className="div_locationDetails-container flex items-center place-content-center">
@@ -82,7 +84,7 @@ export function LocationDetails() {
           </div>
           <div>
             <button
-              className="mx-20"
+              className="mx-20 text-lg"
               type="button"
               onClick={() => {
                 setSelect("Overview");
@@ -93,13 +95,13 @@ export function LocationDetails() {
           </div>
           <div>
             <button
-              className="mx-20"
+              className="mx-20 text-lg"
               type="button"
               onClick={() => {
                 setSelect("Reviews");
               }}
             >
-              Review
+              Reviews
             </button>
           </div>
         </div>
