@@ -1,34 +1,27 @@
-
-import { React, useState, useEffect, useContext } from 'react';
-import axios from 'axios'
-import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
-import { FormControl, Button } from '@mui/material';
-import { AuthContext } from '../providers/authProvider'
-import './Buttons.css'
-import { counterContext } from '../providers/CounterProvider';
-
-
-
+import { React, useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { FormControl, Button } from "@mui/material";
+import { AuthContext } from "../providers/authProvider";
+import "./Buttons.css";
+import { counterContext } from "../providers/CounterProvider";
 
 export function LocationDetailsReviews() {
-
-  const { auth, user } = useContext(AuthContext)
-  const { id } = useParams()
+  const { auth, user } = useContext(AuthContext);
+  const { id } = useParams();
   // const history = useHistory()
 
   // review rating  description
-  const [reviews, setReviews] = useState([])
-  const [rating, setRating] = useState('')
-  const [description, setDescription] = useState('')
+  const [reviews, setReviews] = useState([]);
+  const [rating, setRating] = useState("");
+  const [description, setDescription] = useState("");
   const [editId, setEditId] = useState(0);
-  const [like, setLike] = useState(0)
-  const [dislike, setDislike] = useState(0)
-  const [likeActive, setLikeActive] = useState(false)
-  const [dislikeActive, setDislikeActive] = useState(false)
-  console.log('state reviews', reviews);
-
-
+  const [like, setLike] = useState(0);
+  const [dislike, setDislike] = useState(0);
+  const [likeActive, setLikeActive] = useState(false);
+  const [dislikeActive, setDislikeActive] = useState(false);
+  console.log("state reviews", reviews);
 
   // console.log('user from locations', user)
   // useEffect(() => {
@@ -60,17 +53,18 @@ export function LocationDetailsReviews() {
 
   useEffect(() => {
     const getSingleLocationData = () => {
-      axios.get('../api/review')
+      axios
+        .get("../api/review")
         .then((response) => {
-          console.log('response', response);
-          const reviewsWithLikes = response.data.review.map(review => ({
+          console.log("response", response);
+          const reviewsWithLikes = response.data.review.map((review) => ({
             ...review,
             like: Number(0),
             dislike: Number(0),
             likeActive: false,
             dislikeActive: false,
           }));
-          console.log('reviewsWithLikes', reviewsWithLikes)
+          console.log("reviewsWithLikes", reviewsWithLikes);
           setReviews(reviewsWithLikes);
         })
         .catch((error) => {
@@ -80,36 +74,36 @@ export function LocationDetailsReviews() {
     getSingleLocationData();
   }, []);
 
-  function likes(review) {
-    if (review.likeActive) {
-      review.likeActive = false;
-      review.like--;
-      // so we access the object, check if user has interacted with it or not then change it
-    } else {
-      review.likeActive = true;
-      review.like++;
-      // need to make it so the user is able to un-dislike a review as well since that would be incrementing it back up
-      if (review.dislikeActive) {
-        review.dislikeActive = false;
-        review.dislike--;
-      }
-    }
-  }
+  // function likes(review) {
+  //   if (review.likeActive) {
+  //     review.likeActive = false;
+  //     review.like--;
+  // so we access the object, check if user has interacted with it or not then change it
+  // } else {
+  //   review.likeActive = true;
+  //   review.like++;
+  // need to make it so the user is able to un-dislike a review as well since that would be incrementing it back up
+  //     if (review.dislikeActive) {
+  //       review.dislikeActive = false;
+  //       review.dislike--;
+  //     }
+  //   }
+  // }
 
   //dislikes would be opposite?
-  function dislikes(review) {
-    if (review.dislikeActive) {
-      review.dislikeActive = false;
-      review.dislike--;
-    } else {
-      review.dislikeActive = true;
-      review.dislike++;
-      if (review.likeActive) {
-        review.likeActive = false;
-        review.like--;
-      }
-    }
-  }
+  // function dislikes(review) {
+  //   if (review.dislikeActive) {
+  //     review.dislikeActive = false;
+  //     review.dislike--;
+  //   } else {
+  //     review.dislikeActive = true;
+  //     review.dislike++;
+  //     if (review.likeActive) {
+  //       review.likeActive = false;
+  //       review.like--;
+  //     }
+  //   }
+  // }
 
   // need function for likes and dislikes
   // likes needs to take review as the parameter then increment it
@@ -125,66 +119,59 @@ export function LocationDetailsReviews() {
   // the likes and dislike how to change these to save... so i want to change the properties of the review object
   // need to make sure the likeActive and dislikeActive are working with the likes and then increment the likes and dislikes?
 
-
-
   // BEFORE ASHISH CHANGES
-  //   function likes() {
-  //     if (likeActive) {
-  //       setLikeActive(false)
-  //       setLike(like-1)
-  //     }else{
-  //     setLikeActive(true)
-  //    setLike(like+1)
-  //   //  if(dislikeActive) {
-  //    //   setDislikeActive(false)
-  //   //    setLike(like+1)
-  //      // setDislike(dislike-1)
-  //   //  }
-  //   }
-  // }
+  function likes() {
+    if (likeActive) {
+      setLikeActive(false);
+      setLike(like - 1);
+    } else {
+      setLikeActive(true);
+      setLike(like + 1);
+      //  if(dislikeActive) {
+      //   setDislikeActive(false)
+      //    setLike(like+1)
+      // setDislike(dislike-1)
+      //  }
+    }
+  }
 
-
-  // function dislikes() {
-  //   if(dislikeActive) {
-  //     setDislikeActive(false)
-  //     setDislike(dislike-1)
-  //   }else{
-  //     setDislikeActive(true)
-  //     setDislike(dislike+1)
-  //   //  if(likeActive){
-  //    //   setLikeActive(false)
-  //    //   setDislike(dislike+1)
-  //      // setLike(like-1)
-  //     }
-  //   //}
-  // }
+  function dislikes() {
+    if (dislikeActive) {
+      setDislikeActive(false);
+      setDislike(dislike - 1);
+    } else {
+      setDislikeActive(true);
+      setDislike(dislike + 1);
+      //  if(likeActive){
+      //   setLikeActive(false)
+      //   setDislike(dislike+1)
+      // setLike(like-1)
+    }
+    //}
+  }
 
   //////////////////////////////////////////
 
   // to add review
   // there is a bug when adding a non number into the review_rating will send back a unresolved promise crashing the site
   const addReviewHandler = async (e) => {
-
-    e.preventDefault()
+    e.preventDefault();
     // console.log('this function hits');
     let review = {
       review_rating: rating,
       review_comment: description,
       username: user,
-    }
+    };
     // let reviewJSON = JSON.stringify(review);
     // console.log('review', review);
-    axios.post(`/api/review`, review)
-      .then((result) => {
-        //const reversed = result.reverse();
-        //console.log('reversed:', reversed);
-        // console.log('response', result);
-        const lastReview = result.data;
-        setReviews(prev => [
-          lastReview, ...prev
-        ])
-      });
-  }
+    axios.post(`/api/review`, review).then((result) => {
+      //const reversed = result.reverse();
+      //console.log('reversed:', reversed);
+      // console.log('response', result);
+      const lastReview = result.data;
+      setReviews((prev) => [lastReview, ...prev]);
+    });
+  };
 
   // Function to handle delete review
   //  const deleteReviewHandler = async (reviewId, username) => {
@@ -208,32 +195,29 @@ export function LocationDetailsReviews() {
   // }
   //need to implement logic so it only allows them to delete their own review
 
-
-  const deleteReviewHandler = (index) => { // Declare a function called deleteReviewHandler that takes an index parameter as input
-    console.log('reviews.username', reviews[0].username)
-    console.log('reviews.id', reviews[0].id)
-    console.log('user', user)
+  const deleteReviewHandler = (index) => {
+    // Declare a function called deleteReviewHandler that takes an index parameter as input
+    console.log("reviews.username", reviews[0].username);
+    console.log("reviews.id", reviews[0].id);
+    console.log("user", user);
     if (user === reviews[0].username) {
-      console.log('inside conditional')
+      console.log("inside conditional");
       // console.log('user', user);
       // console.log('review', review);
       // console.log('review.username', review.username);
-      // console.log('review.username.user', review.username.user); 
+      // console.log('review.username.user', review.username.user);
       let newReview = reviews; // Create a new variable called newReview and assign it the value of the reviews array. This creates a copy of the original reviews array.
       newReview.splice(index, 1); // Use the splice method to remove one element from the newReview array at the specified index. The 1 indicates the number of elements to be removed.
       setReviews([...newReview]); // Call the setReviews function to update the state with the new newReview array. The spread syntax [...newReview] is used to create a new array with the same elements as newReview, effectively making a shallow copy of newReview to trigger a state update.
     }
-  }
-
-
-
+  };
 
   //edit review
-  const editReviewHandler = (index) => {
-    let editReview = reviews.find((i) => i.index === index);
-    setReviews(editReview.review);
-    setEditId(index);
-  }
+  // const editReviewHandler = (index) => {
+  //   let editReview = reviews.find((i) => i.index === index);
+  //   setReviews(editReview.review);
+  //   setEditId(index);
+  // }
 
   // BEFORE ASHISH CHANGES
   //   function likes() {
@@ -251,7 +235,6 @@ export function LocationDetailsReviews() {
   //   }
   // }
 
-
   // function dislikes() {
   //   if(dislikeActive) {
   //     setDislikeActive(false)
@@ -267,34 +250,35 @@ export function LocationDetailsReviews() {
   //   //}
   // }
 
-
-
   return (
-    <div>
-      <h2 className='text-center'>Add Review</h2>
+    <div className="flex flex-col">
+      <h2 className="text-center font-bold">Add Review</h2>
       <hr />
       <form onSubmit={addReviewHandler}>
-        <div >
+        <div>
           <label>Rating</label>
           <textarea
             value={rating}
-            id={'rating'}
+            id={"rating"}
             onChange={(e) => setRating(e.target.value)}
             type="number"
-          >
-          </textarea>
+          ></textarea>
         </div>
 
-        <div >
+        <div>
           <label>Description</label>
           <textarea
             value={description}
-            id={'description'}
+            id={"description"}
             onChange={(e) => setDescription(e.target.value)}
-          >
-          </textarea>
+          ></textarea>
         </div>
-        <button variant="primary" type="submit">
+        <button
+          className="relative flex flex-row items-center justify-center mx-10 w-20 h-14 bg-slate-100 hover:bg-slate-200 rounded-xl
+    transition-all duration-300 ease-linear"
+          variant="primary"
+          type="submit"
+        >
           Add Review
         </button>
       </form>
@@ -306,7 +290,7 @@ export function LocationDetailsReviews() {
       {reviews.length > 0 ? (
         reviews.map((review, index) => {
           return (
-            <div className="div_mapList-locations" key={index}>
+            <div className="div_mapList-locations div_mapList-locations mb-6 mt-4 mx-10  border-2 border-slate-200 rounded-md ring-2 ring-slate-200 hover:ring-8" key={index}>
               <li className="MapList_div-styling">
                 <p>Username: {review.username}</p>
                 <p>Rating: {review.review_rating}</p>
@@ -321,23 +305,24 @@ export function LocationDetailsReviews() {
                 {auth && user === review.username && (
                   <>
                     <button onClick={() => deleteReviewHandler(index)}>
-                      Delete Review
+                      Delete
                     </button>
-                    <button onClick={() => editReviewHandler(index)}>
-                      Edit Review
-                    </button>
+                    {/* <button onClick={() => editReviewHandler(index)}> */}
+                    <button>Edit</button>
                   </>
                 )}
-                  <button onClick={() => likes(review)}> Like{review.like}</button>
-                  <button onClick={() => dislikes(review)}> Dislike{review.dislike}</button>
+                <button onClick={() => likes()}> Like{like}</button>
+                <button onClick={() => dislikes()}> Dislike{dislike}</button>
               </li>
               {/* {console.log('likes', like)}
             {console.log('review json', review)} */}
             </div>
             // <p key={review.id}>Username:{review.username} <br /> Rating: {review.review_rating} <br /> {review.review_comment} <br /> </p>
-          )
+          );
         })
-      ) : (<p> No reviews for this location </p>)}
+      ) : (
+        <p> No reviews for this location </p>
+      )}
     </div>
-  )
+  );
 }

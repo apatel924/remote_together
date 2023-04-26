@@ -12,11 +12,12 @@
 @layer components {
   .middleBar-icon {
     @apply relative flex items-center justify-center 
-    h-12 w-12 mt-2 mb-2 mx-auto  
-    bg-white hover:bg-blue-600 
-    text-black hover:text-white
+    h-20 w-20 mt-2 mb-2 mx-10  
+    bg-white 
+    text-black
     hover:rounded-xl rounded-3xl
     transition-all duration-300 ease-linear
-    cursor-pointer shadow-lg ;
+    cursor-pointer shadow-lg 
+    hover:bg-slate-200;
   }
 }
