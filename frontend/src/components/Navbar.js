@@ -17,7 +17,7 @@ export default function Navbar() {
       <div className="text-gray-200 flex flex-row items-center place-content-center gap-16 h-24 font-bold rounded-none">
         <h2 >
           {" "}
-          <Link to="/">RemoteTogether</Link>{" "}
+          <Link to="/">Remote<span className="italic">Together</span></Link>{" "}
         </h2>
         <h3 >
           <Link to="/findalocation">Find a Location</Link>
