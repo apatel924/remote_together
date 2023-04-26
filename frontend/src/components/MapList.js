@@ -1,67 +1,56 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, Route, Routes, useLocation } from "react-router-dom"
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 import { mapContext } from "../providers/mapProvider";
 import { LocationDetails } from "./LocationDetails";
-import './MapList.css'
+import "./MapList.css";
 import starbucks from "../docs/starbucks.png";
-import no_image from "../docs/no_image.png"
+import no_image from "../docs/no_image.png";
 
 export function MapList() {
-
-
-  const { markers} = useContext(mapContext)
+  const { markers } = useContext(mapContext);
   const [places, setPlaces] = useState([]);
 
   const location = useLocation();
   const locations = markers.map((result, index) => {
-
     return (
       <Link to={result.name} key={index}>
-        <div className='div_mapList-locations'>
-          <div className='div_mapList-location-image'>
+        <div className="div_mapList-locations mb-6 mt-4 mx-10  border-2 border-slate-200 rounded-md ring-2 ring-slate-200 hover:ring-8">
+          <div className="div_mapList-location-image">
             <img
+              className="rounded-md"
               src={result.photos ? result.photos[0].getUrl() : no_image}
               alt="No Picture"
               width="150px"
               height="100%"
             />
           </div>
-          <div className='div_mapList-location-description'>
-            <div className='div_mapList-location-description-splitdiv'>
+          <div className="div_mapList-location-description">
+            <div className="div_mapList-location-description-splitdiv">
               <li key={index} className="MapList_div-styling">
-                <p>{result.name}</p>
+                <p className="font-bold">{result.name}</p>
                 <p>{result.vicinity}</p>
-                <p>{result.rating} stars ({result.user_ratings_total})</p>
+                <p>
+                  {result.rating} stars ({result.user_ratings_total})
+                </p>
               </li>
-              <div>
-                distance
-              </div>
             </div>
           </div>
         </div>
       </Link>
-    )
-  })
+    );
+  });
   return (
     <div>
       {/* <div className='div_MapList-search'>
         need a search function here
       </div> */}
       <div>
-        {location.pathname === "/findalocation" ?
-          <ul className="div_MapList-ul-itemList">
-            {locations}
-          </ul>
-          : null
-        }
+        {location.pathname === "/findalocation" ? (
+          <ul className="div_MapList-ul-itemList">{locations}</ul>
+        ) : null}
 
-        <Routes>
-          <Route path=":id/*" element={<LocationDetails />} />
-          {/* <Route path=":id/review" element={<LocationDetailsReviews />} /> */}
-        </Routes>
+        
       </div>
     </div>
-
-
   );
 }

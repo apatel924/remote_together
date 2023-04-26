@@ -38,12 +38,15 @@ const Map = () => {
  // Render the Google Map component with markers and an InfoWindow for the selected marker
  return (
   //  <LoadScriptNext googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={googleMapsLibraries}>
+    
      <GoogleMap
+     
        mapContainerStyle={mapContainerStyle}
        center={center}
        zoom={14}
        onLoad={onLoad}
      >
+     
        <MarkerClusterer>
          {(clusterer) =>
            markers.map((marker) => (
@@ -56,7 +59,7 @@ const Map = () => {
            ))
          }
        </MarkerClusterer>
-
+    
 
        {/* Show an InfoWindow for the selected marker */}
        {selectedMarker && selectedPlaceDetails && (
@@ -74,8 +77,11 @@ const Map = () => {
          </InfoWindow>
        )}
      </GoogleMap>
+    
   //  </LoadScriptNext>
+
  );
+
 };
 
 

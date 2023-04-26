@@ -1,55 +1,57 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from "react";
 import { Button, TextField } from "@mui/material";
-import Axios from 'axios';
+import Axios from "axios";
 import { mapContext } from "../providers/mapProvider";
 
-import LHL from "../docs/LHL.jpeg"
-import { Container } from 'postcss';
+import LHL from "../docs/LHL.jpeg";
+// import { Container } from "postcss";
 
 export default function Home() {
   // const [searchInput, setSearchInput] = useState("");
-  
-  const {   
-    handleSearch,
-    searchInput,
-    setSearchInput
-  } = useContext(mapContext)
+
+  const { handleSearch, searchInput, setSearchInput } = useContext(mapContext);
 
   return (
-    <container className="container mx-auto md:w-full h-screen flex justify-center bg-gradient-to-r ">
-      {/* <img
-        className="divglide-container-icon"
-        alt=""
-        src={LHL}
-      /> */}
-      <div>
+    <div className="relative">
+      <div className="text-right" id="img">
+        <img
+          className="divglide-container-icon static w-8/12 ml-96 rounded-xl"
+          alt=""
+          src={LHL}
+        />
+      </div>
+      <div className="w-1/3 h-96 ml-20 absolute top-24 bg-white rounded-xl">
         <div>
-          
-          <div className="p-40 flex justify-center font-bold">
-            <p className="find-a-location1">
-              Find a location near you. 
+          <div className="p-4 flex flex-col items-center place-content-center justify-center">
+            <p className="font-bold text-4xl tracking-wide leading-tight">
+              {/* For all the ways you work, we're here  */}
+              Making remote life better, together            
+              </p>
+            
+             <p className="mt-4 "> 
+              {/* Find a location near you. Explore memberships and move-in ready
+              offices for individuals or companies of all sizes. */}
+              Discover the perfect remote work or study spot with ease. 
+              From cozy coffee shops to serene libraries and more, find the ideal environment that meets your needs. 
             </p>
-            
-            </div>
-            
-        </div>
-        <div className="formhero-form">
+            <div className="p-4 flex flex-col items-center place-content-center justify-center">
+              <div className="mb-2">
           <TextField
-            className="divlocations-dropdown-select- flex justify-center"
+            className="divlocations-dropdown-select- flex justify-center m-10"
             sx={{ width: 387.9800109863281 }}
             color="primary"
             variant="outlined"
             type="search"
             label="Find Workspace In"
-            size="medium"
-            margin="none"
+            size="large"
             // value=''
             onChange={(e) => setSearchInput(e.target.value)}
-
           />
+          </div>
           <Button
-            className="buttonselect-location-btn"
+            className="m-10"
             sx={{ width: 387.9800109863281 }}
+            
             variant="contained"
             name="SearchButton"
             color="primary"
@@ -58,11 +60,11 @@ export default function Home() {
           >
             Search
           </Button>
-
         </div>
-
+          </div>
+        </div>
+       
       </div>
-    </container>
-
-  )
+    </div>
+  );
 }

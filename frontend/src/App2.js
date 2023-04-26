@@ -29,7 +29,8 @@ import { Logout } from './components/Logout'
 import Chat from "./components/Chat";
 import './index.css';
 import Navbar from "./components/Navbar";
-
+import { BsSearch } from 'react-icons/bs';
+import { LocationDetails } from "./components/LocationDetails";
 
 const Search = () => {
   const {
@@ -44,13 +45,41 @@ const Search = () => {
   return (
 
     <CounterProvider>
-      <div className="bg-gradient-to-r from-cyan-500 to-blue-500">
+      <div >
         <img />
-        <h1 className="font-bold italic p-8 flex justify-start ">
-          <Link to="/">RemoteTogether</Link>
-        </h1>
-        <Navbar />
+        
+       <div className="bg-slate-400"> <Navbar /> </div>
         <div>
+          <div className="flex items-center place-content-center p-4 shadow-lg"> {location.pathname === "/" ? null : (
+          <div className="flex flex-row " >
+            <div >
+            <TextField
+           sx={{ width: 387.9800109863281 }}
+              color="primary"
+              // variant="outlined"
+              type="search"
+              label="Find Workspace In"
+              size="medium"
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+            </div>
+            
+            <div className="flex flex-row items-center place-content-center p-4 hover:bg-slate-200 rounded-3xl
+    transition-all duration-300 ease-linear">
+             <BsSearch size="28" onClick={handleSearch}/>
+            {/* <Button 
+            sx={{ width: 387.9800109863281 }}
+              variant="contained"
+              // name="SearchButton"
+              color="primary"
+              size="large"
+              onClick={handleSearch}
+            >
+              Search
+            </Button> */}
+            </div>
+          </div>
+        )}</div>
           
           {location.pathname === '/' ?
             <Home />
@@ -63,8 +92,10 @@ const Search = () => {
                       <Route path="/" element={<Home />} />
                       <Route path="/path" element={<PlaceList />} />
                       <Route path="/Favorites" element={<Favorites />} />
-                      <Route path="/findalocation/*" element={<MapList />} />
                       <Route path="/findalocation" element={<MapList />} />
+                      <Route path="/findalocation/*" element={<MapList />} />
+                      <Route path="/findalocation/:id/*" element={<LocationDetails />} />
+                  
                       <Route path="/path2" element={<Search />} />
 
                       <Route path="/Login" element={<Login />} />
@@ -79,8 +110,8 @@ const Search = () => {
                   </div>
                 )}
                 {location.pathname !== "/chat" && (
-                <div className="div_main_right">
-                  <Map />
+                <div className="div_main_right mt-4 mr-10">
+                  <Map/>
                 </div>
                 )}
                 

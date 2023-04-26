@@ -139,7 +139,7 @@ const Chat = () => {
             <div className="chat-history">
               {(chatHistories[selectedChat] || []).map((msg, index) => (
                 <div key={index} className="message">
-                  <img className='div_chat-image' src={msg.image} ></img>{msg.message}
+                  <img className='div_chat-image rounded-xl' src={msg.image} ></img>{msg.message}
                 </div>
               ))}
             </div>

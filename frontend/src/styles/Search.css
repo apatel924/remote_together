@@ -1,28 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+
+
 .div_main {
   display: flex;
   flex-direction: row;
-  padding-top: 100px;
-  margin: 50px;
+  /* padding-top: 100px; */
+  /* margin: 50px; */
 
 }
 
 .div_main_left {
   width:50%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 100vh;
   overflow-y: auto;
 }
 
 .div_main_right {
   width:50%;
-  border: 1px solid black;
+  border-radius: 15px;
+  /* border: 1px solid black; */
   height: 100vh
 } 
+/* div {
+  border-radius: 15px;
+} */
+
+:root { 
+  font-family: 'Montserrat', sans-serif;
+}
+
+
 
 /* do we want rounded corners */
-div {
+/* div {
   border-radius: 15px;
-} 
+}  */
 
 /* .desktop-2-child,
 .remotetogether {
