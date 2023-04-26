@@ -2,9 +2,10 @@ import { React, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { FormControl, Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { AuthContext } from "../providers/authProvider";
 import "./Buttons.css";
+import { AiOutlineLike, AiOutlineDislike, AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { counterContext } from "../providers/CounterProvider";
 
 export function LocationDetailsReviews() {
@@ -162,6 +163,8 @@ export function LocationDetailsReviews() {
       review_comment: description,
       username: user,
     };
+    setRating("");
+    setDescription("");
     // let reviewJSON = JSON.stringify(review);
     // console.log('review', review);
     axios.post(`/api/review`, review).then((result) => {
@@ -251,50 +254,89 @@ export function LocationDetailsReviews() {
   // }
 
   return (
-    <div className="flex flex-col">
-      <h2 className="text-center font-bold">Add Review</h2>
+    <div className="flex flex-col ">
+      <h2 className="text-center font-bold mb-3 text-lg">Add Review</h2>
       <hr />
       <form onSubmit={addReviewHandler}>
         <div>
-          <label>Rating</label>
+          {/* <label>Rating</label>
           <textarea
             value={rating}
             id={"rating"}
             onChange={(e) => setRating(e.target.value)}
             type="number"
-          ></textarea>
+          ></textarea> */}
+          <div className="pb-4">
+            <TextField
+              className="flex justify-center m-10"
+              sx={{ width: 400 }}
+              color="primary"
+              variant="outlined"
+              type="search"
+              label="Add rating"
+              size="large"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+            />
+          </div>
         </div>
 
         <div>
-          <label>Description</label>
-          <textarea
+          <TextField
+            className="flex justify-center m-10"
+            sx={{ width: 400 }}
+            color="primary"
+            variant="outlined"
+            type="search"
+            label="Share details of your experience"
+            size="large"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+
+          {/* <textarea
             value={description}
             id={"description"}
             onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
+          ></textarea> */}
         </div>
-        <button
-          className="relative flex flex-row items-center justify-center mx-10 w-20 h-14 bg-slate-100 hover:bg-slate-200 rounded-xl
-    transition-all duration-300 ease-linear"
-          variant="primary"
-          type="submit"
-        >
-          Add Review
-        </button>
+        <div>
+          <button
+            className="flex flex-row items-center justify-center mx-28 mt-4 w-40 h-14 bg-slate-100 hover:bg-slate-200 rounded-xl
+transition-all duration-300 ease-linear"
+            variant="primary"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
       </form>
 
       <br />
-      <h5>Location Reviews</h5>
+      <h5 className="font-bold italic text-lg">Location Reviews</h5>
       <hr />
 
       {reviews.length > 0 ? (
         reviews.map((review, index) => {
           return (
-            <div className="div_mapList-locations div_mapList-locations mb-6 mt-4 mx-10  border-2 border-slate-200 rounded-md ring-2 ring-slate-200 hover:ring-8" key={index}>
-              <li className="MapList_div-styling">
-                <p>Username: {review.username}</p>
-                <p>Rating: {review.review_rating}</p>
-                <p>Comment: {review.review_comment}</p>
+            <div
+              className="break-words flex flex-col mb-6 mt-4 mx-10 text-lg border-2 border-slate-200 rounded-md ring-2 ring-slate-200 hover:ring-8 break-words"
+              key={index}
+            >
+              <li className="MapList_div-styling flex flex-col gap-4">
+                <p>
+                  {" "}
+                  <span className="font-bold">Username:</span> {review.username}
+                </p>
+                <p>
+                  {" "}
+                  <span className="font-bold">Rating:</span>{" "}
+                  {review.review_rating}
+                </p>
+                <p>
+                  <span className="font-bold">Comment:</span>{" "}
+                  {review.review_comment}
+                </p>
                 {/* Add delete button */}
                 {/* {auth && user === reviews[0].username ? <button onClick={() => deleteReviewHandler(index)}> Delete Review</button> 
                : null } */}
@@ -302,17 +344,26 @@ export function LocationDetailsReviews() {
                 {/* <button onClick={() => editReviewHandler}> Edit Review</button>
                 <button onClick={likes}> Like{like}</button>
                 <button onClick={dislikes}> Dislike{dislike}</button> */}
-                {auth && user === review.username && (
+                <div className="flex flex-row justify-between gap-8 items-center">
+                  <div>
+                    
+                  {auth && user === review.username && (
                   <>
-                    <button onClick={() => deleteReviewHandler(index)}>
-                      Delete
+                    <button className="gap-4" onClick={() => deleteReviewHandler(index)}>
+                      <AiOutlineDelete size={24}/>
                     </button>
                     {/* <button onClick={() => editReviewHandler(index)}> */}
-                    <button>Edit</button>
+                    <button>
+                      <AiOutlineEdit size={24}/></button>
                   </>
                 )}
-                <button onClick={() => likes()}> Like{like}</button>
-                <button onClick={() => dislikes()}> Dislike{dislike}</button>
+                </div>
+                <div>
+                  <button onClick={() => likes()}> <AiOutlineLike size={24} /></button> {like}
+                  <button onClick={() => dislikes()}> <AiOutlineDislike size={24}/> </button> {dislike}
+
+                </div>
+                </div>
               </li>
               {/* {console.log('likes', like)}
             {console.log('review json', review)} */}

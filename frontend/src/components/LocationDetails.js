@@ -84,7 +84,7 @@ export function LocationDetails() {
           </div>
           <div>
             <button
-              className="mx-20"
+              className="mx-20 text-lg"
               type="button"
               onClick={() => {
                 setSelect("Overview");
@@ -95,13 +95,13 @@ export function LocationDetails() {
           </div>
           <div>
             <button
-              className="mx-20"
+              className="mx-20 text-lg"
               type="button"
               onClick={() => {
                 setSelect("Reviews");
               }}
             >
-              Review
+              Reviews
             </button>
           </div>
         </div>
