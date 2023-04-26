@@ -1,21 +1,22 @@
-
-import React from 'react';
-import { useContext } from 'react';
-import { AuthContext } from '../providers/authProvider'
-import '../index.css';
-
+import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../providers/authProvider";
+import "../index.css";
 
 export function Logout() {
-  const { user, logout } = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <div>
-      <div>
-        <h3 className="text-green-600 bg-red-200" >
-          Welcome, {user}!
-        </h3>
+      <div className="flex flex-row gap-16">
+        <button type="button" onClick={logout}>
+          Logout
+        </button>
+        <div className="flex flex-row">
+          <h3 className='pr-2'>Welcome, </h3>
+          <p className="italic"> {user}! </p>
         </div>
-      <button type="button" onClick={logout}>Logout</button>
+      </div>
     </div>
-  )
+  );
 }

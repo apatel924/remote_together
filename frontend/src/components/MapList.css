@@ -3,19 +3,13 @@
   /* margin: 1rem */
 }
 
-.div_mapList-locations{
-  display:flex;
-  flex-direction: row;
-  border: 1px solid black;
-  margin: 1rem;
-  /* text-align:center */
-}
+
 
 .div_mapList-locations{
   display:flex;
   flex-direction: row;
-  border: 1px solid black;
-  margin: 1rem;
+  /* border: 1px solid black; */
+  /* margin: 1rem; */
   /* text-align:center */
 }
 
@@ -30,7 +24,7 @@
 
 .div_MapList-ul-itemList {
   margin: 0px;
-  padding: 0px;
+  /* padding: 0px; */
   border: 0px;
   
 }
