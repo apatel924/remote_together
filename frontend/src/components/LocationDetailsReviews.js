@@ -254,8 +254,9 @@ export function LocationDetailsReviews() {
   // }
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col items-center justify-center ">
       <h2 className="text-center font-bold mb-3 text-lg">Add Review</h2>
+      
       <hr />
       <form onSubmit={addReviewHandler}>
         <div>
@@ -320,7 +321,7 @@ transition-all duration-300 ease-linear"
         reviews.map((review, index) => {
           return (
             <div
-              className="break-words flex flex-col mb-6 mt-4 mx-10 text-lg border-2 border-slate-200 rounded-md ring-2 ring-slate-200 hover:ring-8 break-words"
+            className="break-words flex flex-col mb-6 mt-4 w-[40rem] mx-10 text-lg border-2 border-slate-200 rounded-md ring-2 ring-slate-200 hover:ring-8"
               key={index}
             >
               <li className="MapList_div-styling flex flex-col gap-4">
