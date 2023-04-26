@@ -24,7 +24,7 @@ export function LocationDetailsOverview() {
       py-6
       rounded-xl
       ">
-        <MiddleBarIcon icon={<FiMap size="24" />} text="Direction" />
+        <MiddleBarIcon icon={<FiMap size="24" />} text="Directions" />
         <MiddleBarIcon icon={<BsFillTelephoneForwardFill size="26"/>} text="Phone" />
         <MiddleBarIcon icon={<BsSave size="24" />} text="Save"/>
         <MiddleBarIcon icon={<FiShare2 size="24" />} text="Share" />
