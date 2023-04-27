@@ -116,7 +116,7 @@ export default function MapProvider(props) {
         if (pagination.hasNextPage) {
           setTimeout(() => {
             searchPlaces(service, map, pagination.nextPageToken);
-          }, 10000000);
+          }, 100000);
         }
       }
     });
