@@ -28,7 +28,7 @@ export function LocationDetails() {
 
     axios
       .post("/api/favorites", {
-        place_id: currentMarker.place_id,
+        place_id: currentMarker && currentMarker.place_id,
         is_favorite: !isFavorite,
       })
       .then((response) => {
