@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { mapContext } from "../providers/mapProvider";
 import "./MapList.css";
 import Axios from "axios";
+import { AiFillHeart } from "react-icons/ai";
 import no_image from "../docs/no_image.png";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 export function Favorites() {
   // get request to DB for favorites list
@@ -49,8 +49,8 @@ export function Favorites() {
             <div className="div_mapList-locations mb-6 mt-4 mx-10  border-2 border-slate-200 rounded-md ring-2 ring-slate-200 hover:ring-8">
               <div className="div_mapList-location-image">
                 <img
-                  src={marker.photos && marker.photos[0].getUrl()}
-                  alt="Picture of the location"
+                  src={marker.photos ? marker.photos[0].getUrl() : no_image}
+                  alt=""
                   width="150px"
                   height="100%"
                 />
@@ -63,7 +63,6 @@ export function Favorites() {
                       <p className="font-bold">{marker.name} </p>
                       <AiFillHeart size={24} />
                     </div>
-
                     <p>{marker.vicinity}</p>
                     <p>
                       {marker.rating} stars ({marker.user_ratings_total})

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { mapContext } from "../providers/mapProvider";
 
@@ -8,7 +8,6 @@ import no_image from "../docs/no_image.png";
 
 export function MapList() {
   const { markers } = useContext(mapContext);
-  const [places, setPlaces] = useState([]);
 
   const location = useLocation();
   const locations = markers.map((result, index) => {
@@ -19,7 +18,6 @@ export function MapList() {
             <img
               className="rounded-md"
               src={result.photos ? result.photos[0].getUrl() : no_image}
-              alt="No Picture"
               width="150px"
               height="100%"
             />
