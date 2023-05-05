@@ -1,14 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { mapContext } from "../providers/mapProvider";
-import { LocationDetails } from "./LocationDetails";
+
 import "./MapList.css";
-import starbucks from "../docs/starbucks.png";
+
 import no_image from "../docs/no_image.png";
 
 export function MapList() {
   const { markers } = useContext(mapContext);
-  const [places, setPlaces] = useState([]);
 
   const location = useLocation();
   const locations = markers.map((result, index) => {
@@ -19,7 +18,7 @@ export function MapList() {
             <img
               className="rounded-md"
               src={result.photos ? result.photos[0].getUrl() : no_image}
-              alt="No Picture"
+              alt=""
               width="150px"
               height="100%"
             />
@@ -41,15 +40,10 @@ export function MapList() {
   });
   return (
     <div>
-      {/* <div className='div_MapList-search'>
-        need a search function here
-      </div> */}
       <div>
         {location.pathname === "/findalocation" ? (
           <ul className="div_MapList-ul-itemList">{locations}</ul>
         ) : null}
-
-        
       </div>
     </div>
   );

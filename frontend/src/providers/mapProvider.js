@@ -25,8 +25,6 @@ export default function MapProvider(props) {
   const [searchInput, setSearchInput] = useState(undefined);
   const Navigate = useNavigate();
 
-  // console.log(searchInput)
-
   //handleSearch for search bar
   const handleSearch = () => {
     // Call the Google Maps API with the search input value
@@ -34,10 +32,6 @@ export default function MapProvider(props) {
     Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${searchInput}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`)
       .then((response) => {
         // Handle the response data
-        // console.log(response.data.results[0].geometry.location);
-        // console.log(response.data)
-        // console.log(response.data.results[0].geometry.location.lng)
-        // console.log(response.data.results[0].geometry.location.lat)
         // Update the UI with the search results
         // Can set the response data to another state variable
         // and use it in UI components
@@ -167,7 +161,6 @@ export default function MapProvider(props) {
     searchInput,
     setSearchInput
   };
-
 
   return (
     <>

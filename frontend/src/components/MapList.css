@@ -1,16 +1,10 @@
 .MapList_div-styling {
   list-style-type: none;
-  /* margin: 1rem */
 }
 
-
-
-.div_mapList-locations{
-  display:flex;
+.div_mapList-locations {
+  display: flex;
   flex-direction: row;
-  /* border: 1px solid black; */
-  /* margin: 1rem; */
-  /* text-align:center */
 }
 
 .div_mapList-location-image {
@@ -24,17 +18,14 @@
 
 .div_MapList-ul-itemList {
   margin: 0px;
-  /* padding: 0px; */
   border: 0px;
-  
 }
 
-.div_mapList-location-description-splitdiv{
-  display:flex;
+.div_mapList-location-description-splitdiv {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 1rem;
-  /* width: 100% */
 }
 
 .div_mapList-location-description {

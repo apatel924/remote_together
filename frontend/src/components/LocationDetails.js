@@ -7,13 +7,10 @@ import { LocationDetailsReviews } from "./LocationDetailsReviews";
 import { LocationDetailsOverview } from "./LocationDetailsOverview";
 import { AiOutlineHeart, AiFillHeart, AiOutlineArrowLeft } from "react-icons/ai";
 import axios from "axios";
-
-import office from "../docs/office.jpeg";
-import starbucks from "../docs/starbucks.png";
 import no_image from "../docs/no_image.png";
 
 export function LocationDetails() {
-  const { markers, selectedMarker, getPlaceDetails, placesService } =
+  const { markers } =
     useContext(mapContext);
   const [isFavorite, setIsFavorite] = useState(false);
   const params = useParams();
@@ -45,7 +42,7 @@ export function LocationDetails() {
     <div className="pt-2">
       <div className="relative flex flex-row items-center justify-center mx-10 w-20 h-10 bg-slate-100 hover:bg-slate-200 rounded-xl
     transition-all duration-300 ease-linear">
-      <AiOutlineArrowLeft/>
+        <AiOutlineArrowLeft />
         <Link to="/findalocation"> Back</Link>
       </div>
 
@@ -116,7 +113,7 @@ export function LocationDetails() {
       </div>
 
       <Routes>
-        {/* <Route path="/reviews" element={<LocationDetailsReviews />} /> */}
+
 
         <Route path="/findalocation" element={<LocationDetails />} />
       </Routes>
