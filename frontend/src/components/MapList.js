@@ -1,9 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { mapContext } from "../providers/mapProvider";
-import { LocationDetails } from "./LocationDetails";
+
 import "./MapList.css";
-import starbucks from "../docs/starbucks.png";
+
 import no_image from "../docs/no_image.png";
 
 export function MapList() {
@@ -41,15 +41,10 @@ export function MapList() {
   });
   return (
     <div>
-      {/* <div className='div_MapList-search'>
-        need a search function here
-      </div> */}
       <div>
         {location.pathname === "/findalocation" ? (
           <ul className="div_MapList-ul-itemList">{locations}</ul>
         ) : null}
-
-        
       </div>
     </div>
   );

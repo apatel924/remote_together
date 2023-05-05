@@ -41,35 +41,11 @@ App.use(Express.urlencoded({ extended: true }));
 App.use(Express.static('public'));
 App.use(Express.json());
 
-
-// Mount all resource routes does not work need help with this
-// App.use('/api/business', business)
-
 // Get routes
 App.get('/api', (req, res) => {
   res.json({ message: 'Remote Together API' });
 });
 
-// works but how do i make this modular? i made a routes folder and used app.use and required in but it doesn't work.
-// App.get('/api/business', (req, res) => {
-//   const query = `SELECT * FROM business`;
-//   console.log(query);
-//   db.query(query)
-//     .then(data => {
-//       const businessList = data.rows;
-
-//       res.json({ businessList });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
-
-// GET REQUEST FOR FAVOURITES
-// POST REQUEST FOR FAVORITES
-// GET REQUEST FOR FAVORITES
 App.get('/api/favorites', (req, res) => {
   const query = `
     SELECT place_id FROM favorite_list;
@@ -138,10 +114,6 @@ App.get('/api/review', (req, res) => {
     });
 });
 
-
-//queryparams is hardcoded right now, will eventually add req.body to get real data
-//in addreview func we will need a parameter could be called req
-//the next lines will be req.body.something
 const addReview = function (data) {
   const queryParams = [
     data.username,
@@ -170,13 +142,10 @@ const addReview = function (data) {
 App.post('/api/review', (req, res) => {
   console.log('server function hits');
   console.log('req', req.body);
-  //let body = JSON.parse(req.body);
-  //console.log(body);
   addReview(req.body)
     .then((result) => {
 
       console.log('result 92', result)
-      //eventually will return this line
       res.status(200).json(result[0]);
     })
     .catch(err => {
@@ -189,13 +158,9 @@ App.get('/api/login', (req, res) => {
   const query = `SELECT * FROM users`;
   console.log('api/login hit')
   console.log('query', query);
-  //need query for user but should we just leave this out?
   db.query(query)
     .then(data => {
       console.log('data from backend', data.rows)
-      // const review = data.rows;
-      // console.log('review', review)
-      // res.json({ review });
     })
     .catch(err => {
       res
@@ -221,13 +186,10 @@ const addUser = function (data) {
   `;
 
   //queryparams is an array that gets maps to $1, etc
-  // console.log('addUser post in database');
   return db
     .query(queryString, queryParams)
     //if successful
     .then(result => {
-      // console.log('result', result)
-      // return result.rows
     })
     //if not successful
     .catch(err => {
@@ -237,15 +199,10 @@ const addUser = function (data) {
 }
 
 App.post('/api/register', (req, res) => {
-  // console.log('server addUser function hits');
-  // console.log('req', req.body);
-  //let body = JSON.parse(req.body);
-  //console.log(body);
   addUser(req.body)
     .then((result) => {
 
       // console.log('result addUser', result)
-      //eventually will return this line
       res.status(200).json({});
     })
     .catch(err => {

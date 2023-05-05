@@ -1,16 +1,12 @@
-import { Button, TextField } from "@mui/material";
-import Search from "../App2";
-import { Link, useLocation } from "react-router-dom";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import { Logout } from "./Logout";
 import { AuthContext } from "../providers/authProvider";
-import { mapContext } from "../providers/mapProvider";
 import { useContext } from "react";
 
 export default function Navbar() {
-  const { handleSearch, searchInput, setSearchInput } = useContext(mapContext);
 
-  const location = useLocation();
-  const { auth, user } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
 
   return (
     <nav>
@@ -22,9 +18,6 @@ export default function Navbar() {
         <h3 >
           <Link to="/findalocation">Find a Location</Link>
         </h3>
-        {/* <h3>
-          <Link to="/addreview">Add Review</Link>
-        </h3> */}
         <h3>
           <Link to="/Favorites">Favorites</Link>
         </h3>
@@ -39,7 +32,6 @@ export default function Navbar() {
         <Button variant="outlined" color="primary">
           <Link to="/chat">Start Chat</Link>
         </Button>
-       
       </div>
     </nav>
   );

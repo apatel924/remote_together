@@ -1,7 +1,6 @@
 .div_locationDetails-container {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
 }
 
 .div_locationDetails-description {
@@ -13,20 +12,12 @@
 }
 
 .div_locationDetails-Nav {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
-  /* border-bottom: solid 1px black */
 }
 
 .div_locationDetails-Nav-item {
-  padding-left:5rem;
-  padding-right:5rem;
-
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
-
-/* .locationDetails-image {
-  width:100px;
-  height:250px;
-
-} */

@@ -1,13 +1,8 @@
 @import './styles/Search.css';
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* body {
-  background-image: linear-gradient(to right, rgba(0, 119, 255, 0.729) , rgba(0, 128, 0, 0.637));
-} */
 
 @layer components {
   .middleBar-icon {

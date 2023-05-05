@@ -14,25 +14,6 @@ export function Login() {
     e.preventDefault()
     user && login(user, password);
     Navigate('/')
-
-    // const loginDetails = {
-    //   username: user,
-    //   password: password,
-
-    // }
-    // console.log('login from front end', loginDetails)
-    // axios.get(`/api/login`, loginDetails)
-    // need add some logic for login check or just leave it hardcoded?
-    // can just add a session cookie with the below but need to add a GET request with :id
-    // res.cookie('user_id', req.params.id)
-    // but will this work for single page app? would it better to just set state with usecontext?
-    // .then((data) => {
-    //   console.log('successfully logged in')
-    //   console.log('data', data)
-    //   setUser(user)
-    //   console.log('user from the front end after login',user)
-    // });
-
   }
 
   return (

@@ -3,13 +3,11 @@ import { Link, Route, Routes } from "react-router-dom"
 import { Login } from './Login';
 import axios from 'axios';
 
-
 export function Signup() {
 
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
-
 
   // eventhandler for login
   const addRegisterHandler = (e) => {
