@@ -18,6 +18,7 @@ export function MapList() {
             <img
               className="rounded-md"
               src={result.photos ? result.photos[0].getUrl() : no_image}
+              alt=""
               width="150px"
               height="100%"
             />
